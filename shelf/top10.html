@@ -7,6 +7,17 @@
   <title>top 10</title>
 </head>
 
+<script>
+  const sport = ['10大最受歡迎運動項目', '棒球', '藍球', '足球', '網球', '體操', '游泳', '羽毛球', '排球', '跳水', '田徑']
+  const travel = ['10大最受歡迎旅遊景點', '日本', '韓國', '泰國', '中國', '英國', '美國', '法國', '北歐', '澳洲', '紐西蘭']
+  function update(data) {
+    document.querySelector(".topic-layout, .topic-cfg").innerHTML = data[0]
+    document.querySelectorAll(".data-layout, .data-cfg").forEach((e, idx) => {
+      e.innerHTML = data[idx + 1]
+    })
+  }
+</script>
+
 <style>
   * {
     box-sizing: border-box;
@@ -87,6 +98,8 @@
 </style>
 
 <body>
+  <input type="button" value="運動" onclick="update(sport)" />
+  <input type="button" value="旅球地點" onclick="update(travel)" />
   <div class="box-layout">
     <div class="topic-layout topic-cfg">
       10大最受歡迎運動項目
