@@ -17,55 +17,67 @@
     height: 385px;
   }
 
-  .topic {
+  .topic-layout {
     width: 270px;
     height: 35px;
-    background-color: #9A0794;
-    color: #F7EBD4;
-    border-radius: 5px 5px 0px 0px;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-  .board-container {
+  .topic-cfg {
+    background-color: #9A0794;
+    color: #F7EBD4;
+    border-radius: 5px 5px 0px 0px;
+  }
+
+  .board-container-layout {
     width: 270px;
     height: 350px;
-    background-color: #FBA90A;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+  }
+
+  .board-container-cfg {
+    background-color: #FBA90A;
     border: 1px solid #FBA90A;
     border-radius: 0px 0px 5px 5px;
   }
 
-  .content {
+  .content-layout {
     width: 95%;
     height: 30px;
     display: flex;
   }
 
-  .seq {
+  .seq-layout {
     width: 12%;
     height: 100%;
-    color: #F7EBD4;
-    background-color: #9A0794;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .seq-cfg {
+    background-color: #9A0794;
+    color: #F7EBD4;
     font-family: consolas;
     border: 1px solid #9A0794;
     border-radius: 5px 0px 0px 5px;
   }
 
-  .data {
+  .data-layout {
     width: 88%;
     height: 100%;
-    color: #0A3409;
-    background-color: #559E54;
     display: flex;
     align-items: center;
+  }
+
+  .data-cfg {
+    background-color: #559E54;
+    color: #0A3409;
     font-family: PMingLiU;
     font-weight: bold;
     padding: 0px 0px 0px 5px;
@@ -76,49 +88,49 @@
 
 <body>
   <div class="box">
-    <div class="topic">
+    <div class="topic-layout topic-cfg">
       10大最受歡迎運動項目
     </div>
-    <div class="board-container">
-      <div class="content">
-        <div class="seq">1</div>
-        <div class="data">棒球</div>
+    <div class="board-container-layout board-container-cfg">
+      <div class="content-layout">
+        <div class="seq-layout seq-cfg">1</div>
+        <div class="data-layout data-cfg">棒球</div>
       </div>
-      <div class="content">
-        <div class="seq">2</div>
-        <div class="data">籃球</div>
+      <div class="content-layout">
+        <div class="seq-layout seq-cfg">2</div>
+        <div class="data-layout data-cfg">籃球</div>
       </div>
-      <div class="content">
-        <div class="seq">3</div>
-        <div class="data">足球</div>
+      <div class="content-layout">
+        <div class="seq-layout seq-cfg">3</div>
+        <div class="data-layout data-cfg">足球</div>
       </div>
-      <div class="content">
-        <div class="seq">4</div>
-        <div class="data">網球</div>
+      <div class="content-layout">
+        <div class="seq-layout seq-cfg">4</div>
+        <div class="data-layout data-cfg">網球</div>
       </div>
-      <div class="content">
-        <div class="seq">5</div>
-        <div class="data">體操</div>
+      <div class="content-layout">
+        <div class="seq-layout seq-cfg">5</div>
+        <div class="data-layout data-cfg">體操</div>
       </div>
-      <div class="content">
-        <div class="seq">6</div>
-        <div class="data">游泳</div>
+      <div class="content-layout">
+        <div class="seq-layout seq-cfg">6</div>
+        <div class="data-layout data-cfg">游泳</div>
       </div>
-      <div class="content">
-        <div class="seq">7</div>
-        <div class="data">羽毛球</div>
+      <div class="content-layout">
+        <div class="seq-layout seq-cfg">7</div>
+        <div class="data-layout data-cfg">羽毛球</div>
       </div>
-      <div class="content">
-        <div class="seq">8</div>
-        <div class="data">排球</div>
+      <div class="content-layout">
+        <div class="seq-layout seq-cfg">8</div>
+        <div class="data-layout data-cfg">排球</div>
       </div>
-      <div class="content">
-        <div class="seq">9</div>
-        <div class="data">跳水</div>
+      <div class="content-layout">
+        <div class="seq-layout seq-cfg">9</div>
+        <div class="data-layout data-cfg">跳水</div>
       </div>
-      <div class="content">
-        <div class="seq">10</div>
-        <div class="data">田徑</div>
+      <div class="content-layout">
+        <div class="seq-layout seq-cfg">10</div>
+        <div class="data-layout data-cfg">田徑</div>
       </div>
     </div>
   </div>
