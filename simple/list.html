@@ -12,7 +12,18 @@
     box-sizing: border-box;
   }
 
-  .container {
+  .topic {
+    width: 270px;
+    height: 35px;
+    background-color: #9A0794;
+    color: #F7EBD4;
+    border-radius: 5px 5px 0px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .board-container {
     width: 270px;
     height: 350px;
     background-color: #FBA90A;
@@ -21,8 +32,7 @@
     align-items: center;
     justify-content: space-evenly;
     border: 1px solid #FBA90A;
-    border-radius: 5px;
-    ;
+    border-radius: 0px 0px 5px 5px;
   }
 
   .content {
@@ -60,7 +70,10 @@
 </style>
 
 <body>
-  <div class="container">
+  <div class="topic">
+    10大最受歡迎運動項目
+  </div>
+  <div class="board-container">
     <div class="content">
       <div class="seq">1</div>
       <div class="data">棒球</div>
