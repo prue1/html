@@ -8,13 +8,56 @@
 </head>
 
 <script>
-  const sport = ['10大最受歡迎運動項目', '棒球', '藍球', '足球', '網球', '體操', '游泳', '羽毛球', '排球', '跳水', '田徑']
+  const sport = ['10大最受歡迎運動', '棒球', '藍球', '足球', '網球', '體操', '游泳', '羽毛球', '排球', '跳水', '田徑']
   const travel = ['10大最受歡迎旅遊景點', '日本 (15.6%)', '韓國', '泰國', '中國', '英國', '美國', '法國', '北歐', '澳洲', '紐西蘭']
+
+  const custom_css = ['', '', '', '', '']
+  const css1 = ['#FC600A', '#F7E0D4', '#4424D6', '#2B3409', '#F7EBD4']
+  const css2 = ['#C21460', '#F7D4E3', '#347B98', '#342B09', '#F7EBD4']
+  const css3 = ['#347B98', '#D4EDF7', '#FCCB1A', '#34091C', '#F7EBD4']
+  const css4 = ['#559E54', '#D4F7D4', '#FBA90A', '#340933', '#F7EBD4']
+  const css5 = ['#FCCB1A', '#F7F0D4', '#347B98', '#092834', '#263409']
+
   function update(data) {
     document.querySelector(".topic-layout, .topic-cfg").innerHTML = data[0]
     document.querySelectorAll(".data-layout, .data-cfg").forEach((e, idx) => {
       e.innerHTML = data[idx + 1]
     })
+  }
+
+  function paint(css) {
+    document.querySelector(".topic-cfg").style.backgroundColor = css[0]
+    document.querySelector(".topic-cfg").style.color = css[4]
+    document.querySelector(".board-container-cfg").style.backgroundColor = css[2]
+    document.querySelector(".board-container-cfg").style.borderColor = css[2]
+
+    document.querySelectorAll(".seq-cfg").forEach((e, idx) => {
+      e.style.backgroundColor = css[0]
+      e.style.color = css[4]
+    })
+
+    document.querySelectorAll(".data-cfg").forEach((e, idx) => {
+      e.style.backgroundColor = css[1]
+      e.style.color = css[3]
+    })
+  }
+
+  function paint_reset(css) {
+    document.querySelector(".topic-cfg").style = ''
+    document.querySelector(".board-container-cfg").style = ''
+
+    document.querySelectorAll(".seq-cfg").forEach((e, idx) => {
+      e.style = ''
+    })
+
+    document.querySelectorAll(".data-cfg").forEach((e, idx) => {
+      e.style = ''
+    })
+  }
+
+  function change_color(idx, color_str) {
+    custom_css[idx] = color_str
+    paint(custom_css)
   }
 </script>
 
@@ -37,7 +80,7 @@
   }
 
   .topic-cfg {
-    background-color: #9A0794;
+    background-color: #8601AF;
     color: #F7EBD4;
     border-radius: 5px 5px 0px 0px;
   }
@@ -52,8 +95,8 @@
   }
 
   .board-container-cfg {
-    background-color: #FBA90A;
-    border: 1px solid #FBA90A;
+    background-color: #FB9902;
+    border: 1px solid #FB9902;
     border-radius: 0px 0px 5px 5px;
   }
 
@@ -72,10 +115,9 @@
   }
 
   .seq-cfg {
-    background-color: #9A0794;
+    background-color: #8601AF;
     color: #F7EBD4;
     font-family: consolas;
-    border: 1px solid #9A0794;
     border-radius: 5px 0px 0px 5px;
   }
 
@@ -87,12 +129,11 @@
   }
 
   .data-cfg {
-    background-color: #559E54;
-    color: #0A3409;
+    background-color: #EFD4F7;
+    color: #342309;
     font-family: PMingLiU;
-    font-weight: bold;
+    font-weight: 50%;
     padding: 0px 0px 0px 5px;
-    border: 1px solid #559E54;
     border-radius: 0px 5px 5px 0px;
   }
 </style>
@@ -100,9 +141,20 @@
 <body>
   <input type="button" value="運動" onclick="update(sport)" />
   <input type="button" value="旅球地點" onclick="update(travel)" />
+  <input type="button" value="預設樣式" onclick="paint_reset()" />
+  <input type="button" value="樣式1" onclick="paint(css1)" />
+  <input type="button" value="樣式2" onclick="paint(css2)" />
+  <input type="button" value="樣式3" onclick="paint(css3)" />
+  <input type="button" value="樣式4" onclick="paint(css4)" />
+  <input type="button" value="樣式5" onclick="paint(css5)" /><br><br>
+  <input type="color" id="favcolor0" value="#ffffff" onchange="change_color(0, this.value)" />
+  <input type="color" id="favcolor1" value="#ffffff" onchange="change_color(1, this.value)" />
+  <input type="color" id="favcolor2" value="#ffffff" onchange="change_color(2, this.value)" />
+  <input type="color" id="favcolor3" value="#ffffff" onchange="change_color(3, this.value)" />
+  <input type="color" id="favcolor4" value="#ffffff" onchange="change_color(4, this.value)" /><br><br>
   <div class="box-layout">
     <div class="topic-layout topic-cfg">
-      10大最受歡迎運動項目
+      10大最受歡迎運動
     </div>
     <div class="board-container-layout board-container-cfg">
       <div class="content-layout">
