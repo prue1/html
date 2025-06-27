@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>absolute 3</title>
+</head>
+
+<script>
+  function enter(el, event) {
+    el.classList.add("rel")
+  }
+
+  function leave(el, event) {
+    el.classList.remove("rel")
+  }
+</script>
+
+<style>
+  * {
+    font-family: consolas, PMingLiU;
+    box-sizing: border-box;
+  }
+
+  #root-container {
+    width: 50%;
+    height: 300px;
+    background-color: cornflowerblue;
+    background-image: url("../img/Scenic view of Baccoleno area in Tuscany-Italy.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  #menubar-container {
+    display: flex;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+    /* 使用 z-index 時, 必須搭配position(不包含staic) */
+    /* z-index: -1 讓整個 div1 降到最底層，讓上面的下拉選單能完全顯現 */
+  }
+
+  .menu-container {
+    width: 100px;
+    height: 50px;
+    position: relative;
+  }
+
+
+  /* 不設 position，會佔固定位置*/
+  .menu {
+    width: 100px;
+    height: 50px;
+    background-color: blueviolet;
+    border-bottom: 3px solid yellow;
+  }
+
+  /* 設定 position:absolute，則不佔固定位置 */
+  .submenu {
+    width: 100px;
+    height: 150px;
+    background-color: yellowgreen;
+    position: absolute;
+    display: none;
+    opacity: 0;
+    transition: opacity 1s;
+  }
+
+  .menu-container:hover .menu {
+    border-bottom: 10px solid yellow;
+  }
+
+  .menu-container:hover .submenu {
+    display: inherit;
+    opacity: 1;
+  }
+
+  /* 第二類測試 */
+  .rel {
+    position: relative;
+  }
+
+  #div1 {
+    width: 200px;
+    height: 100px;
+    background-color: greenyellow;
+  }
+
+  #div2 {
+    width: 200px;
+    height: 100px;
+    background-color: hotpink;
+  }
+
+  #div3 {
+    width: 200px;
+    height: 100px;
+    background-color: violet;
+  }
+
+  #div4 {
+    width: 200px;
+    height: 100px;
+    background-color: gold;
+  }
+
+  #div5 {
+    width: 200px;
+    height: 100px;
+    background-color: deepskyblue;
+  }
+
+  #div-content {
+    width: 50px;
+    height: 7px;
+    background-color: green;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    pointer-events: none;
+  }
+</style>
+
+<body>
+  <div id="root-container">
+    <div id="menubar-container">
+      <div class="menu-container">
+        <div class="menu"></div>
+        <div class="submenu"></div>
+      </div>
+      <div class="menu-container">
+        <div class="menu"></div>
+        <div class="submenu"></div>
+      </div>
+    </div>
+    <div><span>內容</span>
+      <div id="div1" class="" onmouseenter="enter(this)" onmouseleave="leave(this)">
+        div1
+        <div id="div2" class="" onmouseenter="enter(this)" onmouseleave="leave(this)">
+          div2
+          <div id="div3" class="" onmouseenter="enter(this)" onmouseleave="leave(this)">
+            div3
+            <div id="div4" class="" onmouseenter="enter(this)" onmouseleave="leave(this)">
+              div4
+              <div id="div5" class="" onmouseenter="enter(this)" onmouseleave="leave(this)">
+                div5
+                <div id="div-content"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
