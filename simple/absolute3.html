@@ -8,14 +8,6 @@
 </head>
 
 <script>
-  function enter(el, event) {
-    el.classList.add("rel")
-  }
-
-  function leave(el, event) {
-    el.classList.remove("rel")
-  }
-
   function city_view_display(param) {
     document.querySelector("#root-image").style.zIndex = param;
   }
@@ -107,6 +99,10 @@
   #menubar-empty span {
     font-family: DFKai-SB;
     font-size: 16px;
+  }
+
+  #menubar-empty:hover{
+    background-color: 	rgba(154, 205, 50, 0.5);
   }
 
   .menu-right {
@@ -209,7 +205,6 @@
     position: absolute;
     top: 0px;
     right: 0px;
-    z-index: 10;
     pointer-events: none;
     font-size: 12px;
     display: flex;
@@ -256,7 +251,7 @@
               <div class="city" onmouseenter="city_view('taichung.jpg')">
                 <a href="https://www.taichung.gov.tw/" target="_blank" rel="noopener">台中市</a>
               </div>
-              <div class="city" onmouseenter="city_view('changhua_800_600.jpg')">
+              <div class="city" onmouseenter="city_view('changhua.jpg')">
                 <a href="https://www.chcg.gov.tw/ch2/index.aspx" target="_blank" rel="noopener">彰化縣</a>
               </div>
               <div class="city" onmouseenter="city_view('nantou.jpg')">
@@ -313,7 +308,7 @@
               <div class="city" onmouseenter="city_view('penghu.jpg')">
                 <a href="https://www.penghu.gov.tw/ch/index.jsp" target="_blank" rel="noopener">澎湖縣</a>
               </div>
-              <div class="city" onmouseenter="city_view('kinmen.png')">
+              <div class="city" onmouseenter="city_view('kinmen.jpg')">
                 <a href="https://www.kinmen.gov.tw/" target="_blank" rel="noopener">金門縣</a>
               </div>
               <div class="city" onmouseenter="city_view('matsu.png')">
@@ -330,15 +325,15 @@
       </div>
     </div>
     <div><span>內容</span>
-      <div id="div1" class="" onmouseenter="enter(this, event)" onmouseleave="leave(this, event)">
+      <div id="div1" class="">
         <span>div1</span>
-        <div id="div2" class="" onmouseenter="enter(this, event)" onmouseleave="leave(this, event)">
+        <div id="div2" class="">
           <span>div2</span>
-          <div id="div3" class="" onmouseenter="enter(this, event)" onmouseleave="leave(this, event)">
+          <div id="div3" class="">
             <span>div3</span>
-            <div id="div4" class="" onmouseenter="enter(this, event)" onmouseleave="leave(this, event)">
+            <div id="div4" class="">
               <span>div4</span>
-              <div id="div5" class="" onmouseenter="enter(this, event)" onmouseleave="leave(this, event)">
+              <div id="div5" class="">
                 <span>div5</span>
                 <div id="div-bar"><span>div-bar</span></div>
               </div>
