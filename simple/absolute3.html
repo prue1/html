@@ -71,7 +71,6 @@
     position: relative;
     top: 0px;
     left: 0px;
-    background-color: rgba(255, 191, 0, 0.5);
     z-index: 10;
     /* 使用 z-index 時, 必須搭配position(不包含staic) */
     /* z-index: -1 讓整個 div1 降到最底層，讓上面的下拉選單能完全顯現 */
@@ -79,6 +78,7 @@
 
   #menubar {
     display: flex;
+    background-color: rgba(255, 191, 0, 0.5);
   }
 
   .menu-container {
@@ -101,8 +101,8 @@
     font-size: 16px;
   }
 
-  #menubar-empty:hover{
-    background-color: 	rgba(154, 205, 50, 0.5);
+  #menubar-empty:hover {
+    background-color: transparent
   }
 
   .menu-right {
