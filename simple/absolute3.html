@@ -31,6 +31,10 @@
     box-sizing: border-box;
   }
 
+  body {
+    margin: 0px;
+  }
+
   div,
   span {
     -webkit-user-select: none;
@@ -38,41 +42,45 @@
   }
 
   #root-container {
-    width: 800px;
+    width: 1280px;
     height: 600px;
     position: relative;
+    margin: 0px auto 0px auto;
   }
 
   #root-background {
-    width: 800px;
+    width: 1280px;
     height: 600px;
     background-color: cornflowerblue;
     background-image: url("../img/Scenic view of Baccoleno area in Tuscany-Italy.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     position: absolute;
+    top: 50px;
     z-index: -5;
   }
 
   #root-image {
-    width: 800px;
+    width: 1280px;
     height: 600px;
     background-color: transparent;
     position: absolute;
-    top: 0px;
+    top: 50px;
     z-index: -10;
   }
 
   .city_image {
-    width: 800px;
+    width: 1280px;
     height: 600px;
   }
 
   #menubar-container {
+    width: 1280px;
     display: flex;
     position: relative;
     top: 0px;
     left: 0px;
+    background-color: rgba(255, 191, 0, 0.5);
     z-index: 10;
     /* 使用 z-index 時, 必須搭配position(不包含staic) */
     /* z-index: -1 讓整個 div1 降到最底層，讓上面的下拉選單能完全顯現 */
@@ -174,13 +182,14 @@
     background-color: deepskyblue;
   }
 
-  #div-content {
+  #div-bar {
     width: 50px;
     height: 7px;
     background-color: green;
     position: absolute;
     top: 0px;
     right: 0px;
+    z-index: 10;
     pointer-events: none;
   }
 </style>
@@ -188,7 +197,8 @@
 <body>
   <div id="root-container">
     <div id="root-background"></div>
-    <div id="menubar-container" onmouseenter="city_view_display(-5)" onmouseleave="city_view_display('');city_view('')">
+    <div id="menubar-container" onmouseenter="city_view_display(-5)"
+      onmouseleave="city_view_display('');city_view('img_trans.gif')">
       <div class="menu-container">
         <div class="menu">北部地區</div>
         <div class="submenu">
@@ -299,14 +309,14 @@
               div4
               <div id="div5" class="" onmouseenter="enter(this)" onmouseleave="leave(this)">
                 div5
-                <div id="div-content"></div>
+                <div id="div-bar"></div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div id="root-image"><img id="city-view" src="" class="city_image" alt=""></img></div>
+    <div id="root-image"><img id="city-view" src="./city_view/img_trans.gif" class="city_image" alt=""></img></div>
   </div>
 </body>
 
