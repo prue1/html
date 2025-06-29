@@ -12,23 +12,23 @@
     // 1.先補捉(capture)再冒泡(bubbling)
     // 2. true:  將handler加到capture階段，
     //    false: 將handler加到bubbling階段
-    document.querySelector("#div-container-1").addEventListener("click", handler, false)
-    document.querySelector("#div-container-2").addEventListener("click", handler, false)
-    document.querySelector("#div-container-3").addEventListener("click", handler, false)
-    document.querySelector("#div-container-4").addEventListener("click", handler, false)
+    document.querySelector("#div-container-1").addEventListener("click", handler, true)
+    document.querySelector("#div-container-2").addEventListener("click", handler, true)
+    document.querySelector("#div-container-3").addEventListener("click", handler, true)
+    document.querySelector("#div-container-4").addEventListener("click", handler, true)
     document.querySelector("#div-container-5").addEventListener("click", handler, false)
-    document.querySelector("#div1").addEventListener("click", handler, false)
+    document.querySelector("#div1").addEventListener("click", handler, true)
     document.querySelector("#div2").addEventListener("click", handler, false)
   }
 
   function handleCB(event, el, id) {
-    event.stopPropagation()
-    document.querySelector("#" + id).removeEventListener('click', handler, !el.checked);
+    document.querySelector("#" + id).removeEventListener('click', handler, !el.checked)
     document.querySelector("#" + id).addEventListener("click", handler, el.checked)
   }
 
   function handler(event) {
-    console.log(event.currentTarget.id)
+    event.stopPropagation()
+    console.log(event.target.id)
   }
 </script>
 <style>
