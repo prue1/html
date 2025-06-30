@@ -127,9 +127,11 @@
 
   .submenu {
     width: 120px;
-    background-color: yellowgreen;
+    background-color: yellow;
     position: absolute;
-    display: none;
+    visibility: hidden;
+    display: flex;
+    justify-content: right;
   }
 
   .menu-container:hover .menu {
@@ -137,7 +139,7 @@
   }
 
   .menu-container:hover .submenu {
-    display: inherit;
+    visibility: visible;
   }
 
   .submenu-content {
