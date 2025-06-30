@@ -4,7 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>absolute 3</title>
+  <title>主畫面(Main page)</title>
+  <link rel="icon" type="image/x-icon" href="./images/h.png">
 </head>
 
 <script>
@@ -94,6 +95,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
+    transition: background-color 0.3s;
   }
 
   #menubar-empty span {
@@ -109,7 +111,7 @@
     background-color: orange;
     margin: 0px 5px 0px 0px;
     padding: 5px 10px;
-    border-radius: 10px 10px 0px 0px;
+    /* border-radius: 10px 10px 0px 0px; */
   }
 
   .menu {
@@ -164,6 +166,10 @@
   }
 
   /* 第二類測試 */
+  #floating-content {
+    visibility: hidden;
+  }
+
   .rel {
     position: relative;
   }
@@ -324,7 +330,8 @@
         <div class="menu-right"><span>聯詻:0912-345678</span></div>
       </div>
     </div>
-    <div><span>內容</span>
+    <div id="floating-content">
+      <span>內容</span>
       <div id="div1" class="">
         <span>div1</span>
         <div id="div2" class="">
