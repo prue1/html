@@ -16,6 +16,24 @@
   function city_view(src) {
     document.querySelector("#city-view").src = `./city_view/${src}`
   }
+
+  function enter1(event) {
+    console.log('$$ enter1 $$$$$$')
+    event_handler(event)
+  }
+
+  function click1(event) {
+    console.log('-- click1 ------')
+    event_handler(event)
+  }
+
+  function event_handler(event) {
+    event.stopPropagation()
+    const currentId = event.currentTarget.id
+    const targetId = event.target.id
+    const equals = (currentId == targetId)
+    console.log(`currentTarget:${currentId}, target:${targetId}, equals:${equals ? '*** ' : ''}${equals}`)
+  }
 </script>
 
 <style>
@@ -104,14 +122,14 @@
   }
 
   #menubar-empty:hover {
-    background-color: transparent
+    background-color: transparent;
   }
 
   .menu-right {
     background-color: orange;
-    margin: 0px 5px 0px 0px;
+    margin: 0px 3px 3px 0px;
     padding: 5px 10px;
-    /* border-radius: 10px 10px 0px 0px; */
+    border-radius: 20px 20px 10px 10px;
   }
 
   .menu {
@@ -169,7 +187,7 @@
 
   /* 第二類測試 */
   #floating-content {
-    visibility: hidden;
+    visibility: visible;
   }
 
   .rel {
@@ -334,15 +352,15 @@
     </div>
     <div id="floating-content">
       <span>內容</span>
-      <div id="div1" class="">
+      <div id="div1" class="" onmouseenter="enter1(event)" onclick="click1(event)">
         <span>div1</span>
-        <div id="div2" class="">
+        <div id="div2" class="" onmouseenter="enter1(event)" onclick="click1(event)">
           <span>div2</span>
-          <div id="div3" class="">
+          <div id="div3" class="" onmouseenter="enter1(event)" onclick="click1(event)">
             <span>div3</span>
-            <div id="div4" class="">
+            <div id="div4" class="" onmouseenter="enter1(event)" onclick="click1(event)">
               <span>div4</span>
-              <div id="div5" class="">
+              <div id="div5" class="" onmouseenter="enter1(event)" onclick="click1(event)">
                 <span>div5</span>
                 <div id="div-bar"><span>div-bar</span></div>
               </div>
