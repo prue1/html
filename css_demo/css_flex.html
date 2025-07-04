@@ -10,6 +10,11 @@
 <script>
   function flex_style(el) {
     document.querySelector(".flex-container").style[el.name] = el.value
+    document.querySelector("#" + el.name + 'Tip').innerHTML = el.value
+  }
+
+  function display(elid, value) {
+    document.querySelector('#' + elid).style.display = value
   }
 </script>
 
@@ -49,9 +54,16 @@
   .content {
     width: 70px;
     height: 70px;
-    background-color: darkcyan;
     box-sizing: border-box;
     border: 3px solid gold;
+  }
+
+  .flex-container>.content:nth-child(odd) {
+    background-color: darkorange;
+  }
+
+  .flex-container>.content:nth-child(even) {
+    background-color: darkcyan;
   }
 
   .property-panel {
@@ -59,7 +71,6 @@
     width: 300px;
     top: 0px;
     left: 450px;
-    padding: 3px;
   }
 
   span {
@@ -77,13 +88,23 @@
     align-items: center;
   }
 
+  fieldset {
+    width: 250px;
+  }
+
   legend {
     color: red;
   }
 
+  label span {
+    color: green;
+    font-style: italic;
+    font-size: 12px;
+  }
+
   /* 隨意自訂標籤也可以 */
-  bb {
-    width: 50px;
+  customized {
+    width: 150px;
     height: 50px;
     background-color: violet;
     display: block;
@@ -106,63 +127,104 @@
   </div>
   <div class="property-panel">
     <fieldset>
-      <legend>display</legend>
-      <input type="checkbox" id="display" name="display" value=""
-        onclick="this.value=(this.checked ? 'flex' : ''); flex_style(this)">
-      <label for="display">flex</label><br>
+      <legend>
+        <input type="checkbox" id="display" checked onclick="display('display0', this.checked ? 'block' : 'none')">
+        <label for="display">display (<span id="displayTip">block</span>)</label>
+      </legend>
+      <div id="display0">
+        <input type="checkbox" id="display1" name="display" value=""
+          onclick="this.value=(this.checked ? 'flex' : 'block'); flex_style(this)">
+        <label for="display1">flex</label><br>
+      </div>
     </fieldset>
 
     <fieldset>
-      <legend>flex-direction</legend>
-      <input type="radio" id="flexDirection1" name="flexDirection" value="row" onclick="flex_style(this)">
-      <label for="flexDirection1">row</label><br>
-      <input type="radio" id="flexDirection2" name="flexDirection" value="column" onclick="flex_style(this)">
-      <label for="flexDirection2">column</label><br>
+      <legend>
+        <input type="checkbox" id="flexDirection" checked
+          onclick="display('flexDirection0', this.checked ? 'block' : 'none')">
+        <label for="flexDirection">flex-direction (<span id="flexDirectionTip">initial</span>)</label>
+      </legend>
+      <div id="flexDirection0">
+        <input type="radio" id="flexDirection1" name="flexDirection" value="row" onclick="flex_style(this)">
+        <label for="flexDirection1">row</label><br>
+        <input type="radio" id="flexDirection2" name="flexDirection" value="row-reverse" onclick="flex_style(this)">
+        <label for="flexDirection2">row-reverse</label><br>
+        <input type="radio" id="flexDirection3" name="flexDirection" value="column" onclick="flex_style(this)">
+        <label for="flexDirection3">column</label><br>
+        <input type="radio" id="flexDirection4" name="flexDirection" value="column-reverse" onclick="flex_style(this)">
+        <label for="flexDirection4">column-reverse</label><br>
+        <input type="radio" id="flexDirection5" name="flexDirection" value="initial" onclick="flex_style(this)">
+        <label for="flexDirection5">initial</label><br>
+      </div>
     </fieldset>
 
     <fieldset>
-      <legend>flex-wrap</legend>
-      <input type="radio" id="flexWrap1" name="flexWrap" value="nowrap" onclick="flex_style(this)">
-      <label for="flexWrap1">nowrap</label><br>
-      <input type="radio" id="flexWrap2" name="flexWrap" value="wrap" onclick="flex_style(this)">
-      <label for="flexWrap2">wrap</label><br>
-      <input type="radio" id="flexWrap3" name="flexWrap" value="wrap-reverse" onclick="flex_style(this)">
-      <label for="flexWrap3">wrap-reverse</label><br>
+      <legend>
+        <input type="checkbox" id="flexDirection" checked
+          onclick="display('flexWrap0', this.checked ? 'block' : 'none')">
+        <label for="flexDirection">flex-wrap (<span id="flexWrapTip">initial</span>)</label>
+      </legend>
+      <div id="flexWrap0">
+        <input type="radio" id="flexWrap1" name="flexWrap" value="nowrap" onclick="flex_style(this)">
+        <label for="flexWrap1">nowrap</label><br>
+        <input type="radio" id="flexWrap2" name="flexWrap" value="wrap" onclick="flex_style(this)">
+        <label for="flexWrap2">wrap</label><br>
+        <input type="radio" id="flexWrap3" name="flexWrap" value="wrap-reverse" onclick="flex_style(this)">
+        <label for="flexWrap3">wrap-reverse</label><br>
+        <input type="radio" id="flexWrap4" name="flexWrap" value="initial" onclick="flex_style(this)">
+        <label for="flexWrap4">initial</label><br>
+      </div>
     </fieldset>
 
     <fieldset>
-      <legend>justify-content</legend>
-      <input type="radio" id="justifyContent1" name="justifyContent" value="center" onclick="flex_style(this)">
-      <label for="justifyContent1">center</label><br>
-      <input type="radio" id="justifyContent2" name="justifyContent" value="flex-start" onclick="flex_style(this)">
-      <label for="justifyContent2">flex-start</label><br>
-      <input type="radio" id="justifyContent3" name="justifyContent" value="flex-end" onclick="flex_style(this)">
-      <label for="justifyContent3">flex-end</label><br>
-      <input type="radio" id="justifyContent4" name="justifyContent" value="space-between" onclick="flex_style(this)">
-      <label for="justifyContent4">space-between</label><br>
-      <input type="radio" id="justifyContent5" name="justifyContent" value="space-around" onclick="flex_style(this)">
-      <label for="justifyContent5">space-around</label><br>
-      <input type="radio" id="justifyContent6" name="justifyContent" value="space-evenly" onclick="flex_style(this)">
-      <label for="justifyContent6">space-evenly</label><br>
+      <legend>
+        <input type="checkbox" id="justifyContent" checked
+          onclick="display('justifyContent0', this.checked ? 'block' : 'none')">
+        <label for="justifyContent">justify-content (<span id="justifyContentTip">initial</span>)</label>
+      </legend>
+      <div id="justifyContent0">
+        <input type="radio" id="justifyContent1" name="justifyContent" value="center" onclick="flex_style(this)">
+        <label for="justifyContent1">center</label><br>
+        <input type="radio" id="justifyContent2" name="justifyContent" value="flex-start" onclick="flex_style(this)">
+        <label for="justifyContent2">flex-start</label><br>
+        <input type="radio" id="justifyContent3" name="justifyContent" value="flex-end" onclick="flex_style(this)">
+        <label for="justifyContent3">flex-end</label><br>
+        <input type="radio" id="justifyContent4" name="justifyContent" value="space-between" onclick="flex_style(this)">
+        <label for="justifyContent4">space-between</label><br>
+        <input type="radio" id="justifyContent5" name="justifyContent" value="space-around" onclick="flex_style(this)">
+        <label for="justifyContent5">space-around</label><br>
+        <input type="radio" id="justifyContent6" name="justifyContent" value="space-evenly" onclick="flex_style(this)">
+        <label for="justifyContent6">space-evenly</label><br>
+        <input type="radio" id="justifyContent7" name="justifyContent" value="initial" onclick="flex_style(this)">
+        <label for="justifyContent7">initial</label><br>
+      </div>
     </fieldset>
 
     <fieldset>
-      <legend>align-items</legend>
-      <input type="radio" id="alignItems1" name="alignItems" value="stretch" onclick="flex_style(this)">
-      <label for="alignItems1">stretch</label><br>
-      <input type="radio" id="alignItems2" name="alignItems" value="center" onclick="flex_style(this)">
-      <label for="alignItems2">center</label><br>
-      <input type="radio" id="alignItems3" name="alignItems" value="flex-start" onclick="flex_style(this)">
-      <label for="alignItems3">flex-start</label><br>
-      <input type="radio" id="alignItems4" name="alignItems" value="flex-end" onclick="flex_style(this)">
-      <label for="alignItems4">flex-end</label><br>
-      <input type="radio" id="alignItems5" name="alignItems" value="start" onclick="flex_style(this)">
-      <label for="alignItems5">start</label><br>
-      <input type="radio" id="alignItems6" name="alignItems" value="end" onclick="flex_style(this)">
-      <label for="alignItems6">end</label><br>
+      <legend>
+        <input type="checkbox" id="alignItems" checked
+          onclick="display('alignItems0', this.checked ? 'block' : 'none')">
+        <label for="alignItems">align-items (<span id="alignItemsTip">initial</span>)</label>
+      </legend>
+      <div id="alignItems0">
+        <input type="radio" id="alignItems1" name="alignItems" value="stretch" onclick="flex_style(this)">
+        <label for="alignItems1">stretch</label><br>
+        <input type="radio" id="alignItems2" name="alignItems" value="center" onclick="flex_style(this)">
+        <label for="alignItems2">center</label><br>
+        <input type="radio" id="alignItems3" name="alignItems" value="flex-start" onclick="flex_style(this)">
+        <label for="alignItems3">flex-start</label><br>
+        <input type="radio" id="alignItems4" name="alignItems" value="flex-end" onclick="flex_style(this)">
+        <label for="alignItems4">flex-end</label><br>
+        <input type="radio" id="alignItems5" name="alignItems" value="start" onclick="flex_style(this)">
+        <label for="alignItems5">start</label><br>
+        <input type="radio" id="alignItems6" name="alignItems" value="end" onclick="flex_style(this)">
+        <label for="alignItems6">end</label><br>
+        <input type="radio" id="alignItems7" name="alignItems" value="initial" onclick="flex_style(this)">
+        <label for="alignItems7">initial</label><br>
+      </div>
     </fieldset>
   </div>
-  <bb></bb>
+  <customized><span>隨意自訂標籤</span></customized>
 </body>
 
 </html>
