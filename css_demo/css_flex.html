@@ -24,10 +24,6 @@
     box-sizing: border-box;
   }
 
-  p {
-    font-size: 1.5em;
-  }
-
   /*
     flex-direction : [row|column|row-reverse|column-reverse]
     flex-wrap : [nowrap|wrap|wrap-reverse]
@@ -136,10 +132,10 @@
   <div class="property-panel">
     <fieldset>
       <legend>
-        <input type="checkbox" id="display" checked onclick="display('display0', this.checked ? 'block' : 'none')">
+        <input type="checkbox" id="display" checked onclick="display('display-box', this.checked ? 'block' : 'none')">
         <label for="display">display (<span id="displayTip">block</span>)</label>
       </legend>
-      <div id="display0">
+      <div id="display-box">
         <div class="line-content">
           <input type="checkbox" id="display1" name="display" value=""
             onclick="this.value=(this.checked ? 'flex' : 'block'); flex_style(this)">
@@ -151,10 +147,10 @@
     <fieldset>
       <legend>
         <input type="checkbox" id="flexDirection" checked
-          onclick="display('flexDirection0', this.checked ? 'block' : 'none')">
+          onclick="display('flexDirection-box', this.checked ? 'block' : 'none')">
         <label for="flexDirection">flex-direction (<span id="flexDirectionTip">initial</span>)</label>
       </legend>
-      <div id="flexDirection0">
+      <div id="flexDirection-box">
         <div class="line-content">
           <input type="radio" id="flexDirection1" name="flexDirection" value="row" onclick="flex_style(this)">
           <label for="flexDirection1">row</label><br>
@@ -181,11 +177,10 @@
 
     <fieldset>
       <legend>
-        <input type="checkbox" id="flexDirection" checked
-          onclick="display('flexWrap0', this.checked ? 'block' : 'none')">
-        <label for="flexDirection">flex-wrap (<span id="flexWrapTip">initial</span>)</label>
+        <input type="checkbox" id="flexWrap" checked onclick="display('flexWrap-box', this.checked ? 'block' : 'none')">
+        <label for="flexWrap">flex-wrap (<span id="flexWrapTip">initial</span>)</label>
       </legend>
-      <div id="flexWrap0">
+      <div id="flexWrap-box">
         <div class="line-content">
           <input type="radio" id="flexWrap1" name="flexWrap" value="nowrap" onclick="flex_style(this)">
           <label for="flexWrap1">nowrap</label><br>
@@ -208,10 +203,10 @@
     <fieldset>
       <legend>
         <input type="checkbox" id="justifyContent" checked
-          onclick="display('justifyContent0', this.checked ? 'block' : 'none')">
+          onclick="display('justifyContent-box', this.checked ? 'block' : 'none')">
         <label for="justifyContent">justify-content (<span id="justifyContentTip">initial</span>)</label>
       </legend>
-      <div id="justifyContent0">
+      <div id="justifyContent-box">
         <div class="line-content">
           <input type="radio" id="justifyContent1" name="justifyContent" value="center" onclick="flex_style(this)">
           <label for="justifyContent1">center</label><br>
@@ -249,10 +244,10 @@
     <fieldset>
       <legend>
         <input type="checkbox" id="alignItems" checked
-          onclick="display('alignItems0', this.checked ? 'block' : 'none')">
+          onclick="display('alignItems-box', this.checked ? 'block' : 'none')">
         <label for="alignItems">align-items (<span id="alignItemsTip">initial</span>)</label>
       </legend>
-      <div id="alignItems0">
+      <div id="alignItems-box">
         <div class="line-content">
           <input type="radio" id="alignItems1" name="alignItems" value="stretch" onclick="flex_style(this)">
           <label for="alignItems1">stretch</label><br>
