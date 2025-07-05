@@ -69,8 +69,10 @@
   .property-panel {
     position: fixed;
     width: 300px;
+    height: 600px;
     top: 0px;
     left: 450px;
+    overflow: auto;
   }
 
   span {
@@ -96,6 +98,10 @@
     color: red;
   }
 
+  .line-content {
+    margin: 0px 0px 0px 20px;
+  }
+
   label span {
     color: green;
     font-style: italic;
@@ -108,7 +114,9 @@
     height: 50px;
     background-color: violet;
     display: block;
-    position: relative;
+    position: fixed;
+    top: 0px;
+    right: 10px;
     z-index: -10;
   }
 </style>
@@ -132,9 +140,11 @@
         <label for="display">display (<span id="displayTip">block</span>)</label>
       </legend>
       <div id="display0">
-        <input type="checkbox" id="display1" name="display" value=""
-          onclick="this.value=(this.checked ? 'flex' : 'block'); flex_style(this)">
-        <label for="display1">flex</label><br>
+        <div class="line-content">
+          <input type="checkbox" id="display1" name="display" value=""
+            onclick="this.value=(this.checked ? 'flex' : 'block'); flex_style(this)">
+          <label for="display1">flex</label><br>
+        </div>
       </div>
     </fieldset>
 
@@ -145,16 +155,27 @@
         <label for="flexDirection">flex-direction (<span id="flexDirectionTip">initial</span>)</label>
       </legend>
       <div id="flexDirection0">
-        <input type="radio" id="flexDirection1" name="flexDirection" value="row" onclick="flex_style(this)">
-        <label for="flexDirection1">row</label><br>
-        <input type="radio" id="flexDirection2" name="flexDirection" value="row-reverse" onclick="flex_style(this)">
-        <label for="flexDirection2">row-reverse</label><br>
-        <input type="radio" id="flexDirection3" name="flexDirection" value="column" onclick="flex_style(this)">
-        <label for="flexDirection3">column</label><br>
-        <input type="radio" id="flexDirection4" name="flexDirection" value="column-reverse" onclick="flex_style(this)">
-        <label for="flexDirection4">column-reverse</label><br>
-        <input type="radio" id="flexDirection5" name="flexDirection" value="initial" onclick="flex_style(this)">
-        <label for="flexDirection5">initial</label><br>
+        <div class="line-content">
+          <input type="radio" id="flexDirection1" name="flexDirection" value="row" onclick="flex_style(this)">
+          <label for="flexDirection1">row</label><br>
+        </div>
+        <div class="line-content">
+          <input type="radio" id="flexDirection2" name="flexDirection" value="row-reverse" onclick="flex_style(this)">
+          <label for="flexDirection2">row-reverse</label><br>
+        </div>
+        <div class="line-content">
+          <input type="radio" id="flexDirection3" name="flexDirection" value="column" onclick="flex_style(this)">
+          <label for="flexDirection3">column</label><br>
+        </div>
+        <div class="line-content">
+          <input type="radio" id="flexDirection4" name="flexDirection" value="column-reverse"
+            onclick="flex_style(this)">
+          <label for="flexDirection4">column-reverse</label><br>
+        </div>
+        <div class="line-content">
+          <input type="radio" id="flexDirection5" name="flexDirection" value="initial" onclick="flex_style(this)">
+          <label for="flexDirection5">initial</label><br>
+        </div>
       </div>
     </fieldset>
 
@@ -165,14 +186,22 @@
         <label for="flexDirection">flex-wrap (<span id="flexWrapTip">initial</span>)</label>
       </legend>
       <div id="flexWrap0">
-        <input type="radio" id="flexWrap1" name="flexWrap" value="nowrap" onclick="flex_style(this)">
-        <label for="flexWrap1">nowrap</label><br>
-        <input type="radio" id="flexWrap2" name="flexWrap" value="wrap" onclick="flex_style(this)">
-        <label for="flexWrap2">wrap</label><br>
-        <input type="radio" id="flexWrap3" name="flexWrap" value="wrap-reverse" onclick="flex_style(this)">
-        <label for="flexWrap3">wrap-reverse</label><br>
-        <input type="radio" id="flexWrap4" name="flexWrap" value="initial" onclick="flex_style(this)">
-        <label for="flexWrap4">initial</label><br>
+        <div class="line-content">
+          <input type="radio" id="flexWrap1" name="flexWrap" value="nowrap" onclick="flex_style(this)">
+          <label for="flexWrap1">nowrap</label><br>
+        </div>
+        <div class="line-content">
+          <input type="radio" id="flexWrap2" name="flexWrap" value="wrap" onclick="flex_style(this)">
+          <label for="flexWrap2">wrap</label><br>
+        </div>
+        <div class="line-content">
+          <input type="radio" id="flexWrap3" name="flexWrap" value="wrap-reverse" onclick="flex_style(this)">
+          <label for="flexWrap3">wrap-reverse</label><br>
+        </div>
+        <div class="line-content">
+          <input type="radio" id="flexWrap4" name="flexWrap" value="initial" onclick="flex_style(this)">
+          <label for="flexWrap4">initial</label><br>
+        </div>
       </div>
     </fieldset>
 
@@ -183,20 +212,37 @@
         <label for="justifyContent">justify-content (<span id="justifyContentTip">initial</span>)</label>
       </legend>
       <div id="justifyContent0">
-        <input type="radio" id="justifyContent1" name="justifyContent" value="center" onclick="flex_style(this)">
-        <label for="justifyContent1">center</label><br>
-        <input type="radio" id="justifyContent2" name="justifyContent" value="flex-start" onclick="flex_style(this)">
-        <label for="justifyContent2">flex-start</label><br>
-        <input type="radio" id="justifyContent3" name="justifyContent" value="flex-end" onclick="flex_style(this)">
-        <label for="justifyContent3">flex-end</label><br>
-        <input type="radio" id="justifyContent4" name="justifyContent" value="space-between" onclick="flex_style(this)">
-        <label for="justifyContent4">space-between</label><br>
-        <input type="radio" id="justifyContent5" name="justifyContent" value="space-around" onclick="flex_style(this)">
-        <label for="justifyContent5">space-around</label><br>
-        <input type="radio" id="justifyContent6" name="justifyContent" value="space-evenly" onclick="flex_style(this)">
-        <label for="justifyContent6">space-evenly</label><br>
-        <input type="radio" id="justifyContent7" name="justifyContent" value="initial" onclick="flex_style(this)">
-        <label for="justifyContent7">initial</label><br>
+        <div class="line-content">
+          <input type="radio" id="justifyContent1" name="justifyContent" value="center" onclick="flex_style(this)">
+          <label for="justifyContent1">center</label><br>
+        </div>
+        <div class="line-content">
+          <input type="radio" id="justifyContent2" name="justifyContent" value="flex-start" onclick="flex_style(this)">
+          <label for="justifyContent2">flex-start</label><br>
+        </div>
+        <div class="line-content">
+          <input type="radio" id="justifyContent3" name="justifyContent" value="flex-end" onclick="flex_style(this)">
+          <label for="justifyContent3">flex-end</label><br>
+        </div>
+        <div class="line-content">
+          <input type="radio" id="justifyContent4" name="justifyContent" value="space-between"
+            onclick="flex_style(this)">
+          <label for="justifyContent4">space-between</label><br>
+        </div>
+        <div class="line-content">
+          <input type="radio" id="justifyContent5" name="justifyContent" value="space-around"
+            onclick="flex_style(this)">
+          <label for="justifyContent5">space-around</label><br>
+        </div>
+        <div class="line-content">
+          <input type="radio" id="justifyContent6" name="justifyContent" value="space-evenly"
+            onclick="flex_style(this)">
+          <label for="justifyContent6">space-evenly</label><br>
+        </div>
+        <div class="line-content">
+          <input type="radio" id="justifyContent7" name="justifyContent" value="initial" onclick="flex_style(this)">
+          <label for="justifyContent7">initial</label><br>
+        </div>
       </div>
     </fieldset>
 
@@ -207,20 +253,34 @@
         <label for="alignItems">align-items (<span id="alignItemsTip">initial</span>)</label>
       </legend>
       <div id="alignItems0">
-        <input type="radio" id="alignItems1" name="alignItems" value="stretch" onclick="flex_style(this)">
-        <label for="alignItems1">stretch</label><br>
-        <input type="radio" id="alignItems2" name="alignItems" value="center" onclick="flex_style(this)">
-        <label for="alignItems2">center</label><br>
-        <input type="radio" id="alignItems3" name="alignItems" value="flex-start" onclick="flex_style(this)">
-        <label for="alignItems3">flex-start</label><br>
-        <input type="radio" id="alignItems4" name="alignItems" value="flex-end" onclick="flex_style(this)">
-        <label for="alignItems4">flex-end</label><br>
-        <input type="radio" id="alignItems5" name="alignItems" value="start" onclick="flex_style(this)">
-        <label for="alignItems5">start</label><br>
-        <input type="radio" id="alignItems6" name="alignItems" value="end" onclick="flex_style(this)">
-        <label for="alignItems6">end</label><br>
-        <input type="radio" id="alignItems7" name="alignItems" value="initial" onclick="flex_style(this)">
-        <label for="alignItems7">initial</label><br>
+        <div class="line-content">
+          <input type="radio" id="alignItems1" name="alignItems" value="stretch" onclick="flex_style(this)">
+          <label for="alignItems1">stretch</label><br>
+        </div>
+        <div class="line-content">
+          <input type="radio" id="alignItems2" name="alignItems" value="center" onclick="flex_style(this)">
+          <label for="alignItems2">center</label><br>
+        </div>
+        <div class="line-content">
+          <input type="radio" id="alignItems3" name="alignItems" value="flex-start" onclick="flex_style(this)">
+          <label for="alignItems3">flex-start</label><br>
+        </div>
+        <div class="line-content">
+          <input type="radio" id="alignItems4" name="alignItems" value="flex-end" onclick="flex_style(this)">
+          <label for="alignItems4">flex-end</label><br>
+        </div>
+        <div class="line-content">
+          <input type="radio" id="alignItems5" name="alignItems" value="start" onclick="flex_style(this)">
+          <label for="alignItems5">start</label><br>
+        </div>
+        <div class="line-content">
+          <input type="radio" id="alignItems6" name="alignItems" value="end" onclick="flex_style(this)">
+          <label for="alignItems6">end</label><br>
+        </div>
+        <div class="line-content">
+          <input type="radio" id="alignItems7" name="alignItems" value="initial" onclick="flex_style(this)">
+          <label for="alignItems7">initial</label><br>
+        </div>
       </div>
     </fieldset>
   </div>
