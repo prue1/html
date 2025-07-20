@@ -14,10 +14,11 @@
     background-image: url('image/skystar.png');
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin: 0 0 0 0;
-    clip-path: circle(60%);
+    clip-path: circle(50%);
+    shape-outside: circle(55%);
   }
 
   .content {
@@ -36,16 +37,19 @@
   }
 
   #container>.content:nth-child(even) {
-    transform: translateX(-30%);
+    transform: translateX(-30%) rotate(-30deg);
   }
 
   #container>.content:nth-child(odd) {
-    transform: translateX(30%);
+    transform: translateX(30%) rotate(30deg);
   }
 </style>
 
 <body>
   <div id="container">
+    <div class="content"><span>Hello World</span></div>
+    <div class="content"><span>Hello World</span></div>
+    <div class="content"><span>Hello World</span></div>
     <div class="content"><span>Hello World</span></div>
     <div class="content"><span>Hello World</span></div>
     <div class="content"><span>Hello World</span></div>
