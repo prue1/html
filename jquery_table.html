@@ -14,10 +14,6 @@
             console.log("You clicked a paragraph!");
         });
 
-        //$(":button.bbb").click(function(){
-        //$("p").hide();
-        //});
-
         $("input[type='button'].btn_hide").click(function () {
             $("tr.row").hide();
         });
@@ -67,7 +63,7 @@
         font-size: 20px;
     }
 
-    select{
+    select {
         font-family: PMingLiU;
     }
 
@@ -77,21 +73,17 @@
 
     table tr:nth-child(even) td {
         background-color: orange;
+        border: 3px solid blue;
+    }
+
+    table {
+        border: 3px solid red;
     }
 </style>
 
 <body>
     <div>
-        <label for="select-color">color:</label>
-        <select id='select-color'>
-            <option value='1'>red</option>
-            <option value='2'>orange</option>
-            <option value='3' selected>yellow</option>
-            <option value='4'>green</option>
-            <option value='5'>blue</option>
-            <option value='6'>purple</option>
-        </select><span>select與option字型可分別設定</span><br><br>
-        <table border='1' width='500'>
+        <table border='0' width='500'>
             <tr class='tr1' align='center'>
                 <th colspan="5">
                     <span>jQuery測試</span>
@@ -143,6 +135,15 @@
     </div>
     <p><span>元件id可用dash(-)</span></p>
     <p>取得table內部tr，使用"大於"無效果(table>tr)，使用"空格"可行(table tr)</p>
+    <label for="select-color">color:</label>
+    <select id='select-color'>
+        <option value='1'>red</option>
+        <option value='2'>orange</option>
+        <option value='3' selected>yellow</option>
+        <option value='4'>green</option>
+        <option value='5'>blue</option>
+        <option value='6'>purple</option>
+    </select><span>select與option字型可分別設定</span><br>
     <p><span>End.</span></p>
 </body>
 
