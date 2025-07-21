@@ -47,7 +47,7 @@
 
 <style>
     * {
-        font-family: tahoma, PMingLiU;
+        font-family: "Liberation Sans", PMingLiU;
     }
 
     th {
@@ -78,6 +78,10 @@
 
     table {
         border: 3px solid red;
+    }
+
+    select {
+        width: 150px;
     }
 </style>
 
@@ -133,18 +137,19 @@
             </tr>
         </table>
     </div>
-    <p><span>元件id可用dash(-)</span></p>
     <p>取得table內部tr，使用"大於"無效果(table>tr)，使用"空格"可行(table tr)</p>
+    <p>元件id可用dash(-)</p>
     <label for="select-color">color:</label>
     <select id='select-color'>
-        <option value='1'>red</option>
-        <option value='2'>orange</option>
-        <option value='3' selected>yellow</option>
-        <option value='4'>green</option>
-        <option value='5'>blue</option>
-        <option value='6'>purple</option>
-    </select><span>select與option字型可分別設定</span><br>
-    <p><span>End.</span></p>
+        <option value='red'>red</option>
+        <option value='orange'>orange</option>
+        <option value='yellow' selected>yellow</option>
+        <option value='green'>green</option>
+        <option value='blue'>blue</option>
+        <option value='purple'>purple</option>
+    </select>
+    <p>select與option字型可分別設定</p>
+    <p>End.</p>
 </body>
 
 </html>
