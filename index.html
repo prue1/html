@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>dropdown</title>
+    <title>jQuery測試及一些css</title>
 </head>
 
 <script src='jquery-3.7.1.js'></script>
@@ -18,65 +18,132 @@
         //$("p").hide();
         //});
 
-        $("input[type='button'].bbb").click(function () {
-            $("p").hide();
-            $("tr.tr1").hide();
+        $("input[type='button'].btn_hide").click(function () {
+            $("tr.row").hide();
         });
 
-        $("input[type='button'].ccc").click(function () {
-            $("p").show();
-            $("tr.tr1").show();
+        $("input[type='button'].btn_show").click(function () {
+            $("tr.row").show();
         });
 
-        console.log($("select#select1").val());
-        console.log($("select#select1").find("option").length);
+        console.log($("select#select-color").val());
+        console.log($("select#select-color").find("option").length);
 
-        $("select#select1").find("option").each(function (index, value) {
+        $("select#select-color").find("option").each(function (index, value) {
             console.log(value.value + ", " + value.text);
         });
 
-        /* 結果與上面一樣，另一種寫法
-         $("select#select1").children().each(function (index, value) {
+        /* 結果與上面一樣，另一種寫法。option說起來算是select的child，所以用children()取得也可以。
+         $("select#select-color").children().each(function (index, value) {
              console.log(value.value + ", " + value.text);
          });
          */
 
-        console.log($("select#select1").find("option")[3].value);
-        console.log($("select#select1").find("option").get(0).text);
+        console.log($("select#select-color").find("option")[3].value);
+        console.log($("select#select-color").find("option").get(0).text);
 
-        $("select#select1").change(function () {
+        $("select#select-color").change(function () {
             console.log('change to:' + $(this).val());
         });
-
 
     });
 </script>
 
+<style>
+    * {
+        font-family: tahoma, PMingLiU;
+    }
+
+    th {
+        background-color: yellowgreen;
+    }
+
+    label,
+    select,
+    option,
+    span,
+    p,
+    input[type='button'] {
+        font-size: 20px;
+    }
+
+    select{
+        font-family: PMingLiU;
+    }
+
+    table tr:nth-child(odd) td {
+        background-color: lightskyblue;
+    }
+
+    table tr:nth-child(even) td {
+        background-color: orange;
+    }
+</style>
+
 <body>
-    <p>Hello World!</p>
-    <input type='button' value='hide' class='bbb' />
-    <input type='button' value='show' class='ccc' />
-    <label for="select1">select1</label>
-    <select id='select1'>
-        <option value='1'>aaa</option>
-        <option value='2'>bbb</option>
-        <option value='3' selected>ccc</option>
-        <option value='4'>ddd</option>
-        <option value='5'>eee</option>
-    </select><br><br>
-    <table border='1' width='300'>
-        <tr class='tr1' align='center'>
-            <th>values</th>
-        </tr>
+    <div>
+        <label for="select-color">color:</label>
+        <select id='select-color'>
+            <option value='1'>red</option>
+            <option value='2'>orange</option>
+            <option value='3' selected>yellow</option>
+            <option value='4'>green</option>
+            <option value='5'>blue</option>
+            <option value='6'>purple</option>
+        </select><span>select與option字型可分別設定</span><br><br>
+        <table border='1' width='500'>
+            <tr class='tr1' align='center'>
+                <th colspan="5">
+                    <span>jQuery測試</span>
+                    <input type='button' value='hide' class='btn_hide' />
+                    <input type='button' value='show' class='btn_show' />
+                </th>
+            </tr>
 
-        <tr align='center'>
-            <td>aaa</td>
-        </tr>
+            <tr align='center' class="row">
+                <td><span>aaa</span></td>
+                <td><span>aaa</span></td>
+                <td><span>aaa</span></td>
+                <td><span>aaa</span></td>
+                <td><span>aaa</span></td>
+            </tr>
 
-        <tr align='center'>
-            <td>bbb</td>
-        </tr>
-    </table>
+            <tr align='center' class="row">
+                <td><span>bbb</span></td>
+                <td><span>bbb</span></td>
+                <td><span>bbb</span></td>
+                <td><span>bbb</span></td>
+                <td><span>bbb</span></td>
+            </tr>
+
+            <tr align='center' class="row">
+                <td><span>ccc</span></td>
+                <td><span>ccc</span></td>
+                <td><span>ccc</span></td>
+                <td><span>ccc</span></td>
+                <td><span>ccc</span></td>
+            </tr>
+
+            <tr align='center' class="row">
+                <td><span>ddd</span></td>
+                <td><span>ddd</span></td>
+                <td><span>ddd</span></td>
+                <td><span>ddd</span></td>
+                <td><span>ddd</span></td>
+            </tr>
+
+            <tr align='center' class="row">
+                <td><span>eee</span></td>
+                <td><span>eee</span></td>
+                <td><span>eee</span></td>
+                <td><span>eee</span></td>
+                <td><span>eee</span></td>
+            </tr>
+        </table>
+    </div>
+    <p><span>元件id可用dash(-)</span></p>
+    <p>"大於"無效果table>tr，"空格"可行table tr</p>
+    <p><span>End.</span></p>
 </body>
 
 </html>
