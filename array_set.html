@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>dropdown</title>
+  <title>key-value array與Map</title>
 </head>
 
 <script>
@@ -55,29 +55,57 @@
 <style>
   * {
     box-sizing: border-box;
-    font-family: 'Liberation Sans';
+    font-family: 'Liberation Sans', PMingLiU;
   }
 
   body {
     margin: 10px;
   }
 
+  #container {
+    width: 300px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: aliceblue;
+  }
+
   select {
     width: 100px;
     height: 30px;
+    padding: 0 0 0 3px;
+    background-color: khaki;
+  }
+
+  .message-box {
+    width: 300px;
+    height: 30px;
+    padding: 0 0 0 3px;
+    background-color: gold;
+    display: flex;
+    align-items: center;
   }
 </style>
 
 <body onload="setup()">
-  <label for="selection">隨選:</label>
-  <select id="selection" onchange="change()">
-  </select>
-  <span>Set:</span>
-  <input type="radio" id="aSet" name="valueSet" value="aSet" onclick="inita()" />
-  <label for="aSet">A</label>
-  <input type="radio" id="bSet" name="valueSet" value="bSet" onclick="initb()" checked />
-  <label for="bSet">B</label>
-  <div>msg:<span id="val"></span></div>
+  <div id="container">
+    <div class="message-box">
+      <span>訊息:</span>
+      <span id="val"></span>
+    </div>
+    <div>
+      <label for="selection">隨選:</label>
+      <select id="selection" onchange="change()">
+      </select>
+      <span>Set:</span>
+      <input type="radio" id="aSet" name="valueSet" value="aSet" onclick="inita()" />
+      <label for="aSet">A</label>
+      <input type="radio" id="bSet" name="valueSet" value="bSet" onclick="initb()" checked />
+      <label for="bSet">B</label>
+    </div>
+  </div>
+
 </body>
 
 </html>
