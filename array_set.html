@@ -64,11 +64,11 @@
 
   #container {
     width: 300px;
-    height: 70px;
+    height: 80px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: aliceblue;
+    background-color: red;
   }
 
   select {
@@ -86,6 +86,15 @@
     display: flex;
     align-items: center;
   }
+
+  .selection-box {
+    width: 300px;
+    height: 40px;
+    padding: 0 0 0 3px;
+    background-color: yellowgreen;
+    display: flex;
+    align-items: center;
+  }
 </style>
 
 <body onload="setup()">
@@ -94,7 +103,7 @@
       <span>訊息:</span>
       <span id="val"></span>
     </div>
-    <div>
+    <div class="selection-box">
       <label for="selection">隨選:</label>
       <select id="selection" onchange="change()">
       </select>
