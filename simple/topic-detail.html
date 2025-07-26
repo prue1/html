@@ -4,11 +4,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>card</title>
+  <title>topic-detail</title>
 </head>
 
 <style>
-  #container {
+  .row-container {
+    width: 70%;
+    background-color: gold;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .container {
     width: 100px;
     display: flex;
     flex-direction: column;
@@ -16,7 +27,7 @@
     align-items: center;
   }
 
-  #topic {
+  .topic {
     width: 70px;
     height: 30px;
     background-color: yellowgreen;
@@ -26,7 +37,7 @@
     border-radius: 30px;
   }
 
-  #detail {
+  .detail {
     width: 100px;
     height: 70px;
     background-color: orange;
@@ -35,7 +46,7 @@
     border-radius: 30px;
   }
 
-  #content {
+  .content {
     width: 100%;
     height: 70px;
     background-color: darkcyan;
@@ -45,7 +56,7 @@
     align-items: center;
   }
 
-  #left {
+  .left {
     width: 50%;
     height: 100%;
     background-color: darkviolet;
@@ -56,7 +67,7 @@
     ;
   }
 
-  #right {
+  .right {
     width: 50%;
     height: 100%;
     background-color: darkviolet;
@@ -66,22 +77,80 @@
     transition: right 1s;
   }
 
-  #detail:hover #left {
+  .detail:hover .left {
     left: -50%;
   }
 
-  #detail:hover #right {
+  .detail:hover .right {
     right: -50%;
   }
 </style>
 
 <body>
-  <div id="container">
-    <div id="topic"><span>Topic</span></div>
-    <div id="detail">
-      <div id="content"><span>Detail</span></div>
-      <div id="left"></div>
-      <div id="right"></div>
+  <div class="row-container">
+    <div class="container">
+      <div class="topic"><span>Topic</span></div>
+      <div class="detail">
+        <div class="content"><span>Detail</span></div>
+        <div class="left"></div>
+        <div class="right"></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="topic"><span>Topic</span></div>
+      <div class="detail">
+        <div class="content"><span>Detail</span></div>
+        <div class="left"></div>
+        <div class="right"></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="topic"><span>Topic</span></div>
+      <div class="detail">
+        <div class="content"><span>Detail</span></div>
+        <div class="left"></div>
+        <div class="right"></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="topic"><span>Topic</span></div>
+      <div class="detail">
+        <div class="content"><span>Detail</span></div>
+        <div class="left"></div>
+        <div class="right"></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="topic"><span>Topic</span></div>
+      <div class="detail">
+        <div class="content"><span>Detail</span></div>
+        <div class="left"></div>
+        <div class="right"></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="topic"><span>Topic</span></div>
+      <div class="detail">
+        <div class="content"><span>Detail</span></div>
+        <div class="left"></div>
+        <div class="right"></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="topic"><span>Topic</span></div>
+      <div class="detail">
+        <div class="content"><span>Detail</span></div>
+        <div class="left"></div>
+        <div class="right"></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="topic"><span>Topic</span></div>
+      <div class="detail">
+        <div class="content"><span>Detail</span></div>
+        <div class="left"></div>
+        <div class="right"></div>
+      </div>
     </div>
   </div>
 </body>
