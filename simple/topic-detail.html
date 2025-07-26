@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>card</title>
+</head>
+
+<style>
+  #container {
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #topic {
+    width: 70px;
+    height: 30px;
+    background-color: yellowgreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+  }
+
+  #detail {
+    width: 100px;
+    height: 70px;
+    background-color: orange;
+    position: relative;
+    overflow: hidden;
+    border-radius: 30px;
+  }
+
+  #content {
+    width: 100%;
+    height: 70px;
+    background-color: darkcyan;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #left {
+    width: 50%;
+    height: 100%;
+    background-color: darkviolet;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    transition: left 1s;
+    ;
+  }
+
+  #right {
+    width: 50%;
+    height: 100%;
+    background-color: darkviolet;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    transition: right 1s;
+  }
+
+  #detail:hover #left {
+    left: -50%;
+  }
+
+  #detail:hover #right {
+    right: -50%;
+  }
+</style>
+
+<body>
+  <div id="container">
+    <div id="topic"><span>Topic</span></div>
+    <div id="detail">
+      <div id="content"><span>Detail</span></div>
+      <div id="left"></div>
+      <div id="right"></div>
+    </div>
+  </div>
+</body>
+
+</html>
