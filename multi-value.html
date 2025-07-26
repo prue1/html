@@ -13,8 +13,8 @@
     function do_click() {
         $("input[type='hidden']input[name='item']").each(
             (index, e) => {
-                console.log("#amount" + e.value)
-                console.log(e.value + ',' + $("#amount" + e.value).val())
+                console.log("#amt" + e.value)
+                console.log(e.value + ',' + $("#amt" + e.value).val())
             }
         )
     }
@@ -24,20 +24,20 @@
     <form>
         <div id="item001">
             <span>A001</span>
-            <input type="hidden" id="amountA0001" name="amountA0001" value="1" />
             <input type="hidden" name="item" value="A0001" />
+            <input type="hidden" id="amtA0001" name="amtA0001" value="1" />
             <input type="button" value="remove" onclick="document.querySelector('#item001').remove()" />
         </div>
         <div id="item002">
             <span>A002</span>
-            <input type="hidden" id="amountA0002" name="amountA0002" value="3" />
             <input type="hidden" name="item" value="A0002" />
+            <input type="hidden" id="amtA0002" name="amtA0002" value="3" />
             <input type="button" value="remove" onclick="document.querySelector('#item002').remove()" />
         </div>
         <div id="item003">
             <span>A003</span>
-            <input type="hidden" id="amountA0003" name="amountA0003" value="5" />
             <input type="hidden" name="item" value="A0003" />
+            <input type="hidden" id="amtA0003" name="amtA0003" value="5" />
             <input type="button" value="remove" onclick="document.querySelector('#item003').remove()" />
         </div>
         <input type="button" value="click" onclick="do_click()" />
