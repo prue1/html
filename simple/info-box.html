@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>topic-detail</title>
+</head>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  .row-container {
+    width: 30%;
+    background-color: #C67FAE;
+    display: grid;
+    grid-template-columns: auto auto;
+    row-gap: 5px;
+    justify-content: space-evenly;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .container {
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .topic {
+    width: 70px;
+    height: 30px;
+    background-color: #A6BE47;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+  }
+
+  .detail {
+    width: 100px;
+    height: 120px;
+    background-color: orange;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+  }
+
+  .content {
+    width: 100%;
+    height: 100%;
+    background-color: darkcyan;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .left {
+    width: 100%;
+    height: 100%;
+    background-color: darkviolet;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    transition: left 0.3s, color 0.3s;
+  }
+
+  .right {
+    width: 100%;
+    height: 100%;
+    background-color: darkviolet;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    transition: right 0.3s, color 0.3s;
+  }
+
+  .row-container>.container:nth-child(3n+1)>.detail>.left {
+    background-color: red;
+  }
+
+  .row-container>.container:nth-child(3n+2)>.detail>.left {
+    background-color: orange;
+  }
+
+  .row-container>.container:nth-child(3n+3)>.detail>.left {
+    background-color: lightskyblue;
+  }
+
+  .left-1 {
+    clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
+  }
+
+  .right-1 {
+    clip-path: polygon(100% 0%, 0% 100%, 100% 100%);
+  }
+
+  .detail:hover .left-1 {
+    left: -70%;
+    color: transparent
+  }
+
+  .detail:hover .right-1 {
+    right: -70%;
+    color: transparent
+  }
+
+  .left-2 {
+    clip-path: polygon(0% 0%, 0% 100%, 50% 100%, 50% 0%);
+  }
+
+  .right-2 {
+    clip-path: polygon(50% 0%, 50% 100%, 100% 100%, 100% 0%);
+  }
+
+  .detail:hover .left-2 {
+    left: -45%;
+    color: transparent
+  }
+
+  .detail:hover .right-2 {
+    right: -45%;
+    color: transparent
+  }
+
+  .left-3 {
+    clip-path: polygon(0% 0%, 70% 50%, 0% 100%);
+  }
+
+  .right-3 {
+    clip-path: polygon(0% 0%, 70% 50%, 0% 100%, 100% 100%, 100% 0%);
+  }
+
+  .detail:hover .left-3 {
+    left: -60%;
+    color: transparent
+  }
+
+  .detail:hover .right-3 {
+    right: -70%;
+    color: transparent
+  }
+</style>
+
+<body>
+  <div class="row-container">
+    <div class="container">
+      <div class="topic"><span>Topic</span></div>
+      <div class="detail">
+        <div class="content"><span>Detail</span></div>
+        <div class="left left-1"><span>clip-path</span></div>
+        <div class="right right-1"><span>clip-path</span></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="topic"><span>Topic</span></div>
+      <div class="detail">
+        <div class="content"><span>Detail</span></div>
+        <div class="left left-2"><span>clip-path</span></div>
+        <div class="right right-2"><span>clip-path</span></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="topic"><span>Topic</span></div>
+      <div class="detail">
+        <div class="content"><span>Detail</span></div>
+        <div class="left left-3"><span>clip-path</span></div>
+        <div class="right right-3"><span>clip-path</span></div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
