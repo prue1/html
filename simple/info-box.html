@@ -12,9 +12,17 @@
     box-sizing: border-box;
   }
 
+  :root {
+    --bg1: url('image/bg1.png');
+    --bg2: url('image/bg2.png');
+    --bg3: url('image/bg3.png');
+    --bg_star: url('image/bg_star.png');
+    --skystar: url('image/skystar.png');
+  }
+
   .row-container {
     padding: 10px;
-    background-image: url('image/bg_star.png');
+    background-image: var(--bg1);
     border-radius: 10px;
     display: grid;
     grid-template-columns: auto auto auto;
@@ -35,7 +43,8 @@
     align-items: center;
     border: 3px solid gold;
     border-radius: 10px;
-    background-color: gold; /* 內外圓角無法完美對應，將背景色改成一樣，可簡單解決這個問題 */
+    background-color: gold;
+    /* 內外圓角無法完美對應，將背景色改成一樣，可簡單解決這個問題 */
   }
 
   .topic {
