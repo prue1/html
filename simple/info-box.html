@@ -13,43 +13,50 @@
   }
 
   .row-container {
-    width: 30%;
-    background-color: #C67FAE;
+    padding: 10px;
+    background-image: url('image/bg_star.png');
+    border-radius: 10px;
     display: grid;
-    grid-template-columns: auto auto;
-    row-gap: 5px;
-    justify-content: space-evenly;
-    align-items: center;
+    grid-template-columns: auto auto auto;
+    column-gap: 10px;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
   }
 
   .container {
     width: 100px;
+    height: 150px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border: 3px solid gold;
+    border-radius: 10px;
+    background-color: gold; /* 內外圓角無法完美對應，將背景色改成一樣，可簡單解決這個問題 */
   }
 
   .topic {
-    width: 70px;
-    height: 30px;
-    background-color: #A6BE47;
+    width: 100%;
+    height: 20%;
+    background-color: gold;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-size: 1.2em;
   }
 
   .detail {
-    width: 100px;
-    height: 120px;
-    background-color: orange;
+    width: 100%;
+    height: 80%;
     position: relative;
     overflow: hidden;
-    border-radius: 15px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
   }
 
   .content {
@@ -73,7 +80,6 @@
     justify-content: center;
     align-items: center;
     color: white;
-    font-size: 20px;
     transition: left 0.3s, color 0.3s;
   }
 
@@ -88,7 +94,6 @@
     justify-content: center;
     align-items: center;
     color: white;
-    font-size: 20px;
     transition: right 0.3s, color 0.3s;
   }
 
@@ -97,11 +102,11 @@
   }
 
   .row-container>.container:nth-child(3n+2)>.detail>.left {
-    background-color: orange;
+    background-color: darkblue;
   }
 
   .row-container>.container:nth-child(3n+3)>.detail>.left {
-    background-color: lightskyblue;
+    background-color: darkorange;
   }
 
   .left-1 {
