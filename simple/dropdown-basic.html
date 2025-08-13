@@ -13,18 +13,18 @@
     box-sizing: border-box;
   }
 
-  .contain-text {
+  .txt {
     position: absolute;
   }
 
-  .div1 {
+  .a1 {
     position: relative;
     width: 200px;
     height: 50px;
     background-color: red;
   }
 
-  .div2 {
+  .a2 {
     position: absolute;
     width: 70px;
     height: 100px;
@@ -33,7 +33,7 @@
     right: -70px;
   }
 
-  .div3 {
+  .a3 {
     position: absolute;
     width: 70px;
     height: 100px;
@@ -42,22 +42,22 @@
     right: -70px;
   }
 
-  .div1:hover .div2 {
+  .a1:hover .a2 {
     display: block;
   }
 
-  .div1:hover .div2:hover .div3 {
+  .a1:hover .a2:hover .a3 {
     display: block;
   }
 
-  .diva {
+  .b1 {
     position: relative;
     width: 200px;
     height: 50px;
     background-color: orange;
   }
 
-  .divb {
+  .b2 {
     position: absolute;
     width: 70px;
     height: 100px;
@@ -66,7 +66,7 @@
     right: -70px;
   }
 
-  .divc {
+  .b3 {
     position: absolute;
     width: 70px;
     height: 100px;
@@ -75,24 +75,26 @@
     right: -70px;
   }
 
-  .diva:hover .divb {
+  .b1:hover .b2 {
     display: block;
   }
 
-  .diva:hover .divb:hover .divc {
+  .b1:hover .b2:hover .b3 {
     display: block;
   }
 </style>
 
 <body>
-  <div class="div1"><span class="contain-text">aaa</span>
-    <div class="div2">
-      <div class="div3"></div>
+  <div class="a1">
+    <span class="txt">aaa</span>
+    <div class="a2">
+      <div class="a3"></div>
     </div>
   </div>
-  <div class="diva"><span class="contain-text">bbb</span>
-    <div class="divb">
-      <div class="divc"></div>
+  <div class="b1">
+    <span class="txt">bbb</span>
+    <div class="b2">
+      <div class="b3"></div>
     </div>
   </div>
 </body>
