@@ -19,107 +19,102 @@
     /* background-image: radial-gradient(red, green, blue); */
     /* background-image: linear-gradient(to bottom right, #ffb5ba, #c48379, #5c0923); */
     /* background-color: aliceblue; */
-    margin: 0px;
+    margin: 5px;
   }
 
-  .outside {
+  .flex {
     display: flex;
+    gap: 15px;
   }
 
-  .div-flex-container1,
-  .div-flex-container2,
-  .div-flex-container3 {
+  .mbox1,
+  .mbox2,
+  .mbox3 {
     position: relative;
-    /* 重要 */
+    /* 重要，設定 height ，拉開與下方內容的距離 */
     display: inline-block;
     height: 40px;
-    margin: 0px 5px 0px 0px;
     background-color: darkorange;
   }
 
-  .div1-1,
-  .div2-1,
-  .div3-1 {
+  /* 選單 */
+  .m1a,
+  .m2a,
+  .m3a {
     width: 150px;
     height: 40px;
     background-color: rgb(26, 69, 150);
     border-bottom: 5px solid gold;
   }
 
-  .div1-2,
-  .div2-2,
-  .div3-2 {
+  /* 子選單 */
+  .m1b,
+  .m2b,
+  .m3b {
     display: none;
     /* 重要 */
     width: 150px;
-    height: 140px;
+    height: fit-content;
     background-color: darkcyan;
     border-bottom: 5px solid darkorange;
   }
 
-  .div1-2-1,
-  .div2-2-1,
-  .div3-2-1 {
+  .item-box {
     display: flex;
     flex-direction: column;
+    gap: 3px;
+    padding: 3px;
   }
 
-  .div1-2-1 span,
-  .div2-2-1 span,
-  .div3-2-1 span {
-    color: whitesmoke;
-    margin: 3px 0px 0px 7px;
+  .item {
+    display: inline-block;
+    padding: 5px;
+    color: darkblue;
+    background-color: white;
   }
 
-  .div-flex-container1:hover .div1-2 {
-    /* 重要 */
-    display: block;
-  }
-
-  .div-flex-container2:hover .div2-2 {
-    /* 重要 */
-    display: block;
-  }
-
-  .div-flex-container3:hover .div3-2 {
-    /* 重要 */
+  /* 重要，顯示子選單 */
+  .mbox1:hover .m1b,
+  .mbox2:hover .m2b,
+  .mbox3:hover .m3b {
     display: block;
   }
 </style>
 
 <body>
-  <div class="outside outside2">
-    <div class="div-flex-container1">
-      <div class="div1-1">
+  <div class="flex">
+    <div class="mbox1">
+      <div class="m1a">
       </div>
-      <div class="div1-2">
-        <div class="div1-2-1">
-          <span>1st item</span>
-          <span>2nd item</span>
-          <span>3rd item</span>
+      <div class="m1b">
+        <div class="item-box">
+          <div class="item">1st item</div>
+          <div class="item">2nd item</div>
+          <div class="item">3rd item</div>
         </div>
       </div>
     </div>
-    <div class="div-flex-container2">
-      <div class="div2-1">
+    <div class="mbox2">
+      <div class="m2a">
       </div>
-      <div class="div2-2">
-        <div class="div2-2-1">
-          <span>1st item</span>
-          <span>2nd item</span>
-          <span>3rd item</span>
+      <div class="m2b">
+        <div class="item-box">
+          <div class="item">1st item</div>
+          <div class="item">2nd item</div>
+          <div class="item">3rd item</div>
         </div>
       </div>
     </div>
-    <div class="div-flex-container3">
-      <div class="div3-1">
+    <div class="mbox3">
+      <div class="m3a">
       </div>
-      <div class="div3-2">
-        <div class="div3-2-1">
-          <span>1st item</span>
-          <span>2nd item</span>
-          <span>3rd item</span>
-          <span><a href="https://forum.gamer.com.tw/B.php?bsn=17532" target="_blank" rel="noopener">LoL巴哈</a></span>
+      <div class="m3b">
+        <div class="item-box">
+          <div class="item">1st item</div>
+          <div class="item">2nd item</div>
+          <div class="item">3rd item</div>
+          <div class="item"><a href="https://forum.gamer.com.tw/B.php?bsn=17532" target="_blank"
+              rel="noopener">LoL巴哈</a></div>
         </div>
       </div>
     </div>
