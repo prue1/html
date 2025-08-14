@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>border radius</title>
+</head>
+
+<style>
+  * {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .flex {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid red;
+    width: fit-content;
+
+    /* 水平置中 */
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .a {
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    background-color: violet;
+    position: relative;
+  }
+
+  .b {
+    width: 200px;
+    height: 200px;
+    border-radius: 50px;
+    background-color: yellowgreen;
+    position: relative;
+  }
+
+  .a1 {
+    width: 100px;
+    height: 100px;
+    background-color: gold;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    opacity: 0.5;
+  }
+
+  .b1 {
+    width: 50px;
+    height: 50px;
+    background-color: gold;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    opacity: 0.5;
+  }
+</style>
+
+<body>
+  <div class="flex">
+    <div class="a">
+      <div class="a1">
+        <span>100px</span>
+      </div>
+    </div>
+    <div class="b">
+      <div class="b1">
+        <span>50px</span>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
