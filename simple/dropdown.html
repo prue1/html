@@ -25,16 +25,15 @@
   .flex {
     display: flex;
     gap: 15px;
+    /* 重要，設定 height ，拉開與下方內容的距離 */
+    height: 50px;
   }
 
   .mbox1,
   .mbox2,
   .mbox3 {
     position: relative;
-    /* 重要，設定 height ，拉開與下方內容的距離 */
     display: inline-block;
-    height: 40px;
-    background-color: darkorange;
   }
 
   /* 選單 */
@@ -52,7 +51,6 @@
   .m2b,
   .m3b {
     display: none;
-    /* 重要 */
     width: 150px;
     height: fit-content;
     background-color: darkcyan;
@@ -70,7 +68,12 @@
     display: inline-block;
     padding: 5px;
     color: darkblue;
-    background-color: white;
+    background-color: #F0F7D4;
+  }
+
+  .item:hover {
+    color: #F0F7D4;
+    background-color: darkblue;
   }
 
   /* 重要，顯示子選單 */

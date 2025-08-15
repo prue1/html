@@ -21,7 +21,7 @@
     position: relative;
     width: 200px;
     height: 50px;
-    background-color: red;
+    background-color: yellowgreen;
   }
 
   .a2 {
@@ -35,11 +35,12 @@
 
   .a3 {
     position: absolute;
-    width: 70px;
+    width: 170px;
     height: 100px;
     background-color: violet;
     display: none;
-    right: -70px;
+    top: 0px;
+    right: -170px;
   }
 
   .a1:hover .a2 {
@@ -68,11 +69,12 @@
 
   .b3 {
     position: absolute;
-    width: 70px;
+    width: 170px;
     height: 100px;
     background-color: violet;
     display: none;
-    right: -70px;
+    top: 0px;
+    right: -170px;
   }
 
   .b1:hover .b2 {
@@ -86,15 +88,25 @@
 
 <body>
   <div class="a1">
-    <span class="txt">aaa</span>
+    <span class="txt">a1</span>
     <div class="a2">
-      <div class="a3"></div>
+      <span>a1-sub</span>
+      <div class="a3">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+      </div>
     </div>
   </div>
   <div class="b1">
-    <span class="txt">bbb</span>
+    <span class="txt">b1</span>
     <div class="b2">
-      <div class="b3"></div>
+      <span>b1-sub</span>
+      <div class="b3">
+        <div>b1-sub-sub-1</div>
+        <div>b1-sub-sub-2</div>
+        <div>b1-sub-sub-3</div>
+      </div>
     </div>
   </div>
 </body>

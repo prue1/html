@@ -4,24 +4,32 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CSS flipper</title>
+  <title>CSS adjacent</title>
 </head>
 
 <style>
   * {
-    font-family: consolas;
-    font-size: 1em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 24px;
     /* 1em = 16px => https://www.w3schools.com/css/css_font_size.asp */
+  }
+
+  span {
+    display: inline-block;
+    width: 150px;
+    height: 50px;
   }
 
   span::before {
     /* 雙冒號(::) pseudo-elements */
-    content: '->';
+    content: '[***]';
+    color: blue;
   }
 
   /* > 大於(>)表示所有子元件 */
   .container>*::after {
-    content: '(c)';
+    content: '[#]';
+    color: green;
   }
 
   /* + 加號(+)表示下一個鄰接的 */
@@ -30,11 +38,12 @@
   }
 
   /* ~ 波浪線(~)表示以下所有 */
-  .class2~span {
+  .class2~span,
+  .class2~span.class2 {
     color: gold;
   }
 
-  /* 空格(space)表示包含在其中 */
+  /*   空格(space)表示包含在其中 */
   .class1 .class2 {
     color: cornflowerblue;
   }
@@ -50,42 +59,57 @@
     color: darkcyan;
   }
 
-  .class5:hover>.class6 { /* 冒號(:) pseudo-classes  */
-    background-color: lightgreen;
+  .class5:hover>.class6::before {
+    /* 冒號(:) pseudo-classes  */
+    content: '*hovered*';
+    color: lightgreen;
+    font-size: 2em;
+  }
+
+  .class5:hover>.class6>.class6:hover::after {
+    /* 冒號(:) pseudo-classes  */
+    content: '*hovered*';
+    color: lightgreen;
+    font-size: 2em;
   }
 </style>
 
 <body>
   <div class="container">
-    <span>Hellow World.</span>
-    <span>Hellow World.</span>
+    <span>text.1</span>
+    <span>text.2</span>
     <a href="https://www.w3schools.com/css/css_font_size.asp">CSS font size</a>
   </div>
+
   <div class="container">
-    <span class="class1">Hellow World.</span>
-    <span>Hellow World.</span>
-    <span>Hellow World.</span>
+    <span class="class1">text.1</span>
+    <span>text.2</span>
+    <span>text.3</span>
   </div>
+
   <div class="container">
-    <span class="class2">Hellow World.</span>
-    <span>Hellow World.</span>
-    <span>Hellow World.</span>
+    <span class="class2">text.1</span>
+    <span>text.2</span>
+    <span>text.3</span>
     <a href="https://www.w3schools.com/css/css_font_size.asp">CSS font size</a>
   </div>
+
   <div class="container class1">
-    <span class="class2">Hellow World.</span>
-    <span>Hellow World.</span>
-    <span class="class2">Hellow World.</span>
+    <span class="class2">text.1</span>
+    <span>text.2</span>
+    <span class="class2">text.3</span>
+    <span>text.4</span>
   </div>
+
   <div class="class5">
     <div class="class6">
-      --Hello World.special-1.
+      --text.special-1.
       <div class="class6">
-        ----Hello World.special-2.(第3層依舊套用.class5 .class6)
+        ----text.special-2.(第3層依舊套用.class5 .class6)
       </div>
     </div>
     <div class="class6">
-      --Hello World.special-3.
+      --text.special-3.
     </div>
   </div>
 </body>

@@ -16,22 +16,32 @@
     --bg1: url('image/bg1.png');
     --bg2: url('image/bg2.png');
     --bg3: url('image/bg3.png');
+    --bg4: url('image/bg4.png');
+    --bg5: url('image/bg5.png');
+    --bg6: url('image/bg6.png');
+    --bg7: url('image/bg7.png');
     --bg_star: url('image/bg_star.png');
     --skystar: url('image/skystar.png');
   }
 
-  .row-container {
-    padding: 10px;
-    background-image: var(--bg1);
-    border-radius: 10px;
-    display: grid;
-    grid-template-columns: auto auto auto;
-    column-gap: 10px;
+  .data-container {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 16px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 20px;
+    row-gap: 20px;;
+  }
+
+  .data-row-container {
+    padding: 10px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 10px;
   }
 
   .container {
@@ -106,15 +116,15 @@
     transition: right 0.3s, color 0.3s;
   }
 
-  .row-container>.container:nth-child(3n+1)>.detail>.left {
+  .data-row-container>.container:nth-child(3n+1)>.detail>.left {
     background-color: red;
   }
 
-  .row-container>.container:nth-child(3n+2)>.detail>.left {
+  .data-row-container>.container:nth-child(3n+2)>.detail>.left {
     background-color: darkblue;
   }
 
-  .row-container>.container:nth-child(3n+3)>.detail>.left {
+  .data-row-container>.container:nth-child(3n+3)>.detail>.left {
     background-color: darkorange;
   }
 
@@ -171,32 +181,278 @@
     right: -70%;
     color: transparent
   }
+
+  .data-row-container:nth-child(9n+1) {
+    background-image: var(--bg1);
+  }
+
+  .data-row-container:nth-child(9n+2) {
+    background-image: var(--bg2);
+  }
+
+  .data-row-container:nth-child(9n+3) {
+    background-image: var(--bg3);
+  }
+
+  .data-row-container:nth-child(9n+4) {
+    background-image: var(--bg4);
+  }
+
+  .data-row-container:nth-child(9n+5) {
+    background-image: var(--bg5);
+  }
+
+  .data-row-container:nth-child(9n+6) {
+    background-image: var(--bg6);
+  }
+
+  .data-row-container:nth-child(9n+7) {
+    background-image: var(--bg7);
+  }
+
+  .data-row-container:nth-child(9n+8) {
+    background-image: var(--bg_star);
+  }
+
+  .data-row-container:nth-child(9n+9) {
+    background-image: var(--skystar);
+  }
 </style>
 
 <body>
-  <div class="row-container">
-    <div class="container">
-      <div class="topic"><span>Topic</span></div>
-      <div class="detail">
-        <div class="content"><span>Detail</span></div>
-        <div class="left left-1"><span>clip-path</span></div>
-        <div class="right right-1"><span>clip-path</span></div>
+  <div class="data-container">
+    <div class="data-row-container">
+      <div class="container">
+        <div class="topic"><span>Topic</span></div>
+        <div class="detail">
+          <div class="content"><span>Detail</span></div>
+          <div class="left left-1"><span>clip-path</span></div>
+          <div class="right right-1"><span>clip-path</span></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="topic"><span>Topic</span></div>
+        <div class="detail">
+          <div class="content"><span>Detail</span></div>
+          <div class="left left-2"><span>clip-path</span></div>
+          <div class="right right-2"><span>clip-path</span></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="topic"><span>Topic</span></div>
+        <div class="detail">
+          <div class="content"><span>Detail</span></div>
+          <div class="left left-3"><span>clip-path</span></div>
+          <div class="right right-3"><span>clip-path</span></div>
+        </div>
       </div>
     </div>
-    <div class="container">
-      <div class="topic"><span>Topic</span></div>
-      <div class="detail">
-        <div class="content"><span>Detail</span></div>
-        <div class="left left-2"><span>clip-path</span></div>
-        <div class="right right-2"><span>clip-path</span></div>
+    <div class="data-row-container">
+      <div class="container">
+        <div class="topic"><span>Topic</span></div>
+        <div class="detail">
+          <div class="content"><span>Detail</span></div>
+          <div class="left left-1"><span>clip-path</span></div>
+          <div class="right right-1"><span>clip-path</span></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="topic"><span>Topic</span></div>
+        <div class="detail">
+          <div class="content"><span>Detail</span></div>
+          <div class="left left-2"><span>clip-path</span></div>
+          <div class="right right-2"><span>clip-path</span></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="topic"><span>Topic</span></div>
+        <div class="detail">
+          <div class="content"><span>Detail</span></div>
+          <div class="left left-3"><span>clip-path</span></div>
+          <div class="right right-3"><span>clip-path</span></div>
+        </div>
       </div>
     </div>
-    <div class="container">
-      <div class="topic"><span>Topic</span></div>
-      <div class="detail">
-        <div class="content"><span>Detail</span></div>
-        <div class="left left-3"><span>clip-path</span></div>
-        <div class="right right-3"><span>clip-path</span></div>
+    <div class="data-row-container">
+      <div class="container">
+        <div class="topic"><span>Topic</span></div>
+        <div class="detail">
+          <div class="content"><span>Detail</span></div>
+          <div class="left left-1"><span>clip-path</span></div>
+          <div class="right right-1"><span>clip-path</span></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="topic"><span>Topic</span></div>
+        <div class="detail">
+          <div class="content"><span>Detail</span></div>
+          <div class="left left-2"><span>clip-path</span></div>
+          <div class="right right-2"><span>clip-path</span></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="topic"><span>Topic</span></div>
+        <div class="detail">
+          <div class="content"><span>Detail</span></div>
+          <div class="left left-3"><span>clip-path</span></div>
+          <div class="right right-3"><span>clip-path</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="data-row-container">
+      <div class="container">
+        <div class="topic"><span>Topic</span></div>
+        <div class="detail">
+          <div class="content"><span>Detail</span></div>
+          <div class="left left-1"><span>clip-path</span></div>
+          <div class="right right-1"><span>clip-path</span></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="topic"><span>Topic</span></div>
+        <div class="detail">
+          <div class="content"><span>Detail</span></div>
+          <div class="left left-2"><span>clip-path</span></div>
+          <div class="right right-2"><span>clip-path</span></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="topic"><span>Topic</span></div>
+        <div class="detail">
+          <div class="content"><span>Detail</span></div>
+          <div class="left left-3"><span>clip-path</span></div>
+          <div class="right right-3"><span>clip-path</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="data-row-container">
+      <div class="container">
+        <div class="topic"><span>Topic</span></div>
+        <div class="detail">
+          <div class="content"><span>Detail</span></div>
+          <div class="left left-1"><span>clip-path</span></div>
+          <div class="right right-1"><span>clip-path</span></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="topic"><span>Topic</span></div>
+        <div class="detail">
+          <div class="content"><span>Detail</span></div>
+          <div class="left left-2"><span>clip-path</span></div>
+          <div class="right right-2"><span>clip-path</span></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="topic"><span>Topic</span></div>
+        <div class="detail">
+          <div class="content"><span>Detail</span></div>
+          <div class="left left-3"><span>clip-path</span></div>
+          <div class="right right-3"><span>clip-path</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="data-row-container">
+      <div class="container">
+        <div class="topic"><span>Topic</span></div>
+        <div class="detail">
+          <div class="content"><span>Detail</span></div>
+          <div class="left left-1"><span>clip-path</span></div>
+          <div class="right right-1"><span>clip-path</span></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="topic"><span>Topic</span></div>
+        <div class="detail">
+          <div class="content"><span>Detail</span></div>
+          <div class="left left-2"><span>clip-path</span></div>
+          <div class="right right-2"><span>clip-path</span></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="topic"><span>Topic</span></div>
+        <div class="detail">
+          <div class="content"><span>Detail</span></div>
+          <div class="left left-3"><span>clip-path</span></div>
+          <div class="right right-3"><span>clip-path</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="data-row-container">
+      <div class="container">
+        <div class="topic"><span>Topic</span></div>
+        <div class="detail">
+          <div class="content"><span>Detail</span></div>
+          <div class="left left-1"><span>clip-path</span></div>
+          <div class="right right-1"><span>clip-path</span></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="topic"><span>Topic</span></div>
+        <div class="detail">
+          <div class="content"><span>Detail</span></div>
+          <div class="left left-2"><span>clip-path</span></div>
+          <div class="right right-2"><span>clip-path</span></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="topic"><span>Topic</span></div>
+        <div class="detail">
+          <div class="content"><span>Detail</span></div>
+          <div class="left left-3"><span>clip-path</span></div>
+          <div class="right right-3"><span>clip-path</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="data-row-container">
+      <div class="container">
+        <div class="topic"><span>Topic</span></div>
+        <div class="detail">
+          <div class="content"><span>Detail</span></div>
+          <div class="left left-1"><span>clip-path</span></div>
+          <div class="right right-1"><span>clip-path</span></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="topic"><span>Topic</span></div>
+        <div class="detail">
+          <div class="content"><span>Detail</span></div>
+          <div class="left left-2"><span>clip-path</span></div>
+          <div class="right right-2"><span>clip-path</span></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="topic"><span>Topic</span></div>
+        <div class="detail">
+          <div class="content"><span>Detail</span></div>
+          <div class="left left-3"><span>clip-path</span></div>
+          <div class="right right-3"><span>clip-path</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="data-row-container">
+      <div class="container">
+        <div class="topic"><span>Topic</span></div>
+        <div class="detail">
+          <div class="content"><span>Detail</span></div>
+          <div class="left left-1"><span>clip-path</span></div>
+          <div class="right right-1"><span>clip-path</span></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="topic"><span>Topic</span></div>
+        <div class="detail">
+          <div class="content"><span>Detail</span></div>
+          <div class="left left-2"><span>clip-path</span></div>
+          <div class="right right-2"><span>clip-path</span></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="topic"><span>Topic</span></div>
+        <div class="detail">
+          <div class="content"><span>Detail</span></div>
+          <div class="left left-3"><span>clip-path</span></div>
+          <div class="right right-3"><span>clip-path</span></div>
+        </div>
       </div>
     </div>
   </div>

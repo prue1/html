@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS Specificity</title>
+</head>
+
+<style>
+  * {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .flex {
+    display: flex;
+    gap: 5px;
+  }
+
+  span {
+    color: darkred;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    font-size: 24px;
+    border: 1px solid red;
+    box-sizing: border-box;
+    padding: 0 5px;
+  }
+
+  #id1,
+  #id2 {
+    color: skyblue;
+  }
+
+  .class1 {
+    color: gold;
+  }
+
+  .class1.class2 {
+    color: darkgreen;
+  }
+
+  .class1 .class2 {
+    background-color: lightyellow;
+  }
+
+  /* 注意:上方2個設定的優先級相同，若同時符合條件，將會套用最後的設定 */
+
+  /* inline > id > class > element > * > external file
+     inline:1000, id:100, class:10, element:1
+     根據計算的總值套用結果 */
+</style>
+
+<body>
+  <a href="https://www.w3schools.com/css/css_specificity.asp" target="_blank" rel="noopener">CSS Specificity</a><br>
+  <div class="flex">
+    <span>NO. 1</span>
+    <span class="class1">NO. 2</span>
+    <span id="id1" class="class1">NO. 3</span>
+    <span id="id2" class="class1" style="color:blueviolet">NO. 4</span>
+  </div>
+  <br>
+  <div class="flex">
+    <span class="class1 class2">NO. 5</span>
+    <div class="class1">
+      <span class="class2">NO. 6</span>
+    </div>
+    <div class="class1">
+      <span class="class1 class2">NO. 7</span>
+    </div>
+  </div>
+</body>
+
+</html>

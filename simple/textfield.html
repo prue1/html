@@ -8,6 +8,13 @@
 </head>
 
 <style>
+  .txt-box {
+    background-color: yellowgreen;
+    width: 300px;
+    padding: 3px;
+    margin: 0 0 3px 0;
+  }
+
   span,
   input[type='text'] {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -15,23 +22,41 @@
   }
 
   input[type='text'] {
-    padding: 0px 5px;
+    padding: 0px 3px;
     border-top: 0px;
     border-right: 0px;
     border-left: 0px;
-    border-bottom: 1px dashed blue;
+    border: 1px solid #AE0D7A;
+    color: #093426;
+    box-sizing: border-box;
   }
 
   input[type='text']:focus {
-    outline: 2px dashed orange;
-    background-color: lightgray;
-    color: red;
+    outline: 3px dashed #FCBA12;
+    background-color: #F7EDD4;
+    color: #093426;
   }
 </style>
 
 <body>
-  <label for="txt"><span>TextField:</span></label>
-  <input type="text" id="txt" name="txt" maxlength="10" />
+  <form action="#">
+    <div class="txt-box">
+      <label for="txt1"><span>TextField:</span></label>
+      <input type="text" id="txt1" name="txt1" required maxlength="10" pattern="[0-9]*"
+        title="10 digitals only at maximum" />
+    </div>
+    <div class="txt-box">
+      <label for="txt2"><span>TextField:</span></label>
+      <input type="text" id="txt2" name="txt2" required maxlength="10" pattern="[a-zA-Z]*"
+        title="10 characters only at maximum" />
+    </div>
+    <div class="txt-box">
+      <label for="txt3"><span>TextField:</span></label>
+      <input type="text" id="txt3" name="txt3" required maxlength="10" pattern="[0-9a-zA-Z]*"
+        title="number or english" />
+    </div>
+    <input type="submit">
+  </form>
 </body>
 
 </html>
