@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS functions</title>
+</head>
+
+<script src='../jquery-3.7.1.js'></script>
+<script>
+</script>
+<style>
+  * {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .brightness {
+    color: red;
+  }
+
+  .brightness:hover {
+    filter: brightness(50%);
+  }
+
+  .brightness:hover::after {
+    content: ' (50%)';
+  }
+
+  .circle-outside {
+    width: 250px;
+    height: 100px;
+  }
+
+  .circle {
+    width: 100px;
+    height: 100px;
+    background-color: yellowgreen;
+
+    display: flex;
+    align-items: center;
+  }
+
+  .circle:hover {
+    clip-path: circle(50% at 20%);
+  }
+</style>
+
+<body>
+  <div>
+    <div>
+      <div class="brightness">brightness</div>
+      <div class="circle-outside">
+        <div class="circle">circle</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
