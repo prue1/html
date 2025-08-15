@@ -4,26 +4,30 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CSS flipper</title>
+  <title>CSS function</title>
 </head>
 
 <script src='../jquery-3.7.1.js'></script>
 <script>
 </script>
 <style>
-  .span1 {
+  .brightness {
     color: red;
   }
 
-  .span1:hover {
+  .brightness:hover {
     filter: brightness(50%);
+  }
+
+  .brightness:hover::after {
+    content: ' (50%)';
   }
 </style>
 
 <body>
-  <div class="div0">
-    <div id="div1" class="div1">
-      <span class="span1">Hello World.</span>
+  <div>
+    <div>
+      <span class="brightness">brightness</span>
     </div>
   </div>
 
