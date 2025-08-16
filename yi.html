@@ -41,7 +41,7 @@
 
   function create(img1, img2, name, meaning) {
     return `
-            <div>         
+            <div class="individual">         
               <div class="flex-vertical">
                 <img src="${img1}" alt="${img1.split('/').pop().split('.')[0]}">
                 <img src="${img2}" alt="${img2.split('/').pop().split('.')[0]}">
@@ -172,8 +172,12 @@
 
     .flex-vertical+.meaning {
       display: inline-block;
-      padding: 0px 5px;
+      padding: 0px 25px;
       font-family: PMingLiU;
+    }
+
+    .individual .flex-vertical {
+      transform: translateX(10px) rotate(10deg);
     }
   }
 </style>
