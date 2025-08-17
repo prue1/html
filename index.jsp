@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>yi</title>
+</head>
+
+<script src="assets/yi/yi.js"></script>
+
+<style>
+  * {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, DFKai-SB;
+    font-size: 16px;
+  }
+
+  .flex-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 5px;
+    border: 1px solid red;
+    background-color: wheat;
+    float: left;
+  }
+
+  .img-container {
+    display: grid;
+    width: fit-content;
+    grid-template-columns: auto auto auto auto auto auto auto auto;
+    gap: 5px;
+  }
+
+  .img-container img {
+    width: 48px;
+    height: auto;
+  }
+
+  .flex-vertical+.meaning {
+    display: none;
+    width: fit-content;
+  }
+
+  .individual .flex-vertical {
+    transition: transform 1s ease-in-out;
+  }
+
+  @media only screen and (max-width: 1200px) {
+    .img-container {
+      grid-template-columns: auto;
+    }
+
+    .flex-vertical+.meaning {
+      display: inline-block;
+      padding: 0px 25px;
+      font-family: PMingLiU;
+    }
+
+    .individual .flex-vertical {
+      transform: translateX(10px) rotate(10deg);
+    }
+  }
+</style>
+
+<body onload="setup()">
+  <div class="img-container">
+  </div>
+</body>
+
+</html>
