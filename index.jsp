@@ -8,6 +8,15 @@
 </head>
 
 <script src="assets/yi/yi.js"></script>
+<script>
+  function setup() {
+    const container = document.querySelector('.img-container');
+    getYi().forEach(obj => {
+      container.innerHTML += create(obj);
+    });
+  }
+</script>
+
 <link rel="stylesheet" type="text/css" href="assets/yi/yi.css">
 
 <body onload="setup()">

@@ -20,13 +20,6 @@ const styleColor = {
     'fire': 'assets/yi/color-yi08.svg'
 }
 
-function setup() {
-    const container = document.querySelector('.img-container');
-    getYi(styleColor).forEach(obj => {
-        container.innerHTML += create(obj);
-    });
-}
-
 function create(obj) {
     return `
             <div class="individual">         
@@ -39,7 +32,11 @@ function create(obj) {
             </div>`
 }
 
-function getYi(style) {
+function getYi(){
+    return getByStyle(styleColor)
+}
+
+function getByStyle(style) {
     const sky = { 'id': '01', 'name': '乾', 'img': style.sky }
     const earth = { 'id': '02', 'name': '坤', 'img': style.earth }
     const mountain = { 'id': '03', 'name': '艮', 'img': style.mountain }
