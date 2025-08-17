@@ -10,14 +10,14 @@ const styleOrigin = {
 }
 
 const styleColor = {
-    'sky': 'assets/yi/yi01-1.svg',
-    'earth': 'assets/yi/yi02-1.svg',
-    'mountain': 'assets/yi/yi03-1.svg',
-    'lake': 'assets/yi/yi04-1.svg',
-    'wind': 'assets/yi/yi05-1.svg',
-    'thunder': 'assets/yi/yi06-1.svg',
-    'water': 'assets/yi/yi07-1.svg',
-    'fire': 'assets/yi/yi08-1.svg'
+    'sky': 'assets/yi/color-yi01.svg',
+    'earth': 'assets/yi/color-yi02.svg',
+    'mountain': 'assets/yi/color-yi03.svg',
+    'lake': 'assets/yi/color-yi04.svg',
+    'wind': 'assets/yi/color-yi05.svg',
+    'thunder': 'assets/yi/color-yi06.svg',
+    'water': 'assets/yi/color-yi07.svg',
+    'fire': 'assets/yi/color-yi08.svg'
 }
 
 function setup() {
