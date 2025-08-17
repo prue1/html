@@ -1,23 +1,23 @@
 const styleOrigin = {
-    'sky': 'assets/yi/yi01.svg',
-    'earth': 'assets/yi/yi02.svg',
-    'mountain': 'assets/yi/yi03.svg',
-    'lake': 'assets/yi/yi04.svg',
-    'wind': 'assets/yi/yi05.svg',
-    'thunder': 'assets/yi/yi06.svg',
-    'water': 'assets/yi/yi07.svg',
-    'fire': 'assets/yi/yi08.svg'
+    'sky': 'assets/yi/images/yi01.svg',
+    'earth': 'assets/yi/images/yi02.svg',
+    'mountain': 'assets/yi/images/yi03.svg',
+    'lake': 'assets/yi/images/yi04.svg',
+    'wind': 'assets/yi/images/yi05.svg',
+    'thunder': 'assets/yi/images/yi06.svg',
+    'water': 'assets/yi/images/yi07.svg',
+    'fire': 'assets/yi/images/yi08.svg'
 }
 
 const styleColor = {
-    'sky': 'assets/yi/color-yi01.svg',
-    'earth': 'assets/yi/color-yi02.svg',
-    'mountain': 'assets/yi/color-yi03.svg',
-    'lake': 'assets/yi/color-yi04.svg',
-    'wind': 'assets/yi/color-yi05.svg',
-    'thunder': 'assets/yi/color-yi06.svg',
-    'water': 'assets/yi/color-yi07.svg',
-    'fire': 'assets/yi/color-yi08.svg'
+    'sky': 'assets/yi/images/color-yi01.svg',
+    'earth': 'assets/yi/images/color-yi02.svg',
+    'mountain': 'assets/yi/images/color-yi03.svg',
+    'lake': 'assets/yi/images/color-yi04.svg',
+    'wind': 'assets/yi/images/color-yi05.svg',
+    'thunder': 'assets/yi/images/color-yi06.svg',
+    'water': 'assets/yi/images/color-yi07.svg',
+    'fire': 'assets/yi/images/color-yi08.svg'
 }
 
 function create(obj) {
