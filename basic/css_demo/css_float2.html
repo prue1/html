@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS float</title>
+</head>
+
+<style>
+    .flex {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
+
+    .small-box {
+        width: 10px;
+        height: 10px;
+        background-color: violet;
+    }
+
+    .outside {
+        width: 600px;
+        height: fit-content;
+        border: 1px solid red;
+        padding: 5px;
+    }
+
+    .box1 {
+        width: 100px;
+        height: 100px;
+        background-color: gold;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
+
+    .box2 {
+        width: 100px;
+        height: 100px;
+        background-color: gold;
+        float: left;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
+
+    .box3 {
+        width: 100px;
+        height: 100px;
+        background-color: gold;
+        float: right;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
+
+    span {
+        display: none;
+    }
+
+    .box1:hover+span {
+        display: inherit;
+    }
+
+    .box2:hover+span {
+        display: inherit;
+    }
+
+    .box3:hover+span {
+        display: inherit;
+    }
+</style>
+
+<body>
+    <div class="flex">
+        <div class="outside">
+            <div class="box1">
+                <div class="small-box"></div>
+                <div class="small-box"></div>
+                <div class="small-box"></div>
+            </div>
+            <span>
+                里拉（英語：lyre；希臘語：λύρα），古地中海琴種，經時間流逝多數琴種皆已絕跡，僅剩希臘、埃及、衣索比亞等仍保有傳統，琴亦在流入不同國家後擁有各自別名。是西方古典文明最常見的撥弦樂器，傳至現代的種類非常繁多。它們的主要特點是共鳴箱特別狹窄，因而便於攜帶。樂器的弦數不一，多數介於5-8根之間，但也有15弦里拉琴。樂器適合傳統上搭配故事或吟唱使用。古希臘的游吟詩人經常使用這種樂器來烘托氣氛。它在中世紀文獻的諸多引用，起碼在10世紀後僅限於寓意。不過在北歐它仍被使用至至少14世紀。
+            </span>
+        </div>
+        <div class="outside">
+            <div class="box2">
+                <div class="small-box"></div>
+                <div class="small-box"></div>
+                <div class="small-box"></div>
+            </div>
+            <span>
+                里拉（英語：lyre；希臘語：λύρα），古地中海琴種，經時間流逝多數琴種皆已絕跡，僅剩希臘、埃及、衣索比亞等仍保有傳統，琴亦在流入不同國家後擁有各自別名。是西方古典文明最常見的撥弦樂器，傳至現代的種類非常繁多。它們的主要特點是共鳴箱特別狹窄，因而便於攜帶。樂器的弦數不一，多數介於5-8根之間，但也有15弦里拉琴。樂器適合傳統上搭配故事或吟唱使用。古希臘的游吟詩人經常使用這種樂器來烘托氣氛。它在中世紀文獻的諸多引用，起碼在10世紀後僅限於寓意。不過在北歐它仍被使用至至少14世紀。
+            </span>
+        </div>
+        <div class="outside">
+            <div class="box3">
+                <div class="small-box"></div>
+                <div class="small-box"></div>
+                <div class="small-box"></div>
+            </div>
+            <span>
+                里拉（英語：lyre；希臘語：λύρα），古地中海琴種，經時間流逝多數琴種皆已絕跡，僅剩希臘、埃及、衣索比亞等仍保有傳統，琴亦在流入不同國家後擁有各自別名。是西方古典文明最常見的撥弦樂器，傳至現代的種類非常繁多。它們的主要特點是共鳴箱特別狹窄，因而便於攜帶。樂器的弦數不一，多數介於5-8根之間，但也有15弦里拉琴。樂器適合傳統上搭配故事或吟唱使用。古希臘的游吟詩人經常使用這種樂器來烘托氣氛。它在中世紀文獻的諸多引用，起碼在10世紀後僅限於寓意。不過在北歐它仍被使用至至少14世紀。
+            </span>
+        </div>
+    </div>
+</body>
+
+</html>

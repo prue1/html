@@ -22,13 +22,13 @@ const styleColor = {
 
 function create(obj) {
     return `
-            <div class="individual">         
-              <div id="${obj.id}" class="flex-vertical">
+            <div class="outside">    
+              <div id="${obj.id}" class="yi-box">
                 <img src="${obj.outside.img}" alt="${obj.outside.img.split('/').pop().split('.')[0]}">
                 <img src="${obj.inside.img}" alt="${obj.inside.img.split('/').pop().split('.')[0]}">
                 <span>${obj.name}</span>
               </div>
-              <p class="meaning">${obj.meaning}</p>
+              <span class="yi-meaning">${obj.meaning}</span>
             </div>`
 }
 
