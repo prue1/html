@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>form</title>
+</head>
+
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, PMingLiU;
+  }
+
+  form>* {
+    margin: 3px;
+  }
+
+  .form-row {
+    display: flex;
+    gap: 3px;
+  }
+
+  .row-label {
+    display: flex;
+    justify-content: right;
+    width: 100px;
+  }
+</style>
+
+<body>
+  <form action="#">
+    <div class="form-row">
+      <div class="row-label"><label for="txt1">欄位1</label></div>
+      <div><input type="text" id="txt1" name="txt1"></div>
+    </div>
+    <div class="form-row">
+      <div class="row-label"><label for="txt2">欄位2</label></div>
+      <div><input type="text" id="txt2" name="txt2"></div>
+    </div>
+    <div class="form-row">
+      <div class="row-label"><label for="txt3">欄位3</label></div>
+      <div><input type="text" id="txt3" name="txt3"></div>
+    </div>
+    <input type="submit">
+  </form>
+</body>
+
+</html>
