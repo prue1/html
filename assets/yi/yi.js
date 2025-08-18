@@ -28,7 +28,7 @@ function create(obj) {
                 <img src="${obj.inside.img}" alt="${obj.inside.img.split('/').pop().split('.')[0]}">
                 <span>${obj.name}</span>
               </div>
-              <div class="meaning">${obj.meaning}</div>
+              <p class="meaning">${obj.meaning}</p>
             </div>`
 }
 
