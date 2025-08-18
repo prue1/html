@@ -12,7 +12,6 @@
 
 .yi-box {
     width: 50px;
-    height: 75px;
     padding: 5px;
     border: 1px solid red;
     background-color: wheat;
@@ -47,9 +46,15 @@
     .outside {
         width: 350px;
         height: fit-content;
+        border: 5px solid wheat;
+    }
+
+    .img-container>.outside:nth-child(odd) {
+        background-color: wheat;
     }
 
     .yi-box {
+        border-color: transparent;
         margin: 0 5px 0 0;
     }
 
