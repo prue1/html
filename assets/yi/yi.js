@@ -32,7 +32,7 @@ function create(obj) {
             </div>`
 }
 
-function getYi(){
+function getYi() {
     return getByStyle(styleColor)
 }
 
