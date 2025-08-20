@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rortating Button</title>
+</head>
+
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, PMingLiU;
+    }
+
+    .search-button-box {
+        position: relative;
+        width: 150px;
+        height: 150px;
+        clip-path: circle(50%);
+        background-color: gold;
+    }
+
+    .sea {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+
+        width: 150px;
+        height: 150px;
+        display: flex;
+        justify-content: center;
+        padding: 7px;
+        transform-origin: 50% 50%;
+    }
+
+    .sea2 {
+        transform: rotate(90deg);
+    }
+
+    .sea3 {
+        transform: rotate(180deg);
+    }
+
+    .sea4 {
+        transform: rotate(270deg);
+    }
+
+    .rch {
+        width: 200px;
+        height: 200px;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-100px, -100px);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 32px;
+        clip-path: circle(20%);
+        background-color: darkcyan;
+    }
+
+    .search-rotate-pane {
+        position: relative;
+        width: 150px;
+        height: 150px;
+        transform-origin: 50% 50%;
+    }
+
+    @keyframes rotate-pane {
+        50% {
+            transform: rotate(180deg)
+        }
+
+        100% {
+            transform: rotate(360deg)
+        }
+    }
+
+    .search-button-box:hover .search-rotate-pane {
+        animation: rotate-pane 10s linear infinite;
+    }
+</style>
+
+<body>
+    <div class="search-button-box" onclick="submitForm()">
+        <div class="search-rotate-pane">
+            <div class="sea sea1"><span>搜</span></div>
+            <div class="sea sea2"><span>搜</span></div>
+            <div class="sea sea3"><span>搜</span></div>
+            <div class="sea sea4"><span>搜</span></div>
+        </div>
+        <div class="rch"><span>尋</span></div>
+    </div>
+</body>
+
+</html>
