@@ -2,57 +2,112 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>form</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>form</title>
 </head>
 
 <style>
-  body {
-    margin: 0;
-    font-family: PMingLiU;
-  }
+    * {
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-  form {
-    position: relative;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    width: 80%;
-    background-color: #f2f2f2;
-  }
+    .form-box {
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid black;
+    }
 
-  form>* {
-    margin: 3px;
-  }
+    .title-box {
+        width: 100%;
+        border-bottom: 1px solid black;
+        background-color: #F0F7D4;
+    }
 
-  .form-row {
-    display: flex;
-    gap: 3px;
-  }
+    .title {
+        width: fit-content;
+        border-right: 1px solid black;
+    }
 
-  .row-label {
-    display: flex;
-    justify-content: right;
-    width: 100px;
-  }
+    .title-content {
+        background-color: #B2D732;
+        width: fit-content;
+        padding: 3px 5px 3px 5px;
+    }
+
+    .row-box {
+        padding: 5px;
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
+
+    .row {
+        width: 320px;
+        height: fit-content;
+        display: flex;
+        gap: 3px;
+    }
+
+    label {
+        width: 95px;
+        text-align: right;
+        padding-right: 5px;
+        background-color: violet;
+    }
+
+    .submit-row {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    input[type=submit] {
+        width: fit-content;
+    }
+
+    .blank-row {
+        height: 5px;
+        background-color: deepskyblue;
+    }
+
+    .blank-column {
+        width: 10px;
+        background-color: deepskyblue;
+    }
 </style>
 
 <body>
-  <form action="#">
-    <div class="form-row">
-      <div class="row-label"><label for="txt1">欄位1</label></div>
-      <div><input type="text" id="txt1" name="txt1"></div>
+    <div>
+        <div class="form-box">
+            <form action="#" method="POST">
+                <div class="title-box">
+                    <div class="title">
+                        <div class="title-content"><span>使用者登入</span></div>
+                    </div>
+                </div>
+                <div class="row-box">
+                    <div class="blank-row">
+                    </div>
+                    <div class="row">
+                        <div class="blank-column"></div>
+                        <label for="col1">Username</label>
+                        <input type="text" id="col1" name="col1">
+                    </div>
+                    <div class="row">
+                        <div class="blank-column"></div>
+                        <label for="col2">Password</label>
+                        <input type="text" id="col2" name="col2">
+                    </div>
+                    <div class="submit-row">
+                        <input type="submit" id="col2" name="col2" value="確認">
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-    <div class="form-row">
-      <div class="row-label"><label for="txt2">欄位2</label></div>
-      <div><input type="text" id="txt2" name="txt2"></div>
-    </div>
-    <div class="form-row">
-      <div class="row-label"><label for="txt3">欄位3</label></div>
-      <div><input type="text" id="txt3" name="txt3"></div>
-    </div>
-    <input type="submit">
-  </form>
 </body>
 
 </html>
