@@ -65,6 +65,11 @@
     }
 
     label.tag {
+        /* 
+            以上 label 設定的 width，在一般 <div> 可能會被忽略。
+            但在 flex/grid container 則會佔有空間，設為 fit-content 可以將佔有的空間釋放出來。
+        */
+        width: fit-content;
         background-color: transparent;
     }
 
@@ -90,6 +95,11 @@
     textarea#description {
         resize: none;
     }
+
+    .checkbox-demo {
+        display: grid;
+        grid-template-columns: auto auto;
+    }
 </style>
 
 <body>
@@ -111,8 +121,8 @@
                     </div>
                     <div class="row">
                         <div class="blank-column"></div>
-                        <label for="col2">Password</label>
-                        <input type="text" id="col2" name="col2">
+                        <label for="passwd">Password</label>
+                        <input type="password" id="passwd" name="passwd">
                     </div>
                     <div class="submit-row">
                         <input type="submit" value="確認">
@@ -138,13 +148,13 @@
                     </div>
                     <div class="row">
                         <div class="blank-column"></div>
-                        <label for="col2">Password</label>
-                        <input type="text" id="col2" name="col2">
+                        <label for="passwd">Password</label>
+                        <input type="password" id="passwd" name="passwd">
                     </div>
                     <div class="row">
                         <div class="blank-column"></div>
                         <label for="description">Description</label>
-                        <textarea id="description" cols="40" rows="5"></textarea>
+                        <textarea id="description" cols="40" rows="5">resize: none;</textarea>
                     </div>
                     <div class="row">
                         <div class="blank-column"></div>
@@ -221,13 +231,13 @@
                 </div>
                 <div class="row">
                     <div class="blank-column"></div>
-                    <label for="col2">Password</label>
-                    <input type="text" id="col2" name="col2">
+                    <label for="passwd">Password</label>
+                    <input type="password" id="passwd" name="passwd">
                 </div>
                 <div class="row">
                     <div class="blank-column"></div>
-                    <label for="checkbox-demo">示範checkbox</label>
-                    <div id="checkbox-demo">
+                    <label for="checkbox-demo">示範checkbox<br>(grid container)</label>
+                    <div id="checkbox-demo" class="checkbox-demo">
                         <input type="checkbox" id="checkbox1"><label for="checkbox1" class="tag">checkbox1</label>
                         <input type="checkbox" id="checkbox2"><label for="checkbox2" class="tag">checkbox2</label>
                         <input type="checkbox" id="checkbox3"><label for="checkbox3" class="tag">checkbox3</label>
