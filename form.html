@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>form</title>
+    <title>form 主架構</title>
 </head>
 
 <style>
@@ -18,6 +18,11 @@
         display: flex;
         flex-direction: column;
         border: 1px solid black;
+        /* 水平置中
+        position: relative;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        */
     }
 
     .title-box {
@@ -46,17 +51,21 @@
     }
 
     .row {
-        width: 320px;
-        height: fit-content;
+        width: 520px;
         display: flex;
         gap: 3px;
+        /* background-color: #B2D732; */
     }
 
     label {
-        width: 95px;
+        width: 115px;
         text-align: right;
         padding-right: 5px;
         background-color: violet;
+    }
+
+    label.tag {
+        background-color: transparent;
     }
 
     .submit-row {
@@ -70,12 +79,16 @@
 
     .blank-row {
         height: 5px;
-        background-color: deepskyblue;
+        /* background-color: deepskyblue; */
     }
 
     .blank-column {
         width: 10px;
-        background-color: deepskyblue;
+        /* background-color: deepskyblue; */
+    }
+
+    textarea#description {
+        resize: none;
     }
 </style>
 
@@ -102,11 +115,129 @@
                         <input type="text" id="col2" name="col2">
                     </div>
                     <div class="submit-row">
-                        <input type="submit" id="col2" name="col2" value="確認">
+                        <input type="submit" value="確認">
                     </div>
                 </div>
             </form>
         </div>
+        <br>
+        <div class="form-box">
+            <form action="#" method="POST">
+                <div class="title-box">
+                    <div class="title">
+                        <div class="title-content"><span>使用者資料維護</span></div>
+                    </div>
+                </div>
+                <div class="row-box">
+                    <div class="blank-row">
+                    </div>
+                    <div class="row">
+                        <div class="blank-column"></div>
+                        <label for="col1">Username</label>
+                        <input type="text" id="col1" name="col1">
+                    </div>
+                    <div class="row">
+                        <div class="blank-column"></div>
+                        <label for="col2">Password</label>
+                        <input type="text" id="col2" name="col2">
+                    </div>
+                    <div class="row">
+                        <div class="blank-column"></div>
+                        <label for="description">Description</label>
+                        <textarea id="description" cols="40" rows="5"></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="blank-column"></div>
+                        <label for="birthday">Birthday</label>
+                        <div id="birthday">
+                            <select id="year">
+                                <option>1910</option>
+                                <option>1911</option>
+                                <option>...</option>
+                                <option>2010</option>
+                                <option>2011</option>
+                            </select>
+                            <label for="year" class="tag">年</label>
+                            <select id="month">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>...</option>
+                                <option>11</option>
+                                <option>12</option>
+                            </select>
+                            <label for="month" class="tag">月</label>
+                            <select id="day">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>...</option>
+                                <option>30</option>
+                                <option>31</option>
+                            </select>
+                            <label for="day" class="tag">日</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="blank-column"></div>
+                        <label for="interests">Interests</label>
+                        <div id="interests">
+                            <input type="checkbox" id="baseball"><label for="baseball" class="tag">棒球</label>
+                            <input type="checkbox" id="basketball"><label for="basketball" class="tag">籃球</label>
+                            <input type="checkbox" id="volleyball"><label for="volleyball" class="tag">排球</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="blank-column"></div>
+                        <label for="todayWeather">Today is</label>
+                        <div id="todayWeather">
+                            <input type="radio" id="sunny" name="weather"><label for="sunny" class="tag">晴天</label>
+                            <input type="radio" id="windy" name="weather"><label for="windy" class="tag">有風</label>
+                            <input type="radio" id="cloudy" name="weather"><label for="cloudy" class="tag">多雲</label>
+                            <input type="radio" id="dark" name="weather"><label for="dark" class="tag">陰天</label><br>
+                            <input type="radio" id="rainy" name="weather"><label for="rainy" class="tag">下雨</label>
+                        </div>
+                    </div>
+                    <div class="submit-row">
+                        <input type="submit" value="確認">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br>
+    <div class="form-box">
+        <form action="#" method="POST">
+            <div class="title-box">
+                <div class="title">
+                    <div class="title-content"><span>示範</span></div>
+                </div>
+            </div>
+            <div class="row-box">
+                <div class="blank-row">
+                </div>
+                <div class="row">
+                    <div class="blank-column"></div>
+                    <label for="col1">Username</label>
+                    <input type="text" id="col1" name="col1">
+                </div>
+                <div class="row">
+                    <div class="blank-column"></div>
+                    <label for="col2">Password</label>
+                    <input type="text" id="col2" name="col2">
+                </div>
+                <div class="row">
+                    <div class="blank-column"></div>
+                    <label for="checkbox-demo">示範checkbox</label>
+                    <div id="checkbox-demo">
+                        <input type="checkbox" id="checkbox1"><label for="checkbox1" class="tag">checkbox1</label>
+                        <input type="checkbox" id="checkbox2"><label for="checkbox2" class="tag">checkbox2</label>
+                        <input type="checkbox" id="checkbox3"><label for="checkbox3" class="tag">checkbox3</label>
+                    </div>
+                </div>
+                <div class="submit-row">
+                    <input type="submit" value="確認">
+                </div>
+            </div>
+        </form>
     </div>
 </body>
 
