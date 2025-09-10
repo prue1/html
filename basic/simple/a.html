@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>a-div</title>
+</head>
+
+<style>
+    * {
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+
+    .flex-container {
+        width: fit-content;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        gap: 3px;
+        padding: 3px;
+    }
+
+    .box {
+        width: 150px;
+        height: 42px;
+        background-color: #F0F7D4;
+        border-left: 7px solid #FB9902;
+        border-bottom: 3px solid #FB9902;
+        border-top-color: transparent;
+        border-right-color: transparent;
+    }
+
+    .box:hover {
+        background-color: #B2D732;
+    }
+
+    a {
+        display: block;
+    }
+</style>
+
+<body>
+    <div class="flex-container">
+        <a href="nav.html">
+            <div class="box">
+                1.div in a
+            </div>
+        </a>
+        <div class="box">
+            <a href="nav.html">2.a in div</a>
+        </div>
+        <a href="nav.html">
+            <input type="button" class="box" name="btn" value="3.button in a">
+        </a>
+        <a href="nav.html">
+            <input type="button" class="box" name="btn" value="4.button in a">
+        </a>
+        <a href="nav.html">
+            <input type="button" class="box" name="btn" value="5.button in a">
+        </a>
+        <a href="nav.html" class="box">
+            6.only a
+        </a>
+    </div>
+</body>
+
+</html>

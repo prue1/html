@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>p-span-container</title>
+</head>
+
+<style>
+    * {
+        box-sizing: border-box;
+        font-size: 24px;
+    }
+
+    span {
+        background-color: cornflowerblue;
+        border: 3px solid darkcyan;
+    }
+
+    p {
+        background-color: yellowgreen;
+        border: 3px solid darkcyan;
+    }
+
+    .span-d,
+    .p-d {
+        width: 320px;
+        height: 50px;
+    }
+
+    .flex-c {
+        display: flex;
+        border: 1px solid red;
+    }
+
+    .grid-c {
+        display: grid;
+        grid-template-columns: auto auto;
+        border: 1px solid red;
+    }
+</style>
+
+<body>
+    <span>span</span>
+    <p>p</p>
+    <span class="span-d">span-d</span>
+    <p class="p-d">p-d</p>
+    <div class="flex-c">
+        <span>span</span>
+        <p>p</p>
+        <span class="span-d">span-d</span>
+        <p class="p-d">p-d</p>
+    </div><br>
+    <div class="grid-c">
+        <span>span</span>
+        <span class="span-d">span-d</span>
+        <p>p</p>
+        <p class="p-d">p-d</p>
+    </div>
+</body>
+
+</html>
