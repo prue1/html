@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>button</title>
+</head>
+
+<style>
+    .delete-btn-box {
+        position: relative;
+        width: fit-content;
+        height: fit-content;
+    }
+
+    #delete-btn-box-mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background-color: red;
+        opacity: 0.5;
+        pointer-events: none;
+    }
+</style>
+
+<script>
+    let cfm_count = 0;
+    function cfm() {
+        cfm_count++
+        if (cfm_count >= 3) {
+            console.log('submit!')
+            document.querySelector("#delete-btn-box-mask").style.width = '0'
+            cfm_count = 0
+        }
+        else{
+            document.querySelector("#delete-btn-box-mask").style.width = (cfm_count * 50) + '%'
+        }
+
+    }
+</script>
+
+<body>
+    <div class="delete-btn-box">
+        <input type="button" value="Button" onclick="cfm()">
+        <div id="delete-btn-box-mask">
+        </div>
+    </div>
+
+</body>
+
+</html>
