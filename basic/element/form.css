@@ -1,0 +1,66 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+.root-box {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+.top-bar {
+    height: 32px;
+    background-color: #AE0D7A;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-box {
+    height: 600px;
+    border: 1px solid #AE0D7A;
+    overflow: auto;
+}
+
+.data-input-row-bow {
+    margin: 3px;
+    display: flex;
+    /* 設為 flex，則內部元件會視情況(根據最高的元件)，自行擴充到全高度 */
+}
+
+.label-column {
+    width: 120px;
+    background-color: #F7D4EC;
+    border: 1px solid #AE0D7A;
+    text-align: right;
+    padding: 0 5px 0 5px;
+    margin: 0 3px 0 0;
+}
+
+.content-column-box {
+    width: 600px;
+    border-left: 10px solid #AE0D7A;
+    padding: 0 0 0 5px;
+}
+
+/* 若為 checkbox、radio 等多選項輸入的元件，用這個設定排版會比較整齊。 */
+.grid-box {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    width: fit-content;
+    column-gap: 5px;
+}
+
+input[type=text],
+input[type=password],
+select,
+textarea {
+    outline-color: #AE0D7A;
+    padding: 0 5px 0 5px;
+}

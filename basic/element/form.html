@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>form</title>
+    <link rel="stylesheet" type="text/css" href="form.css">
+</head>
+
+<body>
+    <div class="root-box">
+        <div class="top-bar">資料維護表格</div>
+        <form class="form-box">
+            <div class="data-input-row-bow">
+                <label for="username" class="label-column">使用者帳號</label>
+                <div class="content-column-box">
+                    <input type="text" id="username" name="username">
+                </div>
+            </div>
+            <div class="data-input-row-bow">
+                <label for="pass" class="label-column">使用者密碼</label>
+                <div class="content-column-box">
+                    <input type="password" id="pass" name="pass">
+                </div>
+            </div>
+            <div class="data-input-row-bow">
+                <label for="abbr" class="label-column">縮寫</label>
+                <div class="content-column-box">
+                    <input type="text" id="abbr" name="abbr">
+                </div>
+            </div>
+            <div class="data-input-row-bow">
+                <label for="explanation" class="label-column">說明</label>
+                <div class="content-column-box">
+                    <textarea id="explanation" cols="60" rows="6"></textarea>
+                </div>
+            </div>
+            <div class="data-input-row-bow">
+                <label for="idiom" class="label-column">英文諺語</label>
+                <div class="content-column-box">
+                    <select id="idiom">
+                        <option>Practice makes perfect.</option>
+                        <option>One generation plants the trees, another gets the shade.</option>
+                        <option>Bad news has wings.</option>
+                    </select>
+                </div>
+            </div>
+            <div class="data-input-row-bow">
+                <label class="label-column">方向</label>
+                <div class="content-column-box">
+                    <div class="grid-box">
+                        <div>
+                            <input type="checkbox" id="east" name="direction" value="east">
+                            <label for="east">東</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="south" name="direction" value="south">
+                            <label for="south">南</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="west" name="direction" value="west">
+                            <label for="west">西</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="north" name="direction" value="north">
+                            <label for="north">北</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="northeast" name="direction" value="northeast">
+                            <label for="northeast">東北</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="southeast" name="direction" value="southeast">
+                            <label for="southeast">東南</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="northwest" name="direction" value="northwest">
+                            <label for="northwest">西北</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="southwest" name="direction" value="southwest">
+                            <label for="southwest">西南</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="data-input-row-bow">
+                <label class="label-column">季節</label>
+                <div class="content-column-box">
+                    <div class="grid-box">
+                        <div>
+                            <input type="radio" id="spring" name="season" value="spring" checked>
+                            <label for="spring">春</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="summer" name="season" value="summer">
+                            <label for="summer">夏</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="autumn" name="season" value="autumn">
+                            <label for="autumn">秋</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="winter" name="season" value="winter">
+                            <label for="winter">冬</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
