@@ -20,18 +20,20 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 10px 10px 0 0;
 }
 
 .form-box {
     height: 600px;
     border: 1px solid #AE0D7A;
     overflow: auto;
+    border-radius: 0 0 10px 10px;
 }
 
-.data-input-row-bow {
+.data-input-row-box {
     margin: 3px;
     display: flex;
-    /* 設為 flex，則內部元件會視情況(根據最高的元件)，自行擴充到全高度 */
+    /* 設為 flex，則內部元件會視情況(根據最高的元件)，自動擴充至全高度 */
 }
 
 .label-column {
@@ -63,4 +65,9 @@ select,
 textarea {
     outline-color: #AE0D7A;
     padding: 0 5px 0 5px;
+}
+
+.button-box {
+    justify-content: right;
+    gap: 3px;
 }

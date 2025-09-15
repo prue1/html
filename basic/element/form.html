@@ -11,32 +11,32 @@
 <body>
     <div class="root-box">
         <div class="top-bar">資料維護表格</div>
-        <form class="form-box">
-            <div class="data-input-row-bow">
+        <form class="form-box" action="form2.html" method="POST">
+            <div class="data-input-row-box">
                 <label for="username" class="label-column">使用者帳號</label>
                 <div class="content-column-box">
                     <input type="text" id="username" name="username">
                 </div>
             </div>
-            <div class="data-input-row-bow">
+            <div class="data-input-row-box">
                 <label for="pass" class="label-column">使用者密碼</label>
                 <div class="content-column-box">
                     <input type="password" id="pass" name="pass">
                 </div>
             </div>
-            <div class="data-input-row-bow">
+            <div class="data-input-row-box">
                 <label for="abbr" class="label-column">縮寫</label>
                 <div class="content-column-box">
                     <input type="text" id="abbr" name="abbr">
                 </div>
             </div>
-            <div class="data-input-row-bow">
+            <div class="data-input-row-box">
                 <label for="explanation" class="label-column">說明</label>
                 <div class="content-column-box">
                     <textarea id="explanation" cols="60" rows="6"></textarea>
                 </div>
             </div>
-            <div class="data-input-row-bow">
+            <div class="data-input-row-box">
                 <label for="idiom" class="label-column">英文諺語</label>
                 <div class="content-column-box">
                     <select id="idiom">
@@ -46,7 +46,7 @@
                     </select>
                 </div>
             </div>
-            <div class="data-input-row-bow">
+            <div class="data-input-row-box">
                 <label class="label-column">方向</label>
                 <div class="content-column-box">
                     <div class="grid-box">
@@ -85,7 +85,7 @@
                     </div>
                 </div>
             </div>
-            <div class="data-input-row-bow">
+            <div class="data-input-row-box">
                 <label class="label-column">季節</label>
                 <div class="content-column-box">
                     <div class="grid-box">
@@ -107,6 +107,11 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="data-input-row-box button-box">
+                <input type="button" id="btn_nrmal" name="btn_nrmal" value="一般按鈕">
+                <input type="reset" id="btn_rset" name="btn_rset" value="清除">
+                <input type="submit" id="btn_submit" name="btn_submit" value="提交">
             </div>
         </form>
     </div>
