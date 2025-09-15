@@ -11,6 +11,10 @@ body {
     display: flex;
     flex-direction: column;
     width: fit-content;
+    /* 以下定位在畫面中央 */
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 10px);
 }
 
 .top-bar {
@@ -20,14 +24,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 10px 10px 0 0;
+    border-radius: 5px 5px 0 0;
 }
 
 .form-box {
     height: 600px;
     border: 1px solid #AE0D7A;
     overflow: auto;
-    border-radius: 0 0 10px 10px;
+    border-radius: 0 0 5px 5px;
 }
 
 .data-input-row-box {
@@ -70,4 +74,14 @@ textarea {
 .button-box {
     justify-content: right;
     gap: 3px;
+}
+
+img {
+    max-width: 300px;
+    height: auto;
+    border: 1px solid red;
+}
+
+.emoji-size {
+    font-size: 48px;
 }
