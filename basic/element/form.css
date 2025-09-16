@@ -24,14 +24,19 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 5px 5px 0 0;
+    border-radius: 10px 10px 0 0;
 }
 
 .form-box {
     height: 600px;
     border: 1px solid #AE0D7A;
     overflow: auto;
-    border-radius: 0 0 5px 5px;
+    border-radius: 0 0 0 0;
+}
+
+.form2-box {
+    border: 1px solid #AE0D7A;
+    border-radius: 0 0 0 0;
 }
 
 .data-input-row-box {
@@ -76,12 +81,22 @@ textarea {
     gap: 3px;
 }
 
+.button-box2 {
+    background-color: #AE0D7A;
+    display: flex;
+    justify-content: right;
+    gap: 3px;
+    padding: 3px 3px 3px 3px;
+}
+
 img {
-    max-width: 300px;
+    max-width: 250px;
     height: auto;
     border: 1px solid red;
 }
 
 .emoji-size {
+    display: inline-block;
     font-size: 48px;
+    border-bottom: 5px solid red;
 }
