@@ -22,15 +22,18 @@ body {
     border: 1px solid red;
 }
 
-.display-box {
+.display-layout {
     position: absolute;
     width: 400px;
-    height: 250px;
-    box-shadow: 3px 3px 3px black;
-    background-color: white;
+    overflow: auto;
 }
 
-.top-bar {
+.display-top {
     width: 100%;
     height: 35px;
+}
+
+.display-content {
+    width: 100%;
+    height: 270px;
 }
