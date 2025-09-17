@@ -5,7 +5,7 @@ function setup() {
     for (let i = 0; i < 12; i++) {
         const id = 'moving-box-' + (i + 1)
         let template = `
-            <div id="${id}" class="display-box moving-window" onmousedown="do_down(this, event)">
+            <div id="${id}" class="display-box" onmousedown="do_down(this, event)">
                 <div class="top-bar"></div>
                 <p></p>
                 <p></p>
