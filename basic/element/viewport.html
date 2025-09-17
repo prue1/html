@@ -10,24 +10,16 @@
 
 <script src="viewport.js"></script>
 
-<body>
-    <div>
-        <span id="innerWidth">-</span>
-        <span id="innerHeight">-</span>
+<body onload="setup()">
+    <div class="moving-panel" onmousemove="do_move(event)" onmouseup="do_up()">
+        <div>
+            <span id="innerWidth">-</span>
+            <span id="innerHeight">-</span>
+        </div>
+        <div>
+            <input type="button" name="btn" value="按鈕" onclick="do_click()">
+        </div>
     </div>
-    <div>
-        <input type="button" name="btn" value="按鈕" onclick="do_click()">
-    </div>
-    <div id="div1" style="top:100px; left:100px;" onmousedown="do_down(this, event)" onmousemove="do_move(this, event)"
-        onmouseup="do_up()" onmouseleave="do_up()"><span>div1<span></div>
-    <div id="div2" style="top:400px; left:100px;" onmousedown="do_down(this, event)" onmousemove="do_move(this, event)"
-        onmouseup="do_up()" onmouseleave="do_up()"><span>div1<span></div>
-    <div id="div3" style="top:300px; left:900px;" onmousedown="do_down(this, event)" onmousemove="do_move(this, event)"
-        onmouseup="do_up()" onmouseleave="do_up()"><span>div1<span></div>
-    <div id="div4" style="top:200px; left:500px;" onmousedown="do_down(this, event)" onmousemove="do_move(this, event)"
-        onmouseup="do_up()" onmouseleave="do_up()"><span>div1<span></div>
-    <div id="div5" style="top:500px; left:500px;" onmousedown="do_down(this, event)" onmousemove="do_move(this, event)"
-        onmouseup="do_up()" onmouseleave="do_up()"><span>div1<span></div>
 </body>
 
 </html>
