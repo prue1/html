@@ -5,7 +5,9 @@ function setup() {
     for (let i = 0; i < 12; i++) {
         let template = `
             <div id="moving-box-${i + 1}" class="display-layout" onmousedown="do_down(this, event)">
-                <div class="display-top"></div>
+                <div class="display-top">
+                    <span>123</span>
+                </div>
                 <div class="display-content">
                 </div>
             </div>`

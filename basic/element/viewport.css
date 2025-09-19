@@ -31,6 +31,21 @@ body {
 .display-top {
     width: 100%;
     height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.display-top>span {
+    width: 60%;
+    height: 80%;
+    background-color: aliceblue;
+    border-radius: 5px;
+    position: absolute;
+    padding: 0 0 0 5px;
+    top: 4px;
+    left: 5px;
 }
 
 .display-content {
