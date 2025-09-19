@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>slide</title>
+</head>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    .flex {
+        display: flex;
+        gap: 3px;
+    }
+
+
+    .box {
+        position: relative;
+        width: fit-content;
+    }
+
+    .top {
+        width: 150px;
+        height: 35px;
+        background-color: yellowgreen;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .bottom {
+        position: absolute;
+        width: 150px;
+        height: 170px;
+        pointer-events: none;
+        overflow: hidden;
+    }
+
+    .box:hover .bottom {
+        pointer-events: initial;
+    }
+
+    .box:hover .content {
+        top: 0px;
+    }
+
+    .content {
+        width: 150px;
+        height: 170px;
+        background-color: purple;
+        position: absolute;
+        top: -200px;
+        transition: top 0.3s ease-in;
+        border-radius: 0 0 10px 10px;
+        padding: 3px;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
+
+    img {
+        width: 350px;
+        height: auto;
+        border: 3px solid transparent;
+    }
+
+    img:hover {
+        border: 3px solid red;
+    }
+
+    a {
+        display: inline-block;
+        background-color: white;
+        width: 100%;
+        padding: 3px;
+    }
+</style>
+
+<body>
+    <div class="flex">
+        <div class="box">
+            <div class="top"></div>
+            <div class="bottom">
+                <div class="content">
+                    <a href="http://www.pchome.com.tw" target="_blank" rel="noopener">pc home</a>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <div class="top"></div>
+            <div class="bottom">
+                <div class="content">
+                    <a href="http://www.pchome.com.tw" target="_blank" rel="noopener">pc home</a>
+                    <a href="http://www.pchome.com.tw" target="_blank" rel="noopener">pc home</a>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <div class="top"></div>
+            <div class="bottom">
+                <div class="content">
+                    <a href="http://www.pchome.com.tw" target="_blank" rel="noopener">pc home</a>
+                    <a href="http://www.pchome.com.tw" target="_blank" rel="noopener">pc home</a>
+                    <a href="http://www.pchome.com.tw" target="_blank" rel="noopener">pc home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img src="old-xp.jpg" alt="old-xp">
+</body>
+
+</html>
