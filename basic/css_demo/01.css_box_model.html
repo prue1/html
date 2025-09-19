@@ -2,47 +2,72 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Box Model</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Box Model</title>
 </head>
 
 <style>
-  .flex {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
+    * {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-  .box {
-    width: 230px;
-    height: 100px;
-  }
+    .box {
+        width: 300px;
+        height: 150px;
+        display: flex;
+        flex-direction: column;
+        -webkit-user-select: none;
+        user-select: none;
+    }
 
-  .box1 {
-    padding: 20px;
-    border: 10px solid #C21460;
-    background-color: #F7D4E3;
-  }
+    .box1 {
+        padding: 10px;
+        border: 10px solid #C21460;
+    }
 
-  .box2 {
-    padding: 20px;
-    border: 10px solid #FCCB1A;
-    background-color: #347B98;
-    box-sizing: border-box;
-  }
+    .box2 {
+        padding: 10px;
+        border: 10px solid #FCCB1A;
+        box-sizing: border-box;
+    }
 
-  span {
-    color: #FE2712;
-    background-color: #F7F7D4;
-  }
+    .box1:hover {
+        box-sizing: border-box;
+    }
+
+    .box1:hover::after {
+        content: 'box-sizing: border-box';
+        color: red;
+        font-weight: bold;
+    }
+
+    .box2:hover {
+        box-sizing: initial;
+    }
+
+    .box2:hover::after {
+        content: 'box-sizing: initial;';
+        color: red;
+        font-weight: bold;
+    }
+
+    .content {
+        background-color: #F7F7D4;
+    }
 </style>
 
 <body>
-  <div class="flex">
-    <div class="box box1"><span>Box Model</span></div>
-    <div class="box box2"><span>box-sizing: border-box;</span></div>
-  </div>
+    <div>將遊標移到框框裏頭，可看見變化。</div>
+    <div class="box box1">
+        <div class="content">padding: 10px;</div>
+        <div class="content">border: 10px solid #C21460;</div>
+    </div>
+    <div class="box box2">
+        <div class="content">padding: 10px;</div>
+        <div class="content">border: 10px solid #FCCB1A;</div>
+        <div class="content">box-sizing: border-box;</div>
+    </div>
 </body>
 
 </html>

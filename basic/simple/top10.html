@@ -2,209 +2,210 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>top 10</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>top 10</title>
 </head>
 
 <script>
-  const sport = ['10大最受歡迎運動', '棒球', '藍球', '足球', '網球', '體操', '游泳', '羽毛球', '排球', '跳水', '田徑']
-  const travel = ['10大最受歡迎旅遊地點', '日本 (15.6%)', '韓國', '泰國', '中國', '英國', '美國', '法國', '北歐', '澳洲', '紐西蘭']
+    const sport = ['10大最受歡迎運動', '棒球', '藍球', '足球', '網球', '體操', '游泳', '羽毛球', '排球', '跳水', '田徑']
+    const travel = ['10大最受歡迎旅遊地點', '日本 (15.6%)', '韓國', '泰國', '中國', '英國', '美國', '法國', '北歐', '澳洲', '紐西蘭']
 
-  const custom_css = ['', '', '', '', '']
-  const css1 = ['#FC600A', '#F7E0D4', '#4424D6', '#2B3409', '#F7EBD4']
-  const css2 = ['#C21460', '#F7D4E3', '#347B98', '#342B09', '#F7EBD4']
-  const css3 = ['#347B98', '#D4EDF7', '#FCCB1A', '#34091C', '#F7EBD4']
-  const css4 = ['#559E54', '#D4F7D4', '#FBA90A', '#340933', '#F7EBD4']
-  const css5 = ['#FCCB1A', '#F7F0D4', '#347B98', '#092834', '#263409']
+    const custom_css = ['', '', '', '', '']
+    const css1 = ['#FC600A', '#F7E0D4', '#4424D6', '#2B3409', '#F7EBD4']
+    const css2 = ['#C21460', '#F7D4E3', '#347B98', '#342B09', '#F7EBD4']
+    const css3 = ['#347B98', '#D4EDF7', '#FCCB1A', '#34091C', '#F7EBD4']
+    const css4 = ['#559E54', '#D4F7D4', '#FBA90A', '#340933', '#F7EBD4']
+    const css5 = ['#FCCB1A', '#F7F0D4', '#347B98', '#092834', '#263409']
 
-  function update(data) {
-    document.querySelector(".topic-layout, .topic-cfg").innerHTML = data[0]
-    document.querySelectorAll(".data-layout, .data-cfg").forEach((e, idx) => {
-      e.innerHTML = data[idx + 1]
-    })
-  }
+    function update(data) {
+        document.querySelector(".topic-layout, .topic-cfg").innerHTML = data[0]
+        document.querySelectorAll(".data-layout, .data-cfg").forEach((e, idx) => {
+            e.innerHTML = data[idx + 1]
+        })
+    }
 
-  function paint(css) {
-    document.querySelector(".topic-cfg").style.backgroundColor = css[0]
-    document.querySelector(".topic-cfg").style.color = css[4]
-    document.querySelector(".board-container-cfg").style.backgroundColor = css[2]
-    document.querySelector(".board-container-cfg").style.borderColor = css[2]
+    function paint(css) {
+        document.querySelector(".topic-cfg").style.backgroundColor = css[0]
+        document.querySelector(".topic-cfg").style.color = css[4]
+        document.querySelector(".board-container-cfg").style.backgroundColor = css[2]
+        document.querySelector(".board-container-cfg").style.borderColor = css[2]
 
-    document.querySelectorAll(".seq-cfg").forEach((e, idx) => {
-      e.style.backgroundColor = css[0]
-      e.style.color = css[4]
-    })
+        document.querySelectorAll(".seq-cfg").forEach((e, idx) => {
+            e.style.backgroundColor = css[0]
+            e.style.color = css[4]
+        })
 
-    document.querySelectorAll(".data-cfg").forEach((e, idx) => {
-      e.style.backgroundColor = css[1]
-      e.style.color = css[3]
-    })
-  }
+        document.querySelectorAll(".data-cfg").forEach((e, idx) => {
+            e.style.backgroundColor = css[1]
+            e.style.color = css[3]
+        })
+    }
 
-  function paint_reset(css) {
-    document.querySelector(".topic-cfg").style = ''
-    document.querySelector(".board-container-cfg").style = ''
+    function paint_reset(css) {
+        document.querySelector(".topic-cfg").style = ''
+        document.querySelector(".board-container-cfg").style = ''
 
-    document.querySelectorAll(".seq-cfg").forEach((e, idx) => {
-      e.style = ''
-    })
+        document.querySelectorAll(".seq-cfg").forEach((e, idx) => {
+            e.style = ''
+        })
 
-    document.querySelectorAll(".data-cfg").forEach((e, idx) => {
-      e.style = ''
-    })
-  }
+        document.querySelectorAll(".data-cfg").forEach((e, idx) => {
+            e.style = ''
+        })
+    }
 
-  function change_color(idx, color_str) {
-    custom_css[idx] = color_str
-    paint(custom_css)
-  }
+    function change_color(idx, color_str) {
+        custom_css[idx] = color_str
+        paint(custom_css)
+    }
 </script>
 
 <style>
-  * {
-    box-sizing: border-box;
-  }
+    * {
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-  .box-layout {
-    width: 270px;
-    height: 385px;
-  }
+    .box-layout {
+        width: 270px;
+        height: 385px;
+    }
 
-  .topic-layout {
-    width: 270px;
-    height: 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+    .topic-layout {
+        width: 270px;
+        height: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-  .topic-cfg {
-    background-color: #8601AF;
-    color: #F7EBD4;
-    border-radius: 5px 5px 0px 0px;
-  }
+    .topic-cfg {
+        background-color: #8601AF;
+        color: #F7EBD4;
+        border-radius: 5px 5px 0px 0px;
+    }
 
-  .board-container-layout {
-    width: 270px;
-    height: 350px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-  }
+    .board-container-layout {
+        width: 270px;
+        height: 350px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    }
 
-  .board-container-cfg {
-    background-color: #FB9902;
-    border: 1px solid #FB9902;
-    border-radius: 0px 0px 5px 5px;
-  }
+    .board-container-cfg {
+        background-color: #FB9902;
+        border: 1px solid #FB9902;
+        border-radius: 0px 0px 5px 5px;
+    }
 
-  .content-layout {
-    width: 95%;
-    height: 30px;
-    display: flex;
-  }
+    .content-layout {
+        width: 95%;
+        height: 30px;
+        display: flex;
+    }
 
-  .seq-layout {
-    width: 12%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+    .seq-layout {
+        width: 12%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-  .seq-cfg {
-    background-color: #8601AF;
-    color: #F7EBD4;
-    font-family: consolas;
-    border-radius: 5px 0px 0px 5px;
-  }
+    .seq-cfg {
+        background-color: #8601AF;
+        color: #F7EBD4;
+        font-family: consolas;
+        border-radius: 5px 0px 0px 5px;
+    }
 
-  .data-layout {
-    width: 88%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-  }
+    .data-layout {
+        width: 88%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
 
-  .data-cfg {
-    background-color: #EFD4F7;
-    color: #342309;
-    font-family: PMingLiU;
-    font-weight: 50%;
-    padding: 0px 0px 0px 5px;
-    border-radius: 0px 5px 5px 0px;
-  }
+    .data-cfg {
+        background-color: #EFD4F7;
+        color: #342309;
+        font-family: PMingLiU;
+        font-weight: 50%;
+        padding: 0px 0px 0px 5px;
+        border-radius: 0px 5px 5px 0px;
+    }
 </style>
 
 <body>
-  <input type="button" value="運動" onclick="update(sport)" />
-  <input type="button" value="旅遊地點" onclick="update(travel)" /><br><br>
-  <input type="button" value="預設樣式" onclick="paint_reset()" />
-  <input type="button" value="樣式1" onclick="paint(css1)" />
-  <input type="button" value="樣式2" onclick="paint(css2)" />
-  <input type="button" value="樣式3" onclick="paint(css3)" />
-  <input type="button" value="樣式4" onclick="paint(css4)" />
-  <input type="button" value="樣式5" onclick="paint(css5)" />
-  <input type="button" value="自訂樣式" onclick="paint(custom_css)" /><br><br>
-  <label for="favcolor0">色彩1</label>
-  <input type="color" id="favcolor0" value="#ffffff" oninput="change_color(0, this.value)" />
-  <label for="favcolor1">色彩2</label>
-  <input type="color" id="favcolor1" value="#ffffff" oninput="change_color(1, this.value)" />
-  <label for="favcolor2">色彩3</label>
-  <input type="color" id="favcolor2" value="#ffffff" oninput="change_color(2, this.value)" />
-  <label for="favcolor3">色彩4</label>
-  <input type="color" id="favcolor3" value="#ffffff" oninput="change_color(3, this.value)" />
-  <label for="favcolor4">色彩5</label>
-  <input type="color" id="favcolor4" value="#ffffff" oninput="change_color(4, this.value)" /><br><br>
-  <div class="box-layout">
-    <div class="topic-layout topic-cfg">
-      10大最受歡迎運動
+    <input type="button" value="運動" onclick="update(sport)" />
+    <input type="button" value="旅遊地點" onclick="update(travel)" /><br><br>
+    <input type="button" value="預設樣式" onclick="paint_reset()" />
+    <input type="button" value="樣式1" onclick="paint(css1)" />
+    <input type="button" value="樣式2" onclick="paint(css2)" />
+    <input type="button" value="樣式3" onclick="paint(css3)" />
+    <input type="button" value="樣式4" onclick="paint(css4)" />
+    <input type="button" value="樣式5" onclick="paint(css5)" />
+    <input type="button" value="自訂樣式" onclick="paint(custom_css)" /><br><br>
+    <label for="favcolor0">色彩1</label>
+    <input type="color" id="favcolor0" value="#ffffff" oninput="change_color(0, this.value)" />
+    <label for="favcolor1">色彩2</label>
+    <input type="color" id="favcolor1" value="#ffffff" oninput="change_color(1, this.value)" />
+    <label for="favcolor2">色彩3</label>
+    <input type="color" id="favcolor2" value="#ffffff" oninput="change_color(2, this.value)" />
+    <label for="favcolor3">色彩4</label>
+    <input type="color" id="favcolor3" value="#ffffff" oninput="change_color(3, this.value)" />
+    <label for="favcolor4">色彩5</label>
+    <input type="color" id="favcolor4" value="#ffffff" oninput="change_color(4, this.value)" /><br><br>
+    <div class="box-layout">
+        <div class="topic-layout topic-cfg">
+            10大最受歡迎運動
+        </div>
+        <div class="board-container-layout board-container-cfg">
+            <div class="content-layout">
+                <div class="seq-layout seq-cfg">1</div>
+                <div class="data-layout data-cfg">棒球</div>
+            </div>
+            <div class="content-layout">
+                <div class="seq-layout seq-cfg">2</div>
+                <div class="data-layout data-cfg">籃球</div>
+            </div>
+            <div class="content-layout">
+                <div class="seq-layout seq-cfg">3</div>
+                <div class="data-layout data-cfg">足球</div>
+            </div>
+            <div class="content-layout">
+                <div class="seq-layout seq-cfg">4</div>
+                <div class="data-layout data-cfg">網球</div>
+            </div>
+            <div class="content-layout">
+                <div class="seq-layout seq-cfg">5</div>
+                <div class="data-layout data-cfg">體操</div>
+            </div>
+            <div class="content-layout">
+                <div class="seq-layout seq-cfg">6</div>
+                <div class="data-layout data-cfg">游泳</div>
+            </div>
+            <div class="content-layout">
+                <div class="seq-layout seq-cfg">7</div>
+                <div class="data-layout data-cfg">羽毛球</div>
+            </div>
+            <div class="content-layout">
+                <div class="seq-layout seq-cfg">8</div>
+                <div class="data-layout data-cfg">排球</div>
+            </div>
+            <div class="content-layout">
+                <div class="seq-layout seq-cfg">9</div>
+                <div class="data-layout data-cfg">跳水</div>
+            </div>
+            <div class="content-layout">
+                <div class="seq-layout seq-cfg">10</div>
+                <div class="data-layout data-cfg">田徑</div>
+            </div>
+        </div>
     </div>
-    <div class="board-container-layout board-container-cfg">
-      <div class="content-layout">
-        <div class="seq-layout seq-cfg">1</div>
-        <div class="data-layout data-cfg">棒球</div>
-      </div>
-      <div class="content-layout">
-        <div class="seq-layout seq-cfg">2</div>
-        <div class="data-layout data-cfg">籃球</div>
-      </div>
-      <div class="content-layout">
-        <div class="seq-layout seq-cfg">3</div>
-        <div class="data-layout data-cfg">足球</div>
-      </div>
-      <div class="content-layout">
-        <div class="seq-layout seq-cfg">4</div>
-        <div class="data-layout data-cfg">網球</div>
-      </div>
-      <div class="content-layout">
-        <div class="seq-layout seq-cfg">5</div>
-        <div class="data-layout data-cfg">體操</div>
-      </div>
-      <div class="content-layout">
-        <div class="seq-layout seq-cfg">6</div>
-        <div class="data-layout data-cfg">游泳</div>
-      </div>
-      <div class="content-layout">
-        <div class="seq-layout seq-cfg">7</div>
-        <div class="data-layout data-cfg">羽毛球</div>
-      </div>
-      <div class="content-layout">
-        <div class="seq-layout seq-cfg">8</div>
-        <div class="data-layout data-cfg">排球</div>
-      </div>
-      <div class="content-layout">
-        <div class="seq-layout seq-cfg">9</div>
-        <div class="data-layout data-cfg">跳水</div>
-      </div>
-      <div class="content-layout">
-        <div class="seq-layout seq-cfg">10</div>
-        <div class="data-layout data-cfg">田徑</div>
-      </div>
-    </div>
-  </div>
 </body>
 
 </html>

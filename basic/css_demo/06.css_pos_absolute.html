@@ -2,97 +2,97 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CSS position</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS position</title>
 </head>
 
 <style>
-  * {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* The box-sizing property allows us to include the padding and border in an element's total width and height. */
-    box-sizing: border-box;
-  }
+    * {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* The box-sizing property allows us to include the padding and border in an element's total width and height. */
+        box-sizing: border-box;
+    }
 
-  /* absolute 測試 */
-  .flex {
-    display: flex;
-    gap: 10px;
-  }
+    /* absolute 測試 */
+    .flex {
+        display: flex;
+        gap: 10px;
+    }
 
-  .box-rel {
-    width: 270px;
-    height: 270px;
-    border: 1px solid red;
-    position: relative;
-    padding: 10px;
-  }
+    .box-rel {
+        width: 270px;
+        height: 270px;
+        border: 1px solid red;
+        position: relative;
+        padding: 10px;
+    }
 
-  .inner-box {
-    background-color: yellowgreen;
-    box-shadow: 5px 5px 3px black;
-  }
+    .inner-box {
+        background-color: yellowgreen;
+        box-shadow: 5px 5px 3px black;
+    }
 
-  /* 設定absolute及位移參數(top)，則該元件會依據設定出現在該位置 
+    /* 設定absolute及位移參數(top)，則該元件會依據設定出現在該位置
      無視外部元件的 padding。
   */
-  .inner-box-1 {
-    width: 70px;
-    height: 70px;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-  }
+    .inner-box-1 {
+        width: 70px;
+        height: 70px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
 
-  /* 只設定absolute，使得該元件"上浮"，但因為缺少位移參數，所以會留在原來位置。
+    /* 只設定absolute，使得該元件"上浮"，但因為缺少位移參數(top, right, bottom, left)，所以會留在原來位置。
      而下方的內容會往上移。
   */
-  .inner-box-2 {
-    width: 70px;
-    height: 70px;
-    position: absolute;
-  }
+    .inner-box-2 {
+        width: 70px;
+        height: 70px;
+        position: absolute;
+    }
 
-  /* 雖然設定了位移參數(top, left)，但缺少position設定，所以位移參數不產生作用 */
-  .inner-box-3 {
-    width: 70px;
-    height: 70px;
-    top: 100px;
-    left: 10px;
-  }
+    /* 雖然設定了位移參數(top, left)，但缺少position設定，所以位移參數不產生作用 */
+    .inner-box-3 {
+        width: 70px;
+        height: 70px;
+        top: 100px;
+        left: 10px;
+    }
 
-  .box-rel>p:nth-child(1) {
-    background-color: orange;
-  }
+    .box-rel>p:nth-child(1) {
+        background-color: orange;
+    }
 </style>
 
 <body>
-  <div class="flex">
-    <div class="box-rel">
-      <p>top-line</p>
-      <div class="inner-box inner-box-1">
-      </div>
-      <p>bottom-line-1</p>
-      <p>bottom-line-2</p>
-      <p>bottom-line-3</p>
+    <div class="flex">
+        <div class="box-rel">
+            <p>top-line</p>
+            <div class="inner-box inner-box-1">
+            </div>
+            <p>bottom-line-1</p>
+            <p>bottom-line-2</p>
+            <p>bottom-line-3</p>
+        </div>
+        <div class="box-rel">
+            <p>top-line</p>
+            <div class="inner-box inner-box-2">
+            </div>
+            <p>bottom-line-1</p>
+            <p>bottom-line-2</p>
+            <p>bottom-line-3</p>
+        </div>
+        <div class="box-rel">
+            <p>top-line</p>
+            <div class="inner-box inner-box-3">
+            </div>
+            <p>bottom-line-1</p>
+            <p>bottom-line-2</p>
+            <p>bottom-line-3</p>
+        </div>
     </div>
-    <div class="box-rel">
-      <p>top-line</p>
-      <div class="inner-box inner-box-2">
-      </div>
-      <p>bottom-line-1</p>
-      <p>bottom-line-2</p>
-      <p>bottom-line-3</p>
-    </div>
-    <div class="box-rel">
-      <p>top-line</p>
-      <div class="inner-box inner-box-3">
-      </div>
-      <p>bottom-line-1</p>
-      <p>bottom-line-2</p>
-      <p>bottom-line-3</p>
-    </div>
-  </div>
 </body>
 
 </html>

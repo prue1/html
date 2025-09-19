@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS flipper</title>
+</head>
+
+<script>
+    function jump_to() {
+        const e = document.getElementById("color");
+        const dest = document.getElementById("box-no");
+        document.getElementById(dest.value).appendChild(e);
+    }
+</script>
+<style>
+    * {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        box-sizing: border-box;
+    }
+
+    .box {
+        width: 200px;
+        height: 100px;
+        padding: 5px;
+        position: relative;
+    }
+
+    .bgc1 {
+        background-color: darkcyan;
+    }
+
+    .bgc2 {
+        background-color: gold;
+    }
+
+    .bgc3 {
+        background-color: cornflowerblue;
+    }
+
+    .floating-item {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: white;
+        padding: 5px;
+        border-radius: 5px;
+    }
+</style>
+
+<body>
+    <!-- 將select的value與div的id綁在一起，可大幅簡化 change() 的程式碼 -->
+    <div id="darkcyan" class="box bgc1">
+        <div id="color" class="floating-item">
+            <label for="box-no">Go</label>
+            <select id="box-no" onchange="jump_to();">
+                <option value="darkcyan">darkcyan</option>
+                <option value="gold">gold</option>
+                <option value="cornflowerblue">cornflowerblue</option>
+            </select>
+        </div>
+    </div>
+    <div id="gold" class="box bgc2"></div>
+    <div id="cornflowerblue" class="box bgc3"></div>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS flipper</title>
+</head>
+
+<script>
+    function jump_to() {
+        const e = document.getElementById("box");
+        const dest = document.getElementById("box-no");
+        document.querySelector(`.flex>:nth-child(${dest.value})`).appendChild(e)
+    }
+</script>
+
+<style>
+    * {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        box-sizing: border-box;
+    }
+
+    body {
+        --val: 10px;
+    }
+
+    .flex {
+        display: flex;
+    }
+
+    .container {
+        width: 100px;
+        height: 100px;
+        position: relative;
+    }
+
+    .floating-item {
+        position: absolute;
+        top: var(--val);
+        left: var(--val);
+        background-color: white;
+        padding: 5px;
+        border-radius: 5px;
+    }
+
+    .container:nth-child(2n + 1) {
+        background-color: #C21460;
+    }
+
+    .container:nth-child(2n + 2) {
+        background-color: #FCCB1A;
+    }
+</style>
+
+<body>
+    <div class="flex">
+        <div class="container">
+            <div id="box" class="floating-item">
+                <label for="box-no">Go</label>
+                <select id="box-no" onchange="jump_to();">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+        </div>
+        <div class="container">
+        </div>
+        <div class="container">
+        </div>
+        <div class="container">
+        </div>
+        <div class="container">
+        </div>
+        <div class="container">
+        </div>
+        <div class="container">
+        </div>
+        <div class="container">
+        </div>
+        <div class="container">
+        </div>
+        <div class="container">
+        </div>
+    </div>
+
+</body>
+
+</html>
