@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>dynamic</title>
+</head>
+
+<script>
+    const data = [
+        {
+            "type": "text", "label": "資料一", "name": "data1",
+            "value": ""
+        },
+        {
+            "type": "text", "label": "資料二", "name": "data2",
+            "value": ""
+        },
+        {
+            "type": "text", "label": "資料三", "name": "data3",
+            "value": ""
+        },
+        {
+            "type": "checkbox", "label": "資料四", "name": "data4",
+            "choices": [
+                { "value": "1", "text": "1" },
+                { "value": "2", "text": "2" },
+                { "value": "3", "text": "3" }]
+        },
+        {
+            "type": "radio", "label": "資料五", "name": "data5",
+            "choices": [
+                { "value": "1", "text": "一" },
+                { "value": "2", "text": "二" },
+                { "value": "3", "text": "三" }]
+        },
+        {
+            "type": "combobox", "label": "資料六", "name": "data6",
+            "choices": [
+                { "value": "A", "text": "A" },
+                { "value": "B", "text": "B" },
+                { "value": "C", "text": "C" }]
+        }
+    ]
+
+    function setup() {
+        const form1 = document.querySelector("#form1")
+        data.forEach((obj) => {
+            if (obj.type == 'text') {
+                form1.innerHTML += createText(obj)
+            }
+            else if (obj.type == 'checkbox') {
+                form1.innerHTML += createCheckbox(obj)
+            }
+            else if (obj.type == 'radio') {
+                form1.innerHTML += createRadio(obj)
+            }
+            else if (obj.type == 'combobox') {
+                form1.innerHTML += createCombobox(obj)
+            }
+        })
+
+        form1.innerHTML += `<input type="submit" value="確定">`
+    }
+
+    function createText(obj) {
+        return `<div>
+                    <label for="id-${obj.name}">${obj.label}：</label>
+                    <input type="text" id="id-${obj.name}" name="${obj.name}" value="${obj.value}">
+                </div>`
+    }
+
+    function createCheckbox(obj) {
+        let checkbox = ""
+        for (let i = 0; i < obj.choices.length; i++) {
+            const choice = obj.choices[i]
+            checkbox += `<input type="checkbox" id="id-${choice.value}" name="${obj.name}" value="${choice.value}">
+                         <label for="id-${choice.value}">${choice.text}</label>`
+        }
+        return `<div>
+                    <label for="id-${obj.name}">${obj.label}：</label>
+                    ${checkbox}
+                </div>`
+    }
+
+    function createRadio(obj) {
+        let radio = ""
+        for (let i = 0; i < obj.choices.length; i++) {
+            const choice = obj.choices[i]
+            radio += `<input type="radio" id="id-${choice.value}" name="${obj.name}" value="${choice.value}">
+                         <label for="id-${choice.value}">${choice.text}</label>`
+        }
+        return `<div>
+                    <label for="id-${obj.name}">${obj.label}：</label>
+                    ${radio}
+                </div>`
+    }
+
+    function createCombobox(obj) {
+        let combobox = `<select id="id-${obj.name}" name="${obj.name}">`
+        for (let i = 0; i < obj.choices.length; i++) {
+            const choice = obj.choices[i]
+            combobox += `<option value="${choice.value}">${choice.text}</option>`
+        }
+        combobox += `</select>`
+        return `<div>
+                    <label for="id-${obj.name}">${obj.label}：</label>
+                    ${combobox}
+                </div>`
+    }
+</script>
+
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+</style>
+
+<body onload="setup()">
+    <form id="form1" action="#" method="POST"></form>
+</body>
+
+</html>

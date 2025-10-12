@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS flipper</title>
+</head>
+
+<script>
+    function doClick() {
+        const promise = new Promise(function (f1, f2) {
+            const value = parseInt(Math.random() * 10)
+            if (value <= 5) {
+                f1(value)
+            } else {
+                f2(value)
+            }
+        })
+
+        promise.then(
+            (value) => { document.querySelector(".result").innerHTML = `f1(${value})` },
+            (value) => { document.querySelector(".result").innerHTML = `f2(${value})` }
+        )
+    }
+</script>
+
+<body>
+    <button type="button" onclick="doClick()">button</button>
+    <span class="result"></span>
+</body>
+
+</html>
