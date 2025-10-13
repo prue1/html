@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>if , for 流程控制</title>
+</head>
+
+<script>
+    const a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    function init() {
+        a.forEach((element, index) => {
+            if (element >= 1) {
+                if (element % 2 == 0) {
+                    document.querySelector('#msg').innerHTML += `${index}:${element}->even<br>`
+                } else {
+                    document.querySelector('#msg').innerHTML += `${index}:${element}->odd<br>`
+                }
+            } else {
+                document.querySelector('#msg').innerHTML += `${index}:${element}->less than 1<br>`
+            }
+        });
+    }
+</script>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+    }
+</style>
+
+<body onload="init()">
+    <p id="msg"></p>
+</body>
+
+</html>
