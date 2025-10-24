@@ -4,102 +4,84 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="form.css">
     <title>form</title>
 </head>
-
-<style>
-    * {
-        box-sizing: border-box;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    .item {
-        display: flex;
-        width: fit-content;
-        border: 1px solid #C21460;
-        background-color: white;
-    }
-
-    .item-label {
-        border-right: 1px solid #C21460;
-        background-color: #FCDFEB;
-        padding: 0 5px 0 5px;
-    }
-
-    input[type=checkbox]~label,
-    input[type=radio]~label {
-        padding: 0 5px 0 0;
-    }
-
-    form {
-        background-color: gainsboro;
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        padding: 5px;
-    }
-
-    input,
-    textarea,
-    select {
-        /* appearance: none; */
-        border-color: transparent;
-        outline-color: transparent;
-        padding: 0 5px;
-    }
-
-    input:focus,
-    textarea:focus,
-    select:focus {
-        outline: 3px dashed #0247FE;
-    }
-</style>
 
 <body>
     <form>
         <div class="item">
-            <span class="item-label">興趣</span>
-            <input type="checkbox" id="cb1">
-            <label for="cb1">checkbox</label>
-            <input type="checkbox" id="cb2">
-            <label for="cb2">checkbox</label>
-            <input type="checkbox" id="cb3">
-            <label for="cb3">checkbox</label>
-        </div>
-        <div class="item">
-            <span class="item-label">活動</span>
-            <input type="radio" id="rad1" name="radiooo">
-            <label for="rad1">radio</label>
-            <input type="radio" id="rad2" name="radiooo">
-            <label for="rad2">radio</label>
-            <input type="radio" id="rad3" name="radiooo">
-            <label for="rad3">radio</label>
-        </div>
-        <div class="item">
             <label for="tt1" class="item-label">大名</label>
-            <input type="text" size="25" id="tt1">
+            <input type="text" size="25" id="tt1" name="fullname">
         </div>
         <div class="item">
             <label for="tt2" class="item-label">行動電話</label>
-            <input type="text" size="40" id="tt2">
+            <input type="text" size="40" id="tt2" name="mobilphone">
         </div>
         <div class="item">
             <label for="tt3" class="item-label">通訊住址</label>
-            <input type="text" size="55" id="tt3">
+            <input type="text" size="55" id="tt3" name="address">
+        </div>
+        <div class="item">
+            <span class="item-label">興趣</span>
+            <input type="checkbox" id="cb1" name="interests" value="ball">
+            <label for="cb1">打球</label>
+            <input type="checkbox" id="cb2" name="interests" value="music">
+            <label for="cb2">音樂</label>
+            <input type="checkbox" id="cb3" name="interests" value="travel">
+            <label for="cb3">旅遊</label>
+        </div>
+        <div class="item">
+            <span class="item-label">最好的季節</span>
+            <input type="radio" id="rad1" name="season">
+            <label for="rad1">春季</label>
+            <input type="radio" id="rad2" name="season">
+            <label for="rad2">夏季</label>
+            <input type="radio" id="rad3" name="season">
+            <label for="rad3">秋季</label>
+            <input type="radio" id="rad4" name="season">
+            <label for="rad4">冬季</label>
         </div>
         <div class="item">
             <label for="ta" class="item-label">描述</label>
-            <textarea id="ta" cols="50" rows="7"></textarea>
+            <textarea id="ta" cols="50" rows="7" name="description"></textarea>
         </div>
         <div class="item">
-            <label for="sel" class="item-label">其他選項</label>
-            <select id="sel">
-                <option>aaaaaaaaaaaa</option>
-                <option>bbbbbbbbbbbb</option>
-                <option>cccccccccccc</option>
-                <option>dddddddddddd</option>
-                <option>eeeeeeeeeeee</option>
+            <label for="sel" class="item-label">最喜歡的職業賽事</label>
+            <select id="sel" name="other">
+                <option value="baseball">棒球</option>
+                <option value="basketball">籃球</option>
+                <option value="football">足球</option>
+                <option value="esport">電競</option>
+                <option value="tennis">網球</option>
+                <option value="gold">高爾夫球</option>
+                <option value="poolball">撞球</option>
             </select>
+        </div>
+        <div class="item">
+            <span class="item-label">相關檔案</span>
+            <div class="file-box">
+                <div>
+                    <label for="file1" class="file-label">1.</label>
+                    <input type="file" id="file1" name="files">
+                </div>
+                <div>
+                    <label for="file2" class="file-label">2.</label>
+                    <input type="file" id="file2" name="files">
+                </div>
+                <div>
+                    <label for="file3" class="file-label">3.</label>
+                    <input type="file" id="file3" name="files">
+                </div>
+                <div>
+                    <label for="file4" class="file-label">4.</label>
+                    <input type="file" id="file4" name="files">
+                </div>
+                <div>
+                    <label for="file5" class="file-label">5.</label>
+                    <input type="file" id="file5" name="files">
+                </div>
+            </div>
         </div>
         <div class="item">
             <button type="reset">reset</button>

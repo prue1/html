@@ -1,0 +1,69 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.item {
+    display: flex;
+    width: fit-content;
+    border: 1px solid #C21460;
+    background-color: white;
+}
+
+.item-label {
+    border-right: 1px solid #C21460;
+    background-color: #FCDFEB;
+    padding: 0 5px 0 5px;
+    width: 100px;
+}
+
+input[type=checkbox]~label,
+input[type=radio]~label {
+    padding: 0 5px 0 0;
+}
+
+form {
+    background-color: gainsboro;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+}
+
+input,
+textarea,
+select {
+    /* appearance: none; */
+    border-color: transparent;
+    outline-color: transparent;
+    padding: 0 5px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 3px dashed #0247FE;
+}
+
+::file-selector-button {
+    display: none;
+    border: 1px solid #C21460;
+    background-color: #FCDFEB;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+input[type=file] {
+    width: 500px;
+}
+
+.file-label {
+    padding: 0 5px 0 5px;
+    background-color: #FCDFEB;
+}
+
+.file-box {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 0 0 0 5px;
+}
