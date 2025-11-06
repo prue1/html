@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>456</title>
+</head>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    .menu-bar {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .menu-box {
+        position: relative;
+        width: fit-content;
+    }
+
+    .menu {
+        width: 100px;
+        height: 50px;
+        background-color: #F7D4E3;
+        border: 3px solid #C21460;
+    }
+
+    .sub-menu {
+        position: absolute;
+        width: 150px;
+        height: 200px;
+        background-color: #F7D4E3;
+        border: 3px solid #C21460;
+        display: none;
+        top: 0px;
+        left: 100px;
+    }
+
+    .menu-box:hover>.sub-menu {
+        display: block;
+    }
+
+    .content {
+        border: 1px solid blue;
+    }
+</style>
+
+<body>
+    <div class="menu-bar">
+        <div class="menu-box">
+            <div class="menu">Menu</div>
+            <div class="sub-menu sub-menu-1">Sub-Menu-1</div>
+        </div>
+        <div class="menu-box">
+            <div class="menu">Menu</div>
+            <div class="sub-menu sub-menu-2">Sub-Menu-2</div>
+        </div>
+        <div class="menu-box">
+            <div class="menu">Menu</div>
+            <div class="sub-menu sub-menu-3">Sub-Menu-3</div>
+        </div>
+        <div class="menu-box">
+            <div class="menu">Menu</div>
+            <div class="sub-menu sub-menu-4">Sub-Menu-4</div>
+        </div>
+        <div class="menu-box">
+            <div class="menu">Menu</div>
+            <div class="sub-menu sub-menu-5">Sub-Menu-5</div>
+        </div>
+        <div class="menu-box">
+            <div class="menu">Menu</div>
+            <div class="sub-menu sub-menu-6">Sub-Menu-6</div>
+        </div>
+    </div>
+    <span class="content">A solar flare is a powerful, sudden eruption of electromagnetic radiation from the Sun's
+        surface,
+        typically
+        occurring near sunspots where magnetic fields are tangled.</span>
+</body>
+
+</html>

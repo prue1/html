@@ -8,19 +8,28 @@
 </head>
 
 <script>
-    const a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    const a = []
+    for (let i = 0; i < 100; i++) {
+        a[i] = i
+    }
+
     function init() {
         a.forEach((element, index) => {
-            if (element >= 1) {
-                if (element % 2 == 0) {
-                    document.querySelector('#msg').innerHTML += `${index}:${element}->even<br>`
-                } else {
-                    document.querySelector('#msg').innerHTML += `${index}:${element}->odd<br>`
-                }
-            } else {
-                document.querySelector('#msg').innerHTML += `${index}:${element}->less than 1<br>`
-            }
+            evaluate(element)
         });
+    }
+
+    const greater = 3;
+    function evaluate(n) {
+        if (n >= greater) {
+            if (n % greater == 0) {
+                console.log(`${n}是${greater}的倍數。`)
+            } else {
+                console.log(`${n}不是${greater}的倍數。`)
+            }
+        } else {
+            console.log(`${n}不符合條件。`)
+        }
     }
 </script>
 

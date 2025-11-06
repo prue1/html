@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>789</title>
+</head>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    .menu-bar {
+        display: flex;
+        gap: 5px;
+    }
+
+    .menu-box {
+        position: relative;
+        width: fit-content;
+    }
+
+    /*
+       menu 部份, 我分為 menu-outter 與 menu ,
+       且分別設定border:
+       menu-outter 僅設定 bottom
+       menu 則設定 top, left, right (在視覺上自然形成一個"框")
+       那麼, 在 hover 時, 將 menu-outter 的 bottom border 寬度設為 0,
+       可讓 menu 與 sub-menu 無縫銜接。
+       注意, 這檥會使得下方的內容上移。
+       所以, 要放2個以上的menu來卡位。
+    */
+    .menu-outter {
+        border-bottom: 5px solid #C21460;
+    }
+
+    .menu {
+        width: 100px;
+        height: 50px;
+        background-color: #F7D4E3;
+        border-color: #C21460;
+        border-style: solid;
+        border-width: 5px 5px 0 5px;
+    }
+
+    .sub-menu {
+        position: absolute;
+        width: 150px;
+        height: 200px;
+        background-color: #F7D4E3;
+        border: 5px solid #C21460;
+        display: none;
+    }
+
+    .sub-menu-1 {
+        width: 625px;
+        left: 0px;
+    }
+
+    .sub-menu-2 {
+        width: 625px;
+        left: -105px;
+    }
+
+    .sub-menu-3 {
+        width: 625px;
+        left: -210px;
+    }
+
+    .menu-box:hover>.menu-outter {
+        border-width: 0;
+    }
+
+    .menu-box:hover>.sub-menu {
+        display: block;
+    }
+
+    .content {
+        border: 1px solid blue;
+    }
+</style>
+
+<body>
+    <div class="menu-bar">
+        <div class="menu-box">
+            <div class="menu-outter">
+                <div class="menu">Menu</div>
+            </div>
+            <div class="sub-menu sub-menu-1">Sub-Menu-1</div>
+        </div>
+        <div class="menu-box">
+            <div class="menu-outter">
+                <div class="menu">Menu</div>
+            </div>
+            <div class="sub-menu sub-menu-2">Sub-Menu-2</div>
+        </div>
+        <div class="menu-box">
+            <div class="menu-outter">
+                <div class="menu">Menu</div>
+            </div>
+            <div class="sub-menu sub-menu-3">Sub-Menu-3</div>
+        </div>
+    </div>
+    <span class="content">A solar flare is a powerful, sudden eruption of electromagnetic radiation from the Sun's
+        surface,
+        typically
+        occurring near sunspots where magnetic fields are tangled.</span>
+</body>
+
+</html>

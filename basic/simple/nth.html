@@ -14,52 +14,44 @@
         box-sizing: border-box;
         font-size: 1em;
         /* 1em = 16px => https://www.w3schools.com/css/css_font_size.asp */
+        width: fit-content;
     }
 
     /* :  單冒號，指的是元件的狀態(state) */
     /* :: 雙冒號，指的是元件中的某部份 */
 
-    :nth-last-child(3) {
-        /* 子元件中，倒數第3個元件 */
+    :nth-child(3) {
         color: red;
     }
 
-    p:nth-last-child(3) {
-        /* 子元件中，倒數第3個，且為 p 元件 */
-        background-color: violet;
+    :nth-of-type(3) {
+        /* 以 type 區分 group, 選取 group 中的第 n 個元件 */
+        border: 1px solid blue;
     }
 
-    h1:nth-last-child(3) {
-        /* 子元件中，倒數第3個，且為 h1 元件 */
-        background-color: yellowgreen;
-    }
-
-    p:nth-last-of-type(2) {
-        /* 子元件中，倒數第2個 p 元件 */
-        color: blue;
-    }
-
-    p::first-letter {
+    h1::first-letter {
         /* 首字母 */
         font-size: 1.5em;
         font-weight: bold;
     }
+
+    div:nth-of-type(3) {
+        background-color: gold;
+    }
 </style>
 
 <body>
-    <div>
-        <p>p:Hello World.</p>
-        <h1>h1:床前明月光</h1>
-        <p>p:Hello World.</p>
-        <p>p:Hello World.</p>
-        <h1>h1:疑似地上霜</h1>
-    </div>
-    <div>
-        <p>p:Hello World.</p>
-        <h1>h1:疑似地上霜</h1>
-        <p>p:Hello World.</p>
-        <p>p:Hello World.</p>
-    </div>
+    <p>:nth-child() & :nth-of-type() 測試</p>
+    <h1>h1 --- 1</h1>
+    <h1>h1 --- 2</h1>
+    <h1>h1 --- 3</h1>
+
+    <div>div --- 1</div>
+    <div>div --- 2</div>
+    <p>p --- 1</p>
+    <div>div --- 3</div>
+    <div>div --- 4</div>
+    <div>div --- 5</div>
 </body>
 
 </html>

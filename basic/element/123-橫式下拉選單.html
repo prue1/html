@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>123</title>
+</head>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    .menu-bar {
+        display: flex;
+        gap: 5px;
+    }
+
+    .menu-box {
+        position: relative;
+        width: fit-content;
+    }
+
+    /* 多包一層, 可以做出 menu 與 sub-menu 之間不會有重覆 border。 */
+    /* 由於這裏沒有設定 width 與 height, 所以, border 等於佔用額外空間, sub-menu 做位移時要考慮進去 */
+    .menu-outter {
+        border: 5px solid #C21460;
+    }
+
+    /* 不做 border, 而將其放到外面一層 */
+    .menu {
+        width: 100px;
+        height: 50px;
+        background-color: #F7D4E3;
+    }
+
+    .sub-menu {
+        position: absolute;
+        width: 150px;
+        height: 200px;
+        background-color: #F7D4E3;
+        border: 5px solid #C21460;
+        display: none;
+    }
+
+    .sub-menu-1 {
+        width: 625px;
+        left: 0px;
+    }
+
+    .sub-menu-2 {
+        width: 625px;
+        left: -115px;
+    }
+
+    .sub-menu-3 {
+        width: 625px;
+        left: -230px;
+    }
+
+    .sub-menu-5 {
+        left: -25px;
+    }
+
+    .sub-menu-6 {
+        right: 0px;
+    }
+
+    .menu-box:hover>.sub-menu {
+        display: block;
+    }
+
+    /* 下方 border 設為 0, 可與 sub-menu 無縫連接 */
+    .menu-box:hover>.menu-outter {
+        border-width: 5px 5px 0 5px;
+    }
+
+    .content {
+        border: 1px solid blue;
+    }
+</style>
+
+<body>
+    <div class="menu-bar">
+        <div class="menu-box">
+            <div class="menu-outter">
+                <div class="menu">Menu</div>
+            </div>
+            <div class="sub-menu sub-menu-1">Sub-Menu-1</div>
+        </div>
+        <div class="menu-box">
+            <div class="menu-outter">
+                <div class="menu">Menu</div>
+            </div>
+            <div class="sub-menu sub-menu-2">Sub-Menu-2</div>
+        </div>
+        <div class="menu-box">
+            <div class="menu-outter">
+                <div class="menu">Menu</div>
+            </div>
+            <div class="sub-menu sub-menu-3">Sub-Menu-3</div>
+        </div>
+        <div class="menu-box">
+            <div class="menu-outter">
+                <div class="menu">Menu</div>
+            </div>
+            <div class="sub-menu sub-menu-4">Sub-Menu-4</div>
+        </div>
+        <div class="menu-box">
+            <div class="menu-outter">
+                <div class="menu">Menu</div>
+            </div>
+            <div class="sub-menu sub-menu-5">Sub-Menu-5</div>
+        </div>
+        <div class="menu-box">
+            <div class="menu-outter">
+                <div class="menu">Menu</div>
+            </div>
+            <div class="sub-menu sub-menu-6">Sub-Menu-6</div>
+        </div>
+    </div>
+    <span class="content">A solar flare is a powerful, sudden eruption of electromagnetic radiation from the Sun's
+        surface,
+        typically
+        occurring near sunspots where magnetic fields are tangled.</span>
+</body>
+
+</html>
