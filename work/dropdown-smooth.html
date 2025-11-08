@@ -37,7 +37,7 @@
         height: 170px;
         pointer-events: none;
         overflow: hidden;
-        /* 下方元件若設了 position 會覆蓋到下拉選單上方 */
+        /* 下方元件若設了 position, 就會覆蓋在下拉選單上方 */
         /* 設定 z-index: 10; 以確保下拉選單在上方。數值可以更大 */
         z-index: 10;
     }
@@ -66,15 +66,15 @@
     }
 
     .flex>.box:nth-child(1) .content {
-        transition: top 1s ease-in, opacity 1s ease-in;
+        transition: top 0.3s ease-in, opacity 0.3s ease-in;
     }
 
     .flex>.box:nth-child(2) .content {
-        transition: top 1s ease-out, opacity 1s ease-out;
+        transition: top 0.7s ease-out, opacity 0.7s ease-out;
     }
 
     .flex>.box:nth-child(3) .content {
-        transition: top 1s linear, opacity 1s linear;
+        transition: top 2s linear, opacity 2s linear;
     }
 
     .img-box {
@@ -92,7 +92,7 @@
     }
 
     img:hover {
-        opacity: 0.7;
+        opacity: 0.5;
     }
 
     a {
