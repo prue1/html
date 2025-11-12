@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>flex-pagination</title>
+</head>
+
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .container {
+        width: 300px;
+        height: fit-content;
+        overflow: auto;
+        border: 3px solid red;
+        padding: 3px;
+        background-color: pink;
+    }
+
+    .flex {
+        display: flex;
+        gap: 3px;
+        width: fit-content;
+        height: fit-content;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+
+    .box {
+        width: 50px;
+        height: 25px;
+        background-color: plum;
+        border: 1px solid red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+
+<script>
+    function setup() {
+        const e = document.querySelector('#flex')
+        let i = 1
+        while (i <= 100) {
+            e.innerHTML += `<div class="box" onclick="pp(${i})">${i}</div>`
+            i++
+        }
+
+    }
+
+    function pp(s) {
+        console.log(s)
+    }
+</script>
+
+<body onload="setup()">
+    <div class="container">
+        <div id="flex" class="flex">
+        </div>
+    </div>
+</body>
+
+</html>
