@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>expand with js</title>
+</head>
+
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .box {
+        width: 300px;
+        height: 50px;
+        background-color: violet;
+    }
+
+    .box2-container {
+        position: relative;
+        width: 300px;
+        height: 0;
+        overflow: hidden;
+        transition: height 0.3s linear;
+    }
+
+    .box2 {
+        width: 300px;
+        height: 200px;
+        padding: 5px;
+        background-color: rgb(126, 156, 244);
+        position: absolute;
+        bottom: 0px;
+        transition: top 0.3s linear;
+        overflow: auto;
+    }
+
+    /*
+    .box:hover+.box2-container,
+    .box2-container:hover {
+        height: 200px;
+    }
+        */
+
+    .row:nth-child(odd) .box {
+        background-color: violet;
+    }
+
+    .row:nth-child(even) .box {
+        background-color: gold;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+</style>
+
+<script>
+    const status = new Set()
+    function do_click(id) {
+        if (status.has(id)) {
+            document.querySelector(`#${id}`).style.height = '0px'
+            status.delete(id)
+        }
+        else {
+            document.querySelector(`#${id}`).style.height = '200px'
+            status.add(id)
+        }
+
+        // console.log(status)
+    }
+</script>
+
+<body>
+    <div class="row">
+        <div class="box" onclick="do_click('area1')">a</div>
+        <div class="box2-container" id="area1">
+            <div class="box2">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>5</div>
+                <div>6</div>
+                <div>7</div>
+                <div>8</div>
+                <div>9</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="box" onclick="do_click('area2')">b</div>
+        <div class="box2-container" id="area2">
+            <div class="box2">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>5</div>
+                <div>6</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="box" onclick="do_click('area3')">c</div>
+        <div class="box2-container" id="area3">
+            <div class="box2">
+                <img src="image/old-xp.jpg" alt="old-xp">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
