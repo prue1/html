@@ -62,6 +62,7 @@
 <script>
     const status = new Set()
     function do_click(id) {
+        console.log(document.querySelector(`#${id}`).getAttribute('data-hello'))
         if (status.has(id)) {
             document.querySelector(`#${id}`).style.height = '0px'
             status.delete(id)
@@ -78,7 +79,7 @@
 <body>
     <div class="row">
         <div class="box" onclick="do_click('area1')">a</div>
-        <div class="box2-container" id="area1">
+        <div class="box2-container" id="area1" data-hello="hello, drea1.">
             <div class="box2">
                 <div>1</div>
                 <div>2</div>
@@ -94,7 +95,7 @@
     </div>
     <div class="row">
         <div class="box" onclick="do_click('area2')">b</div>
-        <div class="box2-container" id="area2">
+        <div class="box2-container" id="area2" data-hello="hello, drea2.">
             <div class="box2">
                 <div>1</div>
                 <div>2</div>
@@ -107,7 +108,7 @@
     </div>
     <div class="row">
         <div class="box" onclick="do_click('area3')">c</div>
-        <div class="box2-container" id="area3">
+        <div class="box2-container" id="area3" data-hello="hello, drea3.">
             <div class="box2">
                 <img src="image/old-xp.jpg" alt="old-xp">
             </div>
