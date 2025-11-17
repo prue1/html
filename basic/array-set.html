@@ -2,118 +2,118 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>key-value array與Map</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>key-value array與Map</title>
 </head>
 
 <script>
-  const a = new Map()
-  a.set('val1', 'a值1')
-  a.set('val2', 'a值2')
-  a.set('val3', 'a值3')
+    const a = new Map()
+    a.set('val1', 'a值1')
+    a.set('val2', 'a值2')
+    a.set('val3', 'a值3')
 
-  const b = []
-  b['val1'] = 'b值1'
-  b['val2'] = 'b值2'
-  b['val3'] = 'b值3'
+    const b = []
+    b['val1'] = 'b值1'
+    b['val2'] = 'b值2'
+    b['val3'] = 'b值3'
 
-  function setup() {
-    initb()
-  }
-
-  function inita() {
-    const e = document.querySelector("#selection")
-    e.innerHTML = ''
-    a.forEach((value, key) => {
-      console.log(key + ',' + value)
-      let opt = document.createElement('option')
-      opt.value = key
-      opt.innerHTML = value
-      e.appendChild(opt)
-    })
-  }
-
-  function initb() {
-    const e = document.querySelector("#selection")
-    e.innerHTML = ''
-    for (let key in b) {
-      console.log(key + ',' + b[key])
-      let opt = document.createElement('option')
-      opt.value = key
-      opt.innerHTML = b[key]
-      e.appendChild(opt)
+    function setup() {
+        initb()
     }
-  }
 
-  function change() {
-    const value = document.querySelector("#selection").value
-    document.querySelector("#val").innerHTML = a.get(value) + ', ' + b[value]
-  }
+    function inita() {
+        const e = document.querySelector("#selection")
+        e.innerHTML = ''
+        a.forEach((value, key) => {
+            console.log(key + ',' + value)
+            let opt = document.createElement('option')
+            opt.value = key
+            opt.innerHTML = value
+            e.appendChild(opt)
+        })
+    }
+
+    function initb() {
+        const e = document.querySelector("#selection")
+        e.innerHTML = ''
+        for (let key in b) {
+            console.log(key + ',' + b[key])
+            let opt = document.createElement('option')
+            opt.value = key
+            opt.innerHTML = b[key]
+            e.appendChild(opt)
+        }
+    }
+
+    function change() {
+        const value = document.querySelector("#selection").value
+        document.querySelector("#val").innerHTML = a.get(value) + ', ' + b[value]
+    }
 </script>
 
 <style>
-  * {
-    box-sizing: border-box;
-    font-family: 'Liberation Sans', PMingLiU;
-  }
+    * {
+        box-sizing: border-box;
+        font-family: 'Liberation Sans', PMingLiU;
+    }
 
-  body {
-    margin: 10px;
-  }
+    body {
+        margin: 10px;
+    }
 
-  #container {
-    width: 300px;
-    height: 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: red;
-  }
+    #container {
+        width: 300px;
+        height: 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: red;
+    }
 
-  select {
-    width: 100px;
-    height: 30px;
-    padding: 0 0 0 3px;
-    background-color: khaki;
-  }
+    select {
+        width: 100px;
+        height: 30px;
+        padding: 0 0 0 3px;
+        background-color: khaki;
+    }
 
-  .message-box {
-    width: 300px;
-    height: 30px;
-    padding: 0 0 0 3px;
-    background-color: gold;
-    display: flex;
-    align-items: center;
-  }
+    .message-box {
+        width: 300px;
+        height: 30px;
+        padding: 0 0 0 3px;
+        background-color: gold;
+        display: flex;
+        align-items: center;
+    }
 
-  .selection-box {
-    width: 300px;
-    height: 40px;
-    padding: 0 0 0 3px;
-    background-color: yellowgreen;
-    display: flex;
-    align-items: center;
-  }
+    .selection-box {
+        width: 300px;
+        height: 40px;
+        padding: 0 0 0 3px;
+        background-color: yellowgreen;
+        display: flex;
+        align-items: center;
+    }
 </style>
 
 <body onload="setup()">
-  <div id="container">
-    <div class="message-box">
-      <span>訊息:</span>
-      <span id="val"></span>
+    <div id="container">
+        <div class="message-box">
+            <span>訊息:</span>
+            <span id="val"></span>
+        </div>
+        <div class="selection-box">
+            <label for="selection">隨選:</label>
+            <select id="selection" onchange="change()">
+            </select>
+            <span>Set:</span>
+            <input type="radio" id="aSet" name="valueSet" value="aSet" onclick="inita()" />
+            <label for="aSet">A</label>
+            <input type="radio" id="bSet" name="valueSet" value="bSet" onclick="initb()" checked />
+            <label for="bSet">B</label>
+        </div>
     </div>
-    <div class="selection-box">
-      <label for="selection">隨選:</label>
-      <select id="selection" onchange="change()">
-      </select>
-      <span>Set:</span>
-      <input type="radio" id="aSet" name="valueSet" value="aSet" onclick="inita()" />
-      <label for="aSet">A</label>
-      <input type="radio" id="bSet" name="valueSet" value="bSet" onclick="initb()" checked />
-      <label for="bSet">B</label>
-    </div>
-  </div>
 
 </body>
 

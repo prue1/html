@@ -2,127 +2,127 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>dropdown</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>dropdown</title>
 </head>
 
 <script>
 </script>
 <style>
-  * {
-    box-sizing: border-box;
-  }
+    * {
+        box-sizing: border-box;
+    }
 
-  body {
-    /* background-image: url("../100x100.png"); */
-    /* background-image: radial-gradient(red, green, blue); */
-    /* background-image: linear-gradient(to bottom right, #ffb5ba, #c48379, #5c0923); */
-    /* background-color: aliceblue; */
-    margin: 5px;
-  }
+    body {
+        /* background-image: url("../100x100.png"); */
+        /* background-image: radial-gradient(red, green, blue); */
+        /* background-image: linear-gradient(to bottom right, #ffb5ba, #c48379, #5c0923); */
+        /* background-color: aliceblue; */
+        margin: 5px;
+    }
 
-  .flex {
-    display: flex;
-    gap: 15px;
-    /* 重要，設定 height ，拉開與下方內容的距離 */
-    height: 50px;
-  }
+    .flex {
+        display: flex;
+        gap: 15px;
+        /* 重要，設定 height ，拉開與下方內容的距離 */
+        height: 50px;
+    }
 
-  .mbox1,
-  .mbox2,
-  .mbox3 {
-    position: relative;
-    display: inline-block;
-  }
+    .mbox1,
+    .mbox2,
+    .mbox3 {
+        position: relative;
+        display: inline-block;
+    }
 
-  /* 選單 */
-  .m1a,
-  .m2a,
-  .m3a {
-    width: 150px;
-    height: 40px;
-    background-color: rgb(26, 69, 150);
-    border-bottom: 5px solid gold;
-  }
+    /* 選單 */
+    .m1a,
+    .m2a,
+    .m3a {
+        width: 150px;
+        height: 40px;
+        background-color: rgb(26, 69, 150);
+        border-bottom: 5px solid gold;
+    }
 
-  /* 子選單 */
-  .m1b,
-  .m2b,
-  .m3b {
-    display: none;
-    width: 150px;
-    height: fit-content;
-    background-color: darkcyan;
-    border-bottom: 5px solid darkorange;
-  }
+    /* 子選單 */
+    .m1b,
+    .m2b,
+    .m3b {
+        display: none;
+        width: 150px;
+        height: fit-content;
+        background-color: darkcyan;
+        border-bottom: 5px solid darkorange;
+    }
 
-  .item-box {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    padding: 3px;
-  }
+    .item-box {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        padding: 3px;
+    }
 
-  .item {
-    display: inline-block;
-    padding: 5px;
-    color: darkblue;
-    background-color: #F0F7D4;
-  }
+    .item {
+        display: inline-block;
+        padding: 5px;
+        color: darkblue;
+        background-color: #F0F7D4;
+    }
 
-  .item:hover {
-    color: #F0F7D4;
-    background-color: darkblue;
-  }
+    .item:hover {
+        color: #F0F7D4;
+        background-color: darkblue;
+    }
 
-  /* 重要，顯示子選單 */
-  .mbox1:hover .m1b,
-  .mbox2:hover .m2b,
-  .mbox3:hover .m3b {
-    display: block;
-  }
+    /* 重要，顯示子選單 */
+    .mbox1:hover .m1b,
+    .mbox2:hover .m2b,
+    .mbox3:hover .m3b {
+        display: block;
+    }
 </style>
 
 <body>
-  <div class="flex">
-    <div class="mbox1">
-      <div class="m1a">
-      </div>
-      <div class="m1b">
-        <div class="item-box">
-          <div class="item">1st item</div>
-          <div class="item">2nd item</div>
-          <div class="item">3rd item</div>
+    <div class="flex">
+        <div class="mbox1">
+            <div class="m1a">
+            </div>
+            <div class="m1b">
+                <div class="item-box">
+                    <div class="item">1st item</div>
+                    <div class="item">2nd item</div>
+                    <div class="item">3rd item</div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="mbox2">
-      <div class="m2a">
-      </div>
-      <div class="m2b">
-        <div class="item-box">
-          <div class="item">1st item</div>
-          <div class="item">2nd item</div>
-          <div class="item">3rd item</div>
+        <div class="mbox2">
+            <div class="m2a">
+            </div>
+            <div class="m2b">
+                <div class="item-box">
+                    <div class="item">1st item</div>
+                    <div class="item">2nd item</div>
+                    <div class="item">3rd item</div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="mbox3">
-      <div class="m3a">
-      </div>
-      <div class="m3b">
-        <div class="item-box">
-          <div class="item">1st item</div>
-          <div class="item">2nd item</div>
-          <div class="item">3rd item</div>
-          <div class="item"><a href="https://forum.gamer.com.tw/B.php?bsn=17532" target="_blank"
-              rel="noopener">LoL巴哈</a></div>
+        <div class="mbox3">
+            <div class="m3a">
+            </div>
+            <div class="m3b">
+                <div class="item-box">
+                    <div class="item">1st item</div>
+                    <div class="item">2nd item</div>
+                    <div class="item">3rd item</div>
+                    <div class="item"><a href="https://forum.gamer.com.tw/B.php?bsn=17532" target="_blank"
+                            rel="noopener">LoL巴哈</a></div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-  <div><img src="F:\usr\misc\wallpaper\ai\pixel\star-forest.png" width="300" height="300" alt="a pixel plane" /></div>
+    <div><img src="F:\usr\misc\wallpaper\ai\pixel\star-forest.png" width="300" height="300" alt="a pixel plane" /></div>
 </body>
 
 </html>

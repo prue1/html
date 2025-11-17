@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>template</title>
+    <title>flex</title>
 </head>
 
 <style>
@@ -13,54 +13,44 @@
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    .flex {
+    .flex-vertical {
         display: flex;
-        background-color: yellowgreen;
+        flex-direction: column;
+        width: fit-content;
+        gap: 3px;
     }
 
-    ul {
-        background-color: palegoldenrod;
+    .flex-horizontal {
+        display: flex;
+        height: fit-content;
+        gap: 3px;
     }
 
-    .margin-0 {
-        margin: 0;
+    .flex-horizontal>button:nth-child(1) {
+        height: 50px;
     }
 
-    span {
-        background-color: darkkhaki;
+    .flex-horizontal>button:nth-child(1)::after {
+        content: ' (height: 50px;)';
+        color: red;
     }
 </style>
 
 <body>
-    <div class="flex">
-        <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-        </ul>
+    <h1>垂直排列</h1>
+    <div class="flex-vertical">
+        <button type="button">按鈕｛寬度｝藉由 flex 特性自動擴充</button>
+        <button type="button">按鈕｛寬度｝自動擴充</button>
+        <button type="button">按鈕</button>
+        <button type="button">只適用於垂直排列</button>
     </div>
-    <br>
-    <div>
-        <ul class="margin-0">
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-        </ul>
+    <h1>水平排列</h1>
+    <div class="flex-horizontal">
+        <button type="button">按鈕｛高度｝藉由 flex 特性自動擴充</button>
+        <button type="button">按鈕｛高度｝自動擴充</button>
+        <button type="button">按鈕</button>
+        <button type="button">只適用於水平排列</button>
     </div>
-    <div>
-        <span>123</span><span>456</span>
-        <span>789</span>
-        <span>換行字元會佔一個格子</span>
-    </div>
-    <div>
-        <span>123</span><span>456</span>
-        <span>789</span>
-        <span>換行字元會佔一個格子</span>
-    </div>
-    <span>123</span>
-    <span>456</span>
-    <span>789</span>
-    <span>換行字元會佔一個格子</span>
 </body>
 
 </html>

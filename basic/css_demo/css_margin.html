@@ -8,46 +8,62 @@
 </head>
 
 <style>
+    * {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* The box-sizing property allows us to include the padding and border in an element's total width and height. */
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+    }
+
+    /* 2025-11-17 精簡程式碼 */
     div {
         margin: 30px;
         width: 300px;
         height: 150px;
-        font-family: consolas;
-        border-width: 3px;
-        border-style: dotted dashed solid double;
-        border-color: red;
-        border-radius: 15px 50px 30px 5px;
-        padding: 10px;
         word-wrap: break-word;
+        background-color: #ffb3b3;
     }
 
     div div {
         margin: 10px;
-        border-width: 5px 10px 15px 20px;
-        border-color: purple;
-        width: 500px;
+        background-color: #99bbff;
     }
 
     div div div {
         margin: 0 0 0 100px;
-        border-color: green;
+        background-color: #ffe680;
+    }
+
+    .red-color {
+        color: red;
+    }
+
+    span {
+        background-color: lightyellow;
     }
 </style>
 
 <body>
+    <h1>margin 測試，要仔細品味才能看出其特色。</h1>
     <div>
-        div-1<br>
-        Margins: 相對於外部的 container<br>
-        Margins are used to create space around elements, <b style="color:red">outside</b> of any defined borders.
+        <span>div-1
+            Margins: 相對於外部的 container<br>
+            Margins are used to create space around elements, <b class="red-color">outside</b> of any defined borders.
+        </span>
         <div>
-            div-2<br>
-            Margin Collapse<br>
-            Top and bottom margins of elements are sometimes collapsed into a single margin that <b style="color:red">
-                is equal to the largest of the two margins.</b>
-            This does not happen on left and right margins! Only top and bottom margins!
+            <span>div-2<br>
+                Margin Collapse<br>
+                Top and bottom margins of elements are sometimes collapsed into a single margin that <b
+                    class="red-color">
+                    is equal to the largest of the two margins.</b>
+                This does not happen on left and right margins! Only top and bottom margins!</span>
             <div>
                 div-3<br>
-                <a href="https://www.w3schools.com/css/css_margin.asp" target="_blank">CSS Margins</a>
+                <a href="https://www.w3schools.com/css/css_margin.asp" target="_blank" rel="noopener">CSS
+                    Margins</a>
             </div>
         </div>
     </div>

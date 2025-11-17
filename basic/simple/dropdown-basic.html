@@ -2,113 +2,113 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>applying absolute</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>applying absolute</title>
 </head>
 
 <style>
-  * {
-    font-family: consolas, PMingLiU;
-    box-sizing: border-box;
-  }
+    * {
+        font-family: consolas, PMingLiU;
+        box-sizing: border-box;
+    }
 
-  .txt {
-    position: absolute;
-  }
+    .txt {
+        position: absolute;
+    }
 
-  .a1 {
-    position: relative;
-    width: 200px;
-    height: 50px;
-    background-color: yellowgreen;
-  }
+    .a1 {
+        position: relative;
+        width: 200px;
+        height: 50px;
+        background-color: yellowgreen;
+    }
 
-  .a2 {
-    position: absolute;
-    width: 70px;
-    height: 100px;
-    background-color: pink;
-    display: none;
-    right: -70px;
-  }
+    .a2 {
+        position: absolute;
+        width: 70px;
+        height: 100px;
+        background-color: pink;
+        display: none;
+        right: -70px;
+    }
 
-  .a3 {
-    position: absolute;
-    width: 170px;
-    height: 100px;
-    background-color: violet;
-    display: none;
-    top: 0px;
-    right: -170px;
-  }
+    .a3 {
+        position: absolute;
+        width: 170px;
+        height: 100px;
+        background-color: violet;
+        display: none;
+        top: 0px;
+        right: -170px;
+    }
 
-  .a1:hover .a2 {
-    display: block;
-  }
+    .a1:hover .a2 {
+        display: block;
+    }
 
-  .a1:hover .a2:hover .a3 {
-    display: block;
-  }
+    .a1:hover .a2:hover .a3 {
+        display: block;
+    }
 
-  .b1 {
-    position: relative;
-    width: 200px;
-    height: 50px;
-    background-color: orange;
-  }
+    .b1 {
+        position: relative;
+        width: 200px;
+        height: 50px;
+        background-color: orange;
+    }
 
-  .b2 {
-    position: absolute;
-    width: 70px;
-    height: 100px;
-    background-color: pink;
-    display: none;
-    right: -70px;
-  }
+    .b2 {
+        position: absolute;
+        width: 70px;
+        height: 100px;
+        background-color: pink;
+        display: none;
+        right: -70px;
+    }
 
-  .b3 {
-    position: absolute;
-    width: 170px;
-    height: 100px;
-    background-color: violet;
-    display: none;
-    top: 0px;
-    right: -170px;
-  }
+    .b3 {
+        position: absolute;
+        width: 170px;
+        height: 100px;
+        background-color: violet;
+        display: none;
+        top: 0px;
+        right: -170px;
+    }
 
-  .b1:hover .b2 {
-    display: block;
-  }
+    .b1:hover .b2 {
+        display: block;
+    }
 
-  .b1:hover .b2:hover .b3 {
-    display: block;
-  }
+    .b1:hover .b2:hover .b3 {
+        display: block;
+    }
 </style>
 
 <body>
-  <div class="a1">
-    <span class="txt">a1</span>
-    <div class="a2">
-      <span>a1-sub</span>
-      <div class="a3">
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-      </div>
+    <div class="a1">
+        <span class="txt">a1</span>
+        <div class="a2">
+            <span>a1-sub</span>
+            <div class="a3">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="b1">
-    <span class="txt">b1</span>
-    <div class="b2">
-      <span>b1-sub</span>
-      <div class="b3">
-        <div>b1-sub-sub-1</div>
-        <div>b1-sub-sub-2</div>
-        <div>b1-sub-sub-3</div>
-      </div>
+    <div class="b1">
+        <span class="txt">b1</span>
+        <div class="b2">
+            <span>b1-sub</span>
+            <div class="b3">
+                <div>b1-sub-sub-1</div>
+                <div>b1-sub-sub-2</div>
+                <div>b1-sub-sub-3</div>
+            </div>
+        </div>
     </div>
-  </div>
 </body>
 
 </html>

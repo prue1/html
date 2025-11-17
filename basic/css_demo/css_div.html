@@ -2,91 +2,87 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CSS flipper</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS flipper</title>
 </head>
 
 <style>
-  * {
-    /* The box-sizing property allows us to include the padding and border in an element's total width and height. */
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
+    * {
+        /* The box-sizing property allows us to include the padding and border in an element's total width and height. */
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-  .div1 {
-    background-color: cornflowerblue;
-    border: 1px solid blue;
-    padding: 0;
-    width: 400px;
-  }
+    .div1 {
+        background-color: cornflowerblue;
+        border: 1px solid blue;
+        padding: 0;
+        width: 400px;
+    }
 
-  .div2 {
-    background-color: orange;
-  }
+    .div2 {
+        background-color: orange;
+    }
 
-  p {
-    background-color: gold;
-    border: 1px solid red;
-    box-sizing: border-box;
-    font-family: consolas;
-    width: 550px;
-    height: 50px;
-    word-wrap: break-word;
-    padding: 5px;
-    /* p 的預設值有這兩項
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    */
+    p {
+        height: 50px;
+        background-color: gold;
+        border: 1px solid red;
+        word-wrap: break-word;
+        padding: 5px;
+        /* p 的預設值有這兩項
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        */
 
-    /* override */
-    margin-block-start: 0.5em;
-    margin-block-end: 0.5em;
-  }
+        /* override */
+        margin-block-start: 0.5em;
+        margin-block-end: 0.5em;
+    }
 
-  span {
-    background-color: yellowgreen;
-    border: 1px solid red;
-    box-sizing: border-box;
-  }
+    span {
+        background-color: yellowgreen;
+        border: 1px solid red;
+    }
 
-  a {
-    margin: 5px 0;
-    border: 1px solid blue;
-    display: inline-block;
-    /* inline-block 有width與height，不會換行 */
-    /* block 有width與height，會換行 */
-  }
+    a {
+        margin: 5px 0;
+        border: 1px solid blue;
+        display: inline-block;
+        /* inline-block 有 width 與 height，不會換行 */
+        /* block 有 width 與 height，會換行 */
+    }
 </style>
 
 <body>
-  <p>Where there’s a will, there’s a way.</p>
-  <div class="div1">
-    <p>Practice makes perfect.</p>
-  </div>
-  <div>
-    <div class="div2">
-      <span>He who conquers his anger has conquered an enemy.</span>
+    <p>Where there’s a will, there’s a way.</p>
+    <div class="div1">
+        <p>Practice makes perfect.</p>
     </div>
-  </div>
-  <div>
-    <p>Give a man a fish and you feed him for a day. Teach a man to fish and you feed him for a lifetime.</p>
-  </div>
-  <div>
-    <a href="https://forum.gamer.com.tw/B.php?bsn=17532" target="_blank" rel="noopener">
-      英雄聯盟 League of Legends 哈啦板
-    </a>
-  </div>
-  <div>
-    <a href="https://spring.io/" target="_blank" rel="noopener">
-      Spring
-    </a>
-  </div>
-  <div>
-    <a href="https://nodejs.org/en/learn/getting-started/introduction-to-nodejs" target="_blank" rel="noopener">
-      Introduction to Node.js
-    </a>
-  </div>
+    <div>
+        <div class="div2">
+            <span>He who conquers his anger has conquered an enemy.</span>
+        </div>
+    </div>
+    <div>
+        <p>Give a man a fish and you feed him for a day. Teach a man to fish and you feed him for a lifetime.</p>
+    </div>
+    <div>
+        <a href="https://forum.gamer.com.tw/B.php?bsn=17532" target="_blank" rel="noopener">
+            英雄聯盟 League of Legends 哈啦板
+        </a>
+    </div>
+    <div>
+        <a href="https://spring.io/" target="_blank" rel="noopener">
+            Spring
+        </a>
+    </div>
+    <div>
+        <a href="https://nodejs.org/en/learn/getting-started/introduction-to-nodejs" target="_blank" rel="noopener">
+            Introduction to Node.js
+        </a>
+    </div>
 </body>
 
 </html>

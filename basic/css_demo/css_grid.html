@@ -2,100 +2,94 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CSS flipper</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS flipper</title>
 </head>
 
 <style>
-  * {
-    /* The box-sizing property allows us to include the padding and border in an element's total width and height. */
-    box-sizing: border-box;
-  }
+    * {
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 24px;
+    }
 
-  p {
-    font-size: 3em;
-  }
+    p {
+        font-size: 3em;
+    }
 
-  .grid_container {
-    width: 50%;
-    display: grid;
-    grid-template-columns: auto auto auto auto auto;
-    grid-template-rows: auto;
-  }
+    .grid-container {
+        width: fit-content;
+        display: grid;
+        grid-template-columns: auto auto auto auto auto;
 
-  .grid_cell {
-    position: relative;
-    width: 120px;
-    height: 120px;
-    background-color: orange;
-    border-radius: 5px;
-    margin:10px;
-  }
+        gap: 3px;
+        padding: 3px;
+        background-color: #236AB9;
+    }
 
-  .grid_cell_content {
-    width: 100px;
-    height: 100px;
-    background-color: lightskyblue;
-    font-family: consolas;
-    font-size: 3em;
-    text-align: center;
-    padding: 22px 0;
-    border-radius: 5px;
+    .grid-cell {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        background-color: orange;
+    }
 
-    margin: 10px;
-  }
+    .grid-cell-content {
+        text-align: center;
+        background-color: lightskyblue;
+    }
 
-  .grid_cell:hover {
-    background-color: rgb(48, 205, 9);
-  }
+    .grid-cell:hover {
+        background-color: rgb(48, 205, 9);
+    }
 
-  .grid_cell_content:hover {
-    color:coral;
-    background-color: whitesmoke;
-  }
+    .grid-cell:hover>.grid-cell-content {
+        color: white;
+        background-color: darkblue;
+    }
 </style>
 
 <body>
-  <p>Grid Container</p>
-  <div class="grid_container">
-    <div class="grid_cell">
-      <div class="grid_cell_content">H</div>
+    <h1>Grid Container</h1>
+    <div class="grid-container">
+        <div class="grid-cell">
+            <div class="grid-cell-content">H</div>
+        </div>
+        <div class="grid-cell">
+            <div class="grid-cell-content">E</div>
+        </div>
+        <div class="grid-cell">
+            <div class="grid-cell-content">L</div>
+        </div>
+        <div class="grid-cell">
+            <div class="grid-cell-content">L</div>
+        </div>
+        <div class="grid-cell">
+            <div class="grid-cell-content">O</div>
+        </div>
+        <div class="grid-cell">
+            <div class="grid-cell-content">,</div>
+        </div>
+        <div class="grid-cell">
+            <div class="grid-cell-content">W</div>
+        </div>
+        <div class="grid-cell">
+            <div class="grid-cell-content">O</div>
+        </div>
+        <div class="grid-cell">
+            <div class="grid-cell-content">R</div>
+        </div>
+        <div class="grid-cell">
+            <div class="grid-cell-content">L</div>
+        </div>
+        <div class="grid-cell">
+            <div class="grid-cell-content">D</div>
+        </div>
+        <div class="grid-cell">
+            <div class="grid-cell-content">!</div>
+        </div>
     </div>
-    <div class="grid_cell">
-      <div class="grid_cell_content">E</div>
-    </div>
-    <div class="grid_cell">
-      <div class="grid_cell_content">L</div>
-    </div>
-    <div class="grid_cell">
-      <div class="grid_cell_content">L</div>
-    </div>
-    <div class="grid_cell">
-      <div class="grid_cell_content">O</div>
-    </div>
-    <div class="grid_cell">
-      <div class="grid_cell_content">,</div>
-    </div>
-    <div class="grid_cell">
-      <div class="grid_cell_content">W</div>
-    </div>
-    <div class="grid_cell">
-      <div class="grid_cell_content">O</div>
-    </div>
-    <div class="grid_cell">
-      <div class="grid_cell_content">R</div>
-    </div>
-    <div class="grid_cell">
-      <div class="grid_cell_content">L</div>
-    </div>
-    <div class="grid_cell">
-      <div class="grid_cell_content">D</div>
-    </div>
-    <div class="grid_cell">
-      <div class="grid_cell_content">!</div>
-    </div>
-  </div>
 </body>
 
 </html>

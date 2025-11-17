@@ -2,29 +2,29 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CSS flex</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS flex</title>
 </head>
 
 <script>
-  function flex_style(el) {
-    document.querySelector(".flex-container").style[el.name] = el.value
-    document.querySelector("#" + el.name + 'Tip').innerHTML = el.value
-  }
+    function flex_style(el) {
+        document.querySelector(".flex-container").style[el.name] = el.value
+        document.querySelector("#" + el.name + 'Tip').innerHTML = el.value
+    }
 
-  function display(elid, value) {
-    document.querySelector('#' + elid).style.display = value
-  }
+    function display(elid, value) {
+        document.querySelector('#' + elid).style.display = value
+    }
 </script>
 
 <style>
-  * {
-    /* The box-sizing property allows us to include the padding and border in an element's total width and height. */
-    box-sizing: border-box;
-  }
+    * {
+        /* The box-sizing property allows us to include the padding and border in an element's total width and height. */
+        box-sizing: border-box;
+    }
 
-  /*
+    /*
     flex-direction : [row|column|row-reverse|column-reverse]
     flex-wrap : [nowrap|wrap|wrap-reverse]
     flex-flow : The flex-flow property is a "shorthand" property for setting both the flex-direction and flex-wrap properties.
@@ -40,246 +40,256 @@
     align-content : [center|stretch|flex-start|flex-end|space-around|space-between|space-evenly]
   **/
 
-  .flex-container {
-    width: 300px;
-    height: 300px;
-    background-color: floralwhite;
-    border: 7px solid red;
-  }
+    .flex-container {
+        width: 300px;
+        height: 300px;
+        background-color: floralwhite;
+        border: 7px solid red;
+    }
 
-  .content {
-    width: 70px;
-    height: 70px;
-    box-sizing: border-box;
-    border: 3px solid gold;
-  }
+    .content {
+        width: 70px;
+        height: 70px;
+        box-sizing: border-box;
+        border: 3px solid gold;
+    }
 
-  .flex-container>.content:nth-child(odd) {
-    background-color: darkorange;
-  }
+    .flex-container>.content:nth-child(odd) {
+        background-color: darkorange;
+    }
 
-  .flex-container>.content:nth-child(even) {
-    background-color: darkcyan;
-  }
+    .flex-container>.content:nth-child(even) {
+        background-color: darkcyan;
+    }
 
-  .property-panel {
-    position: fixed;
-    width: 300px;
-    height: 600px;
-    top: 0px;
-    left: 450px;
-    overflow: auto;
-  }
+    .property-panel {
+        position: fixed;
+        width: 300px;
+        height: 600px;
+        top: 0px;
+        left: 450px;
+        overflow: auto;
+    }
 
-  span {
-    font-family: consolas;
-  }
+    span {
+        font-family: consolas;
+    }
 
-  .span-number {
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    background-color: white;
-    color: darkblue;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+    .span-number {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background-color: white;
+        color: darkblue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-  fieldset {
-    width: 250px;
-  }
+    fieldset {
+        width: 250px;
+    }
 
-  legend {
-    color: red;
-  }
+    legend {
+        color: red;
+    }
 
-  .line-content {
-    margin: 0px 0px 0px 20px;
-  }
+    .line-content {
+        margin: 0px 0px 0px 20px;
+    }
 
-  label span {
-    color: green;
-    font-style: italic;
-    font-size: 12px;
-  }
+    label span {
+        color: green;
+        font-style: italic;
+        font-size: 12px;
+    }
 
-  /* 隨意自訂標籤也可以 */
-  customized {
-    width: 150px;
-    height: 50px;
-    background-color: violet;
-    display: block;
-    position: fixed;
-    top: 0px;
-    right: 10px;
-    z-index: -10;
-  }
+    /* 隨意自訂標籤也可以 */
+    customized {
+        width: 150px;
+        height: 50px;
+        background-color: violet;
+        display: block;
+        position: fixed;
+        top: 0px;
+        right: 10px;
+        z-index: -10;
+    }
 </style>
 
 <body>
-  <div class="flex-container">
-    <div class="content"><span class="span-number">1</span></div>
-    <div class="content"><span class="span-number">2</span></div>
-    <div class="content"><span class="span-number">3</span></div>
-    <div class="content"><span class="span-number">4</span></div>
-    <div class="content"><span class="span-number">5</span></div>
-    <div class="content"><span class="span-number">6</span></div>
-    <div class="content"><span class="span-number">7</span></div>
-    <div class="content"><span class="span-number">8</span></div>
-    <div class="content"><span class="span-number">9</span></div>
-  </div>
-  <div class="property-panel">
-    <fieldset>
-      <legend>
-        <input type="checkbox" id="display" checked onclick="display('display-box', this.checked ? 'block' : 'none')">
-        <label for="display">display (<span id="displayTip">block</span>)</label>
-      </legend>
-      <div id="display-box">
-        <div class="line-content">
-          <input type="checkbox" id="display1" name="display" value=""
-            onclick="this.value=(this.checked ? 'flex' : 'block'); flex_style(this)">
-          <label for="display1">flex</label><br>
-        </div>
-      </div>
-    </fieldset>
+    <div class="flex-container">
+        <div class="content"><span class="span-number">1</span></div>
+        <div class="content"><span class="span-number">2</span></div>
+        <div class="content"><span class="span-number">3</span></div>
+        <div class="content"><span class="span-number">4</span></div>
+        <div class="content"><span class="span-number">5</span></div>
+        <div class="content"><span class="span-number">6</span></div>
+        <div class="content"><span class="span-number">7</span></div>
+        <div class="content"><span class="span-number">8</span></div>
+        <div class="content"><span class="span-number">9</span></div>
+    </div>
+    <div class="property-panel">
+        <fieldset>
+            <legend>
+                <input type="checkbox" id="display" checked
+                    onclick="display('display-box', this.checked ? 'block' : 'none')">
+                <label for="display">display (<span id="displayTip">block</span>)</label>
+            </legend>
+            <div id="display-box">
+                <div class="line-content">
+                    <input type="checkbox" id="display1" name="display" value=""
+                        onclick="this.value=(this.checked ? 'flex' : 'block'); flex_style(this)">
+                    <label for="display1">flex</label><br>
+                </div>
+            </div>
+        </fieldset>
 
-    <fieldset>
-      <legend>
-        <input type="checkbox" id="flexDirection" checked
-          onclick="display('flexDirection-box', this.checked ? 'block' : 'none')">
-        <label for="flexDirection">flex-direction (<span id="flexDirectionTip">initial</span>)</label>
-      </legend>
-      <div id="flexDirection-box">
-        <div class="line-content">
-          <input type="radio" id="flexDirection1" name="flexDirection" value="row" onclick="flex_style(this)">
-          <label for="flexDirection1">row</label><br>
-        </div>
-        <div class="line-content">
-          <input type="radio" id="flexDirection2" name="flexDirection" value="row-reverse" onclick="flex_style(this)">
-          <label for="flexDirection2">row-reverse</label><br>
-        </div>
-        <div class="line-content">
-          <input type="radio" id="flexDirection3" name="flexDirection" value="column" onclick="flex_style(this)">
-          <label for="flexDirection3">column</label><br>
-        </div>
-        <div class="line-content">
-          <input type="radio" id="flexDirection4" name="flexDirection" value="column-reverse"
-            onclick="flex_style(this)">
-          <label for="flexDirection4">column-reverse</label><br>
-        </div>
-        <div class="line-content">
-          <input type="radio" id="flexDirection5" name="flexDirection" value="initial" onclick="flex_style(this)">
-          <label for="flexDirection5">initial</label><br>
-        </div>
-      </div>
-    </fieldset>
+        <fieldset>
+            <legend>
+                <input type="checkbox" id="flexDirection" checked
+                    onclick="display('flexDirection-box', this.checked ? 'block' : 'none')">
+                <label for="flexDirection">flex-direction (<span id="flexDirectionTip">initial</span>)</label>
+            </legend>
+            <div id="flexDirection-box">
+                <div class="line-content">
+                    <input type="radio" id="flexDirection1" name="flexDirection" value="row" onclick="flex_style(this)">
+                    <label for="flexDirection1">row</label><br>
+                </div>
+                <div class="line-content">
+                    <input type="radio" id="flexDirection2" name="flexDirection" value="row-reverse"
+                        onclick="flex_style(this)">
+                    <label for="flexDirection2">row-reverse</label><br>
+                </div>
+                <div class="line-content">
+                    <input type="radio" id="flexDirection3" name="flexDirection" value="column"
+                        onclick="flex_style(this)">
+                    <label for="flexDirection3">column</label><br>
+                </div>
+                <div class="line-content">
+                    <input type="radio" id="flexDirection4" name="flexDirection" value="column-reverse"
+                        onclick="flex_style(this)">
+                    <label for="flexDirection4">column-reverse</label><br>
+                </div>
+                <div class="line-content">
+                    <input type="radio" id="flexDirection5" name="flexDirection" value="initial"
+                        onclick="flex_style(this)">
+                    <label for="flexDirection5">initial</label><br>
+                </div>
+            </div>
+        </fieldset>
 
-    <fieldset>
-      <legend>
-        <input type="checkbox" id="flexWrap" checked onclick="display('flexWrap-box', this.checked ? 'block' : 'none')">
-        <label for="flexWrap">flex-wrap (<span id="flexWrapTip">initial</span>)</label>
-      </legend>
-      <div id="flexWrap-box">
-        <div class="line-content">
-          <input type="radio" id="flexWrap1" name="flexWrap" value="nowrap" onclick="flex_style(this)">
-          <label for="flexWrap1">nowrap</label><br>
-        </div>
-        <div class="line-content">
-          <input type="radio" id="flexWrap2" name="flexWrap" value="wrap" onclick="flex_style(this)">
-          <label for="flexWrap2">wrap</label><br>
-        </div>
-        <div class="line-content">
-          <input type="radio" id="flexWrap3" name="flexWrap" value="wrap-reverse" onclick="flex_style(this)">
-          <label for="flexWrap3">wrap-reverse</label><br>
-        </div>
-        <div class="line-content">
-          <input type="radio" id="flexWrap4" name="flexWrap" value="initial" onclick="flex_style(this)">
-          <label for="flexWrap4">initial</label><br>
-        </div>
-      </div>
-    </fieldset>
+        <fieldset>
+            <legend>
+                <input type="checkbox" id="flexWrap" checked
+                    onclick="display('flexWrap-box', this.checked ? 'block' : 'none')">
+                <label for="flexWrap">flex-wrap (<span id="flexWrapTip">initial</span>)</label>
+            </legend>
+            <div id="flexWrap-box">
+                <div class="line-content">
+                    <input type="radio" id="flexWrap1" name="flexWrap" value="nowrap" onclick="flex_style(this)">
+                    <label for="flexWrap1">nowrap</label><br>
+                </div>
+                <div class="line-content">
+                    <input type="radio" id="flexWrap2" name="flexWrap" value="wrap" onclick="flex_style(this)">
+                    <label for="flexWrap2">wrap</label><br>
+                </div>
+                <div class="line-content">
+                    <input type="radio" id="flexWrap3" name="flexWrap" value="wrap-reverse" onclick="flex_style(this)">
+                    <label for="flexWrap3">wrap-reverse</label><br>
+                </div>
+                <div class="line-content">
+                    <input type="radio" id="flexWrap4" name="flexWrap" value="initial" onclick="flex_style(this)">
+                    <label for="flexWrap4">initial</label><br>
+                </div>
+            </div>
+        </fieldset>
 
-    <fieldset>
-      <legend>
-        <input type="checkbox" id="justifyContent" checked
-          onclick="display('justifyContent-box', this.checked ? 'block' : 'none')">
-        <label for="justifyContent">justify-content (<span id="justifyContentTip">initial</span>)</label>
-      </legend>
-      <div id="justifyContent-box">
-        <div class="line-content">
-          <input type="radio" id="justifyContent1" name="justifyContent" value="center" onclick="flex_style(this)">
-          <label for="justifyContent1">center</label><br>
-        </div>
-        <div class="line-content">
-          <input type="radio" id="justifyContent2" name="justifyContent" value="flex-start" onclick="flex_style(this)">
-          <label for="justifyContent2">flex-start</label><br>
-        </div>
-        <div class="line-content">
-          <input type="radio" id="justifyContent3" name="justifyContent" value="flex-end" onclick="flex_style(this)">
-          <label for="justifyContent3">flex-end</label><br>
-        </div>
-        <div class="line-content">
-          <input type="radio" id="justifyContent4" name="justifyContent" value="space-between"
-            onclick="flex_style(this)">
-          <label for="justifyContent4">space-between</label><br>
-        </div>
-        <div class="line-content">
-          <input type="radio" id="justifyContent5" name="justifyContent" value="space-around"
-            onclick="flex_style(this)">
-          <label for="justifyContent5">space-around</label><br>
-        </div>
-        <div class="line-content">
-          <input type="radio" id="justifyContent6" name="justifyContent" value="space-evenly"
-            onclick="flex_style(this)">
-          <label for="justifyContent6">space-evenly</label><br>
-        </div>
-        <div class="line-content">
-          <input type="radio" id="justifyContent7" name="justifyContent" value="initial" onclick="flex_style(this)">
-          <label for="justifyContent7">initial</label><br>
-        </div>
-      </div>
-    </fieldset>
+        <fieldset>
+            <legend>
+                <input type="checkbox" id="justifyContent" checked
+                    onclick="display('justifyContent-box', this.checked ? 'block' : 'none')">
+                <label for="justifyContent">justify-content (<span id="justifyContentTip">initial</span>)</label>
+            </legend>
+            <div id="justifyContent-box">
+                <div class="line-content">
+                    <input type="radio" id="justifyContent1" name="justifyContent" value="center"
+                        onclick="flex_style(this)">
+                    <label for="justifyContent1">center</label><br>
+                </div>
+                <div class="line-content">
+                    <input type="radio" id="justifyContent2" name="justifyContent" value="flex-start"
+                        onclick="flex_style(this)">
+                    <label for="justifyContent2">flex-start</label><br>
+                </div>
+                <div class="line-content">
+                    <input type="radio" id="justifyContent3" name="justifyContent" value="flex-end"
+                        onclick="flex_style(this)">
+                    <label for="justifyContent3">flex-end</label><br>
+                </div>
+                <div class="line-content">
+                    <input type="radio" id="justifyContent4" name="justifyContent" value="space-between"
+                        onclick="flex_style(this)">
+                    <label for="justifyContent4">space-between</label><br>
+                </div>
+                <div class="line-content">
+                    <input type="radio" id="justifyContent5" name="justifyContent" value="space-around"
+                        onclick="flex_style(this)">
+                    <label for="justifyContent5">space-around</label><br>
+                </div>
+                <div class="line-content">
+                    <input type="radio" id="justifyContent6" name="justifyContent" value="space-evenly"
+                        onclick="flex_style(this)">
+                    <label for="justifyContent6">space-evenly</label><br>
+                </div>
+                <div class="line-content">
+                    <input type="radio" id="justifyContent7" name="justifyContent" value="initial"
+                        onclick="flex_style(this)">
+                    <label for="justifyContent7">initial</label><br>
+                </div>
+            </div>
+        </fieldset>
 
-    <fieldset>
-      <legend>
-        <input type="checkbox" id="alignItems" checked
-          onclick="display('alignItems-box', this.checked ? 'block' : 'none')">
-        <label for="alignItems">align-items (<span id="alignItemsTip">initial</span>)</label>
-      </legend>
-      <div id="alignItems-box">
-        <div class="line-content">
-          <input type="radio" id="alignItems1" name="alignItems" value="stretch" onclick="flex_style(this)">
-          <label for="alignItems1">stretch</label><br>
-        </div>
-        <div class="line-content">
-          <input type="radio" id="alignItems2" name="alignItems" value="center" onclick="flex_style(this)">
-          <label for="alignItems2">center</label><br>
-        </div>
-        <div class="line-content">
-          <input type="radio" id="alignItems3" name="alignItems" value="flex-start" onclick="flex_style(this)">
-          <label for="alignItems3">flex-start</label><br>
-        </div>
-        <div class="line-content">
-          <input type="radio" id="alignItems4" name="alignItems" value="flex-end" onclick="flex_style(this)">
-          <label for="alignItems4">flex-end</label><br>
-        </div>
-        <div class="line-content">
-          <input type="radio" id="alignItems5" name="alignItems" value="start" onclick="flex_style(this)">
-          <label for="alignItems5">start</label><br>
-        </div>
-        <div class="line-content">
-          <input type="radio" id="alignItems6" name="alignItems" value="end" onclick="flex_style(this)">
-          <label for="alignItems6">end</label><br>
-        </div>
-        <div class="line-content">
-          <input type="radio" id="alignItems7" name="alignItems" value="initial" onclick="flex_style(this)">
-          <label for="alignItems7">initial</label><br>
-        </div>
-      </div>
-    </fieldset>
-  </div>
-  <customized><span>隨意自訂標籤</span></customized>
+        <fieldset>
+            <legend>
+                <input type="checkbox" id="alignItems" checked
+                    onclick="display('alignItems-box', this.checked ? 'block' : 'none')">
+                <label for="alignItems">align-items (<span id="alignItemsTip">initial</span>)</label>
+            </legend>
+            <div id="alignItems-box">
+                <div class="line-content">
+                    <input type="radio" id="alignItems1" name="alignItems" value="stretch" onclick="flex_style(this)">
+                    <label for="alignItems1">stretch</label><br>
+                </div>
+                <div class="line-content">
+                    <input type="radio" id="alignItems2" name="alignItems" value="center" onclick="flex_style(this)">
+                    <label for="alignItems2">center</label><br>
+                </div>
+                <div class="line-content">
+                    <input type="radio" id="alignItems3" name="alignItems" value="flex-start"
+                        onclick="flex_style(this)">
+                    <label for="alignItems3">flex-start</label><br>
+                </div>
+                <div class="line-content">
+                    <input type="radio" id="alignItems4" name="alignItems" value="flex-end" onclick="flex_style(this)">
+                    <label for="alignItems4">flex-end</label><br>
+                </div>
+                <div class="line-content">
+                    <input type="radio" id="alignItems5" name="alignItems" value="start" onclick="flex_style(this)">
+                    <label for="alignItems5">start</label><br>
+                </div>
+                <div class="line-content">
+                    <input type="radio" id="alignItems6" name="alignItems" value="end" onclick="flex_style(this)">
+                    <label for="alignItems6">end</label><br>
+                </div>
+                <div class="line-content">
+                    <input type="radio" id="alignItems7" name="alignItems" value="initial" onclick="flex_style(this)">
+                    <label for="alignItems7">initial</label><br>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <customized><span>隨意自訂標籤</span></customized>
 </body>
 
 </html>

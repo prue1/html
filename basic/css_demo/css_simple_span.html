@@ -14,23 +14,17 @@
         box-sizing: border-box;
     }
 
-    body {
-        margin: 0
-    }
-
     div {
         position: relative;
-        width: 200px;
+        width: 300px;
         height: 100px;
-        background-color: cadetblue;
+        background-color: #EFD4F7;
     }
 
     span {
-        background-color: aqua;
-        border-top: 1px;
-        border-bottom: 1px;
-        border-left: 5px;
-        border-right: 5px;
+        padding: 5px;
+        background-color: #8601AF;
+        border-width: 3px 15px;
         border-color: transparent;
         border-style: solid;
 
@@ -38,14 +32,17 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+
+        color: white;
     }
 
     span:hover {
-        border-color: red;
+        border-color: #66B032;
     }
 </style>
 
 <body>
+    <h1>span元件的簡單測試。</h1>
     <div>
         <span>Hello World!</span>
     </div>
