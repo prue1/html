@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>表單</title>
+</head>
+
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 16px;
+    }
+
+    fieldset {
+        width: fit-content;
+        background-color: white;
+        border: 1px solid black;
+    }
+
+    fieldset legend {
+        background-color: violet;
+        padding: 3px 5px;
+    }
+
+    .field {
+        width: fit-content;
+        margin: 10px 0;
+    }
+
+    .field-header {
+        display: inline-block;
+        text-align: right;
+        width: 120px;
+        padding: 0 5px;
+        margin: 0 5px;
+        border-radius: 5px;
+        background-color: #87bdd8;
+    }
+
+    .field-button {
+        width: 100%;
+        margin: 10px 0;
+        display: flex;
+        justify-content: right;
+        gap: 5px;
+    }
+
+    input[type=text],
+    select {
+        padding: 0 5px;
+        outline: 1px solid transparent;
+        border: 1px solid transparent;
+        border-radius: 5px;
+        background-color: #DBE5FF;
+        color: #091534;
+        /*  appearance: none; */
+    }
+
+    input[type=text]:focus,
+    select:focus {
+        outline: 3px solid red;
+    }
+</style>
+
+<script>
+    function count(id) {
+        let value = document.querySelector(`#${id}`).value
+        if (value.length >= 10) {
+            value = value.substring(0, 10)
+            document.querySelector(`#${id}`).value = value
+            document.querySelector(`#${id}+.count`).style.color = 'red'
+        }
+        else if (value.length < 10 && value.length > 6) {
+            document.querySelector(`#${id}+.count`).style.color = 'blue'
+        }
+        else if (value.length <= 6 && value.length > 3) {
+            document.querySelector(`#${id}+.count`).style.color = 'green'
+        }
+        else if (value.length <= 3 && value.length > 0) {
+            document.querySelector(`#${id}+.count`).style.color = 'black'
+        }
+
+        document.querySelector(`#${id}+.count`).innerHTML = `(${value.length}/10)`
+    }
+
+    function do_reset() {
+        console.log('before actual reset.')
+        document.querySelectorAll('.count').forEach(function (element) {
+            element.style.color = 'black'
+            element.innerHTML = '(0/10)'
+        })
+    }
+
+    function do_submit() {
+        console.log('before actual submission.')
+    }
+
+    function confirmSubmission() {
+        if (!confirm("是否確定?")) {
+            console.log('cancel submit.')
+            return false
+        }
+        return true
+    }
+</script>
+
+<body>
+    <fieldset>
+        <legend>Form</legend>
+        <form onreset="do_reset()" onsubmit="do_submit()">
+            <div class="field">
+                <label for="tag" class="field-header">標籤</label>
+                <input type="text" id="tag" oninput="count('tag')">
+                <span class="count">(0/10)</span>
+            </div>
+            <div class="field">
+                <label for="spot-name" class="field-header">景點名稱</label>
+                <input type="text" id="spot-name" oninput="count('spot-name')">
+                <span class="count">(0/10)</span>
+            </div>
+            <div class="field">
+                <label for="traveler" class="field-header">每年旅客數量</label>
+                <input type="text" id="traveler" oninput="count('traveler')">
+                <span class="count">(0/10)</span>
+            </div>
+            <div class="field">
+                <label for="hour" class="field-header">開放時間</label>
+                <input type="text" id="hour" oninput="count('hour')">
+                <span class="count">(0/10)</span>
+            </div>
+            <div class="field">
+                <label for="favorite" class="field-header">最愛歡迎項目</label>
+                <input type="text" id="favorite" oninput="count('favorite')">
+                <span class="count">(0/10)</span>
+            </div>
+            <div class="field">
+                <label for="flowers" class="field-header">當季花卉</label>
+                <select id="flowers">
+                    <option value="rose">玫瑰</option>
+                    <option value="lily">水仙</option>
+                    <option value="orchid">蘭花</option>
+                    <option value="plum blossom">梅花</option>
+                </select>
+            </div>
+            <div class="field-button">
+                <button type="reset">清除</button>
+                <button type="submit" onclick="return confirmSubmission()">確定</button>
+            </div>
+        </form>
+    </fieldset>
+</body>
+
+</html>
