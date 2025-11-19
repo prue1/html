@@ -4,148 +4,173 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>form</title>
-    <link rel="stylesheet" type="text/css" href="css/form.css">
+    <title>表單1</title>
 </head>
 
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 16px;
+    }
+
+    :root {
+        --background-color: #F7D4E3;
+        --border-color: #C21460;
+    }
+
+    form {
+        background-color: var(--background-color);
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        padding: 5px;
+    }
+
+    .item {
+        display: flex;
+        width: fit-content;
+        border: 1px solid var(--border-color);
+        background-color: white;
+    }
+
+    .item-label {
+        border-right: 1px solid var(--border-color);
+        background-color: var(--background-color);
+        padding: 0 5px 0 5px;
+        width: 100px;
+    }
+
+    input[type=checkbox]~label,
+    input[type=radio]~label {
+        padding: 0 5px 0 0;
+        font-weight: 200;
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    input,
+    textarea,
+    select {
+        /* appearance: none; */
+        border-color: transparent;
+        outline-color: transparent;
+        padding: 0 5px;
+        font-weight: 200;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+        outline: 3px dashed #0247FE;
+    }
+
+    ::file-selector-button {
+        display: none;
+        border: 1px solid var(--border-color);
+        background-color: var(--background-color);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    input[type=file] {
+        width: 500px;
+    }
+
+    .file-label {
+        padding: 0 5px 0 5px;
+        background-color: var(--background-color);
+    }
+
+    .file-box {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        padding: 0 0 0 5px;
+    }
+</style>
+
 <body>
-    <div class="root-box">
-        <div class="top-bar">資料維護表格</div>
-        <form class="form-box" action="#" method="POST">
-            <div class="data-input-row-box">
-                <label for="username" class="label-column">使用者帳號</label>
-                <div class="content-column-box">
-                    <input type="text" id="username" name="username">
+    <form>
+        <div class="item">
+            <label for="tt1" class="item-label">大名</label>
+            <input type="text" size="25" id="tt1" name="fullname">
+        </div>
+        <div class="item">
+            <label for="tt2" class="item-label">行動電話</label>
+            <input type="text" size="40" id="tt2" name="mobilphone">
+        </div>
+        <div class="item">
+            <label for="tt3" class="item-label">通訊住址</label>
+            <input type="text" size="55" id="tt3" name="address">
+        </div>
+        <div class="item">
+            <span class="item-label">興趣</span>
+            <input type="checkbox" id="cb1" name="interests" value="ball">
+            <label for="cb1">打球</label>
+            <input type="checkbox" id="cb2" name="interests" value="music">
+            <label for="cb2">音樂</label>
+            <input type="checkbox" id="cb3" name="interests" value="travel">
+            <label for="cb3">旅遊</label>
+        </div>
+        <div class="item">
+            <span class="item-label">最好的季節</span>
+            <input type="radio" id="rad1" name="season">
+            <label for="rad1">春季</label>
+            <input type="radio" id="rad2" name="season">
+            <label for="rad2">夏季</label>
+            <input type="radio" id="rad3" name="season">
+            <label for="rad3">秋季</label>
+            <input type="radio" id="rad4" name="season">
+            <label for="rad4">冬季</label>
+        </div>
+        <div class="item">
+            <label for="ta" class="item-label">描述</label>
+            <textarea id="ta" cols="50" rows="7" name="description"></textarea>
+        </div>
+        <div class="item">
+            <label for="sel" class="item-label">最喜歡的職業賽事</label>
+            <select id="sel" name="other">
+                <option value="baseball">棒球</option>
+                <option value="basketball">籃球</option>
+                <option value="football">足球</option>
+                <option value="esport">電競</option>
+                <option value="tennis">網球</option>
+                <option value="gold">高爾夫球</option>
+                <option value="poolball">撞球</option>
+            </select>
+        </div>
+        <div class="item">
+            <span class="item-label">相關檔案</span>
+            <div class="file-box">
+                <div>
+                    <label for="file1" class="file-label">1.</label>
+                    <input type="file" id="file1" name="files">
+                </div>
+                <div>
+                    <label for="file2" class="file-label">2.</label>
+                    <input type="file" id="file2" name="files">
+                </div>
+                <div>
+                    <label for="file3" class="file-label">3.</label>
+                    <input type="file" id="file3" name="files">
+                </div>
+                <div>
+                    <label for="file4" class="file-label">4.</label>
+                    <input type="file" id="file4" name="files">
+                </div>
+                <div>
+                    <label for="file5" class="file-label">5.</label>
+                    <input type="file" id="file5" name="files">
                 </div>
             </div>
-            <div class="data-input-row-box">
-                <label for="pass" class="label-column">使用者密碼</label>
-                <div class="content-column-box">
-                    <input type="password" id="pass" name="pass">
-                </div>
-            </div>
-            <div class="data-input-row-box">
-                <label for="abbr" class="label-column">縮寫</label>
-                <div class="content-column-box">
-                    <input type="text" id="abbr" name="abbr">
-                </div>
-            </div>
-            <div class="data-input-row-box">
-                <label for="explanation" class="label-column">說明</label>
-                <div class="content-column-box">
-                    <textarea id="explanation" cols="60" rows="6"></textarea>
-                </div>
-            </div>
-            <div class="data-input-row-box">
-                <label for="idiom" class="label-column">英文諺語</label>
-                <div class="content-column-box">
-                    <select id="idiom">
-                        <option>Practice makes perfect.</option>
-                        <option>One generation plants the trees, another gets the shade.</option>
-                        <option>Bad news has wings.</option>
-                    </select>
-                </div>
-            </div>
-            <div class="data-input-row-box">
-                <label class="label-column">方向</label>
-                <div class="content-column-box">
-                    <div class="grid-box">
-                        <div>
-                            <input type="checkbox" id="east" name="direction" value="east">
-                            <label for="east">東</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="south" name="direction" value="south">
-                            <label for="south">南</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="west" name="direction" value="west">
-                            <label for="west">西</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="north" name="direction" value="north">
-                            <label for="north">北</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="northeast" name="direction" value="northeast">
-                            <label for="northeast">東北</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="southeast" name="direction" value="southeast">
-                            <label for="southeast">東南</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="northwest" name="direction" value="northwest">
-                            <label for="northwest">西北</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="southwest" name="direction" value="southwest">
-                            <label for="southwest">西南</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="data-input-row-box">
-                <label class="label-column">季節</label>
-                <div class="content-column-box">
-                    <div class="grid-box">
-                        <div>
-                            <input type="radio" id="spring" name="season" value="spring" checked>
-                            <label for="spring">春</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="summer" name="season" value="summer">
-                            <label for="summer">夏</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="autumn" name="season" value="autumn">
-                            <label for="autumn">秋</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="winter" name="season" value="winter">
-                            <label for="winter">冬</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="data-input-row-box">
-                <label class="label-column">圖片</label>
-                <div class="content-column-box">
-                    <img src="image/old-xp.jpg" alt="xp背景">
-                    <img src="image/coffee4.jpg" alt="coffee4背景">
-                </div>
-            </div>
-            <div class="data-input-row-box">
-                <label class="label-column">圖片</label>
-                <div class="content-column-box">
-                    <img src="image/old-win98.jpg" alt="98背景">
-                </div>
-            </div>
-            <div class="data-input-row-box">
-                <label class="label-column">水果</label>
-                <div class="content-column-box">
-                    <span class="emoji-size">&#129373;</span>
-                    <span class="emoji-size">&#129381;</span>
-                    <span class="emoji-size">&#129389;</span>
-                </div>
-            </div>
-            <div class="data-input-row-box">
-                <label class="label-column">甜點</label>
-                <div class="content-column-box">
-                    <span class="emoji-size">&#129390;</span>
-                    <span class="emoji-size">&#129391;</span>
-                    <span class="emoji-size">&#129479;</span>
-                    <span class="emoji-size">&#129478;</span>
-                    <span class="emoji-size">&#127792;</span>
-                </div>
-            </div>
-            <div class="data-input-row-box button-box">
-                <input type="button" id="btn_nrmal" name="btn_nrmal" value="一般按鈕">
-                <input type="reset" id="btn_rset" name="btn_rset" value="清除">
-                <input type="submit" id="btn_submit" name="btn_submit" value="提交">
-            </div>
-        </form>
-    </div>
+        </div>
+        <div class="item">
+            <button type="reset">reset</button>
+            <button type="submit">submit</button>
+        </div>
+    </form>
 </body>
 
 </html>

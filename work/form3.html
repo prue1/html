@@ -4,153 +4,252 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>表單</title>
+    <title>表單3</title>
 </head>
 
 <style>
     * {
         box-sizing: border-box;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        font-size: 16px;
     }
 
-    fieldset {
-        width: fit-content;
-        background-color: white;
-        border: 1px solid black;
+    body {
+        margin: 0;
     }
 
-    fieldset legend {
-        background-color: violet;
-        padding: 3px 5px;
-    }
-
-    .field {
-        width: fit-content;
-        margin: 10px 0;
-    }
-
-    .field-header {
-        display: inline-block;
-        text-align: right;
-        width: 120px;
-        padding: 0 5px;
-        margin: 0 5px;
-        border-radius: 5px;
-        background-color: #87bdd8;
-    }
-
-    .field-button {
-        width: 100%;
-        margin: 10px 0;
+    .root-box {
         display: flex;
-        justify-content: right;
-        gap: 5px;
+        flex-direction: column;
+        width: fit-content;
+        /* 以下定位在畫面中央 */
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 10px);
+    }
+
+    .top-bar {
+        height: 32px;
+        background-color: #AE0D7A;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .form-box {
+        height: 600px;
+        border: 1px solid #AE0D7A;
+        overflow: auto;
+        border-radius: 0 0 0 0;
+    }
+
+    .form2-box {
+        border: 1px solid #AE0D7A;
+        border-radius: 0 0 0 0;
+    }
+
+    .data-input-row-box {
+        margin: 3px;
+        display: flex;
+        /* 設為 flex，則內部元件會視情況(根據最高的元件)，自動擴充至全高度 */
+    }
+
+    .label-column {
+        width: 120px;
+        background-color: #F7D4EC;
+        border: 1px solid #AE0D7A;
+        text-align: right;
+        padding: 0 5px 0 5px;
+        margin: 0 3px 0 0;
+    }
+
+    .content-column-box {
+        width: 600px;
+        border-left: 10px solid #AE0D7A;
+        padding: 0 0 0 5px;
+    }
+
+    /* 若為 checkbox、radio 等多選項輸入的元件，用這個設定排版會比較整齊。 */
+    .grid-box {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        width: fit-content;
+        column-gap: 5px;
     }
 
     input[type=text],
-    select {
-        padding: 0 5px;
-        outline: 1px solid transparent;
-        border: 1px solid transparent;
-        border-radius: 5px;
-        background-color: #DBE5FF;
-        color: #091534;
-        /*  appearance: none; */
+    input[type=password],
+    select,
+    textarea {
+        outline-color: #AE0D7A;
+        padding: 0 5px 0 5px;
     }
 
-    input[type=text]:focus,
-    select:focus {
-        outline: 3px solid red;
+    .button-box {
+        justify-content: right;
+        gap: 3px;
+    }
+
+    .button-box2 {
+        background-color: #AE0D7A;
+        display: flex;
+        justify-content: right;
+        gap: 3px;
+        padding: 3px 3px 3px 3px;
+    }
+
+    img {
+        max-width: 250px;
+        height: auto;
+        border: 1px solid red;
+    }
+
+    .emoji-size {
+        display: inline-block;
+        font-size: 48px;
+        border-bottom: 5px solid red;
     }
 </style>
 
-<script>
-    function count(id) {
-        let value = document.querySelector(`#${id}`).value
-        if (value.length >= 10) {
-            value = value.substring(0, 10)
-            document.querySelector(`#${id}`).value = value
-            document.querySelector(`#${id}+.count`).style.color = 'red'
-        }
-        else if (value.length < 10 && value.length > 6) {
-            document.querySelector(`#${id}+.count`).style.color = 'blue'
-        }
-        else if (value.length <= 6 && value.length > 3) {
-            document.querySelector(`#${id}+.count`).style.color = 'green'
-        }
-        else if (value.length <= 3 && value.length > 0) {
-            document.querySelector(`#${id}+.count`).style.color = 'black'
-        }
-
-        document.querySelector(`#${id}+.count`).innerHTML = `(${value.length}/10)`
-    }
-
-    function do_reset() {
-        console.log('before actual reset.')
-        document.querySelectorAll('.count').forEach(function (element) {
-            element.style.color = 'black'
-            element.innerHTML = '(0/10)'
-        })
-    }
-
-    function do_submit() {
-        console.log('before actual submission.')
-    }
-
-    function confirmSubmission() {
-        if (!confirm("是否確定?")) {
-            console.log('cancel submit.')
-            return false
-        }
-        return true
-    }
-</script>
-
 <body>
-    <fieldset>
-        <legend>Form</legend>
-        <form onreset="do_reset()" onsubmit="do_submit()">
-            <div class="field">
-                <label for="tag" class="field-header">標籤</label>
-                <input type="text" id="tag" oninput="count('tag')">
-                <span class="count">(0/10)</span>
+    <div class="root-box">
+        <div class="top-bar">資料維護表格</div>
+        <form class="form2-box" action="#" method="POST">
+            <div class="data-input-row-box">
+                <label for="username" class="label-column">使用者帳號</label>
+                <div class="content-column-box">
+                    <input type="text" id="username" name="username">
+                </div>
             </div>
-            <div class="field">
-                <label for="spot-name" class="field-header">景點名稱</label>
-                <input type="text" id="spot-name" oninput="count('spot-name')">
-                <span class="count">(0/10)</span>
+            <div class="data-input-row-box">
+                <label for="pass" class="label-column">使用者密碼</label>
+                <div class="content-column-box">
+                    <input type="password" id="pass" name="pass">
+                </div>
             </div>
-            <div class="field">
-                <label for="traveler" class="field-header">每年旅客數量</label>
-                <input type="text" id="traveler" oninput="count('traveler')">
-                <span class="count">(0/10)</span>
+            <div class="data-input-row-box">
+                <label for="abbr" class="label-column">縮寫</label>
+                <div class="content-column-box">
+                    <input type="text" id="abbr" name="abbr">
+                </div>
             </div>
-            <div class="field">
-                <label for="hour" class="field-header">開放時間</label>
-                <input type="text" id="hour" oninput="count('hour')">
-                <span class="count">(0/10)</span>
+            <div class="data-input-row-box">
+                <label for="explanation" class="label-column">說明</label>
+                <div class="content-column-box">
+                    <textarea id="explanation" cols="60" rows="6"></textarea>
+                </div>
             </div>
-            <div class="field">
-                <label for="favorite" class="field-header">最愛歡迎項目</label>
-                <input type="text" id="favorite" oninput="count('favorite')">
-                <span class="count">(0/10)</span>
+            <div class="data-input-row-box">
+                <label for="idiom" class="label-column">英文諺語</label>
+                <div class="content-column-box">
+                    <select id="idiom">
+                        <option>Practice makes perfect.</option>
+                        <option>One generation plants the trees, another gets the shade.</option>
+                        <option>Bad news has wings.</option>
+                    </select>
+                </div>
             </div>
-            <div class="field">
-                <label for="flowers" class="field-header">當季花卉</label>
-                <select id="flowers">
-                    <option value="rose">玫瑰</option>
-                    <option value="lily">水仙</option>
-                    <option value="orchid">蘭花</option>
-                    <option value="plum blossom">梅花</option>
-                </select>
+            <div class="data-input-row-box">
+                <label class="label-column">方向</label>
+                <div class="content-column-box">
+                    <div class="grid-box">
+                        <div>
+                            <input type="checkbox" id="east" name="direction" value="east">
+                            <label for="east">東</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="south" name="direction" value="south">
+                            <label for="south">南</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="west" name="direction" value="west">
+                            <label for="west">西</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="north" name="direction" value="north">
+                            <label for="north">北</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="northeast" name="direction" value="northeast">
+                            <label for="northeast">東北</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="southeast" name="direction" value="southeast">
+                            <label for="southeast">東南</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="northwest" name="direction" value="northwest">
+                            <label for="northwest">西北</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="southwest" name="direction" value="southwest">
+                            <label for="southwest">西南</label>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="field-button">
-                <button type="reset">清除</button>
-                <button type="submit" onclick="return confirmSubmission()">確定</button>
+            <div class="data-input-row-box">
+                <label class="label-column">季節</label>
+                <div class="content-column-box">
+                    <div class="grid-box">
+                        <div>
+                            <input type="radio" id="spring" name="season" value="spring" checked>
+                            <label for="spring">春</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="summer" name="season" value="summer">
+                            <label for="summer">夏</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="autumn" name="season" value="autumn">
+                            <label for="autumn">秋</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="winter" name="season" value="winter">
+                            <label for="winter">冬</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="data-input-row-box">
+                <label class="label-column">圖片</label>
+                <div class="content-column-box">
+                    <img src="image/old-xp.jpg" alt="xp背景">
+                    <img src="image/coffee4.jpg" alt="coffee4背景">
+                </div>
+            </div>
+            <div class="data-input-row-box">
+                <label class="label-column">圖片</label>
+                <div class="content-column-box">
+                    <img src="image/old-win98.jpg" alt="98背景">
+                </div>
+            </div>
+            <div class="data-input-row-box">
+                <label class="label-column">水果</label>
+                <div class="content-column-box">
+                    <span class="emoji-size">&#129373;</span>
+                    <span class="emoji-size">&#129381;</span>
+                    <span class="emoji-size">&#129389;</span>
+                </div>
+            </div>
+            <div class="data-input-row-box">
+                <label class="label-column">甜點</label>
+                <div class="content-column-box">
+                    <span class="emoji-size">&#129390;</span>
+                    <span class="emoji-size">&#129391;</span>
+                    <span class="emoji-size">&#129479;</span>
+                    <span class="emoji-size">&#129478;</span>
+                    <span class="emoji-size">&#127792;</span>
+                </div>
             </div>
         </form>
-    </fieldset>
+        <div class="button-box2">
+            <input type="button" id="btn_nrmal" name="btn_nrmal" value="一般按鈕">
+            <input type="reset" id="btn_rset" name="btn_rset" value="清除">
+            <input type="submit" id="btn_submit" name="btn_submit" value="提交">
+        </div>
+    </div>
 </body>
 
 </html>
