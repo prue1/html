@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>定位</title>
+</head>
+
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    :root {
+        /*
+        --background-color-1: #F7D4E3;
+        --background-color-2: #C21460;
+        --background-color-3: #FBA90A;
+        */
+
+        --background-color-1: #D4EDF7;
+        --background-color-2: #347B98;
+        --background-color-3: #C21460;
+    }
+
+    body {
+        display: grid;
+        grid-template-columns: auto auto;
+        column-gap: 30px;
+        row-gap: 5px;
+        width: fit-content;
+    }
+
+    .region {
+        width: 250px;
+        height: 100px;
+        background-color: var(--background-color-1);
+        position: relative;
+    }
+
+    .box {
+        width: 50px;
+        height: 50px;
+        background-color: var(--background-color-2);
+    }
+
+    .demo1 {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    }
+
+    .demo2 {
+        padding: 10px;
+    }
+
+    .demo3 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .demo4 {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+        gap: 3px;
+    }
+
+    .demo5 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .demo6-a {
+        display: flex;
+    }
+
+    .demo6-b {
+        margin: auto;
+    }
+
+    .demo7 {
+        display: grid;
+        place-content: center;
+    }
+
+    .demo8-a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .demo8-b {
+        display: flex;
+        padding: 10px;
+        gap: 10px;
+        background-color: var(--background-color-3);
+    }
+</style>
+
+<body>
+    <h1>absolute (demo1)</h1>
+    <div class="region">
+        <div class="box demo1"></div>
+    </div>
+
+    <h1>padding (demo2)</h1>
+    <div class="region demo2">
+        <div class="box"></div>
+    </div>
+
+    <h1>flex (demo3)</h1>
+    <div class="region demo3">
+        <div class="box"></div>
+    </div>
+
+    <h1>flex (demo4)</h1>
+    <div class="region demo4">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+
+    <h1>absolute + transform (demo5) 置中</h1>
+    <div class="region">
+        <div class="box demo5"></div>
+    </div>
+
+    <h1>flex + margin 置中 (demo6)</h1>
+    <div class="region demo6-a">
+        <div class="box demo6-b"></div>
+    </div>
+
+    <h1>grid 置中 (demo7)</h1>
+    <div class="region demo7">
+        <div class="box"></div>
+    </div>
+
+    <h1>複雜的 置中 (demo8)</h1>
+    <div class="region demo8-a">
+        <div class="demo8-b">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+    </div>
+</body>
+
+</html>

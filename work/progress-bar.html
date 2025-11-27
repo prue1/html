@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>progress-bar</title>
+</head>
+
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 12px;
+    }
+
+    .background {
+        width: 300px;
+        height: 50px;
+        background-color: #ff9900;
+        display: flex;
+        align-items: center;
+        position: relative;
+        border: 3px solid red;
+    }
+
+    .bar {
+        width: 300px;
+        height: 15px;
+        background-color: #002080;
+    }
+
+    .mark {
+        width: 0px;
+        height: 90%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transition-property: width;
+        transition-timing-function: linear;
+        background-color: #660066;
+        opacity: 0.9;
+    }
+</style>
+
+<script>
+    // 用程式產生 0-100% 的下拉選單, 省得用手打不現實
+    function setup() {
+        const e = document.querySelector('#sel-percent')
+        for (let i = 0; i <= 100; i++) {
+            e.innerHTML += `<option value='${i}'>${i}</option>`
+        }
+    }
+
+    function go() {
+        let oldWidth = parseInt(document.querySelector('.mark').style.width)
+
+        // oldWidth 為 0 時, 會得出 NaN, 而無法正確計算, 在此將其重新設置為 0
+        oldWidth = oldWidth ? oldWidth : 0
+
+        const e = document.querySelector('#sel-percent')
+
+        // 用新茌的寬度計算距離, 並進一步求出 transition 所需時間, 以維持速度恆定。
+        const duration = Math.abs(e.value - oldWidth) * 0.01
+        document.querySelector('.mark').style.transitionDuration = `${duration}s`
+        document.querySelector('.mark').style.width = `${e.value}%`
+    }
+</script>
+
+<body onload="setup()">
+    <div class="background">
+        <div class="bar"></div>
+        <div class="mark"></div>
+    </div>
+    <label for="sel-percent">選一個數字</label>
+    <select id="sel-percent" onchange="go()"></select> %
+</body>
+
+</html>
