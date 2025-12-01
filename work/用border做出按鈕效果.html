@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>用border做出按鈕效果</title>
+</head>
+
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    :root {
+        --button-width: 50px;
+        --button-height: 50px;
+        --color1: #FDDEF3;
+        --color2: #AE0D7A;
+        /* --duration: 0.25s */
+    }
+
+    .box {
+        width: var(--button-width);
+        height: var(--button-height);
+        border: 3px outset var(--color1);
+        background-color: var(--color1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        /* transition: border var(--duration) linear; */
+    }
+
+    .box:hover {
+        border: 3px inset var(--color2);
+        background-color: var(--color2);
+        color: white;
+    }
+
+    .empty {
+        width: var(--button-width);
+        height: var(--button-height);
+        background-color: white;
+        pointer-events: none;
+    }
+
+    .grid {
+        display: grid;
+        width: fit-content;
+        height: fit-content;
+        grid-template-columns: auto auto auto;
+        gap: 3px;
+    }
+</style>
+
+<body>
+    <div class="grid">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+        <div class="box">6</div>
+        <div class="box">7</div>
+        <div class="box">8</div>
+        <div class="box">9</div>
+        <div class="empty"></div>
+        <div class="box">0</div>
+        <div class="empty"></div>
+    </div>
+</body>
+
+</html>
