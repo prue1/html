@@ -4,114 +4,84 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CSS adjacent</title>
+    <title>template</title>
 </head>
 
 <style>
     * {
+        box-sizing: border-box;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        font-size: 24px;
-        /* 1em = 16px => https://www.w3schools.com/css/css_font_size.asp */
     }
 
-    span {
-        display: inline-block;
-        width: 150px;
-        height: 50px;
+    /*  (空格) 內部所有 */
+    /* > 所有子元件 */
+    /* 自行修改成 空格 或 大於，來比對差異 */
+    .class1 .class2 {
+        color: red;
     }
 
-    span::before {
-        /* 雙冒號(::) pseudo-elements */
-        content: '[***]';
+    /* + 相鄰, 且以下第1個 */
+    /* ~ 以下所有 */
+    /* 自行修改成 加號 或 波浪線，來比對差異 */
+    .class-a+.class-b {
         color: blue;
     }
 
-    /* > 大於(>)表示所有子元件 */
-    .container>*::after {
-        content: '[#]';
-        color: green;
-    }
-
-    /* + 加號(+)表示下一個鄰接的 */
-    .class1+span {
-        color: darkcyan;
-    }
-
-    /* ~ 波浪線(~)表示以下所有 */
-    .class2~span,
-    .class2~span.class2 {
-        color: gold;
-    }
-
-    /*   空格(space)表示包含在其中 */
-    .class1 .class2 {
-        color: cornflowerblue;
-    }
-
-    /* 特殊例子：空格 vs 大於 */
-    /* 空格：能套用在跨階層的情況 */
-    /* 大於：僅限於子元件 */
-    .class5 .class6 {
+    /* 隨意練習 */
+    .class1 .class2 div.class3>.class4+.class5 {
         color: orange;
-    }
-
-    .class5>.class6 {
-        color: darkcyan;
-    }
-
-    .class5:hover>.class6::before {
-        /* 冒號(:) pseudo-classes  */
-        content: '*hovered*';
-        color: lightgreen;
-        font-size: 2em;
-    }
-
-    .class5:hover>.class6>.class6:hover::after {
-        /* 冒號(:) pseudo-classes  */
-        content: '*hovered*';
-        color: lightgreen;
-        font-size: 2em;
     }
 </style>
 
 <body>
-    <div class="container">
-        <span>text.1</span>
-        <span>text.2</span>
-        <a href="https://www.w3schools.com/css/css_font_size.asp">CSS font size</a>
-    </div>
-
-    <div class="container">
-        <span class="class1">text.1</span>
-        <span>text.2</span>
-        <span>text.3</span>
-    </div>
-
-    <div class="container">
-        <span class="class2">text.1</span>
-        <span>text.2</span>
-        <span>text.3</span>
-        <a href="https://www.w3schools.com/css/css_font_size.asp">CSS font size</a>
-    </div>
-
-    <div class="container class1">
-        <span class="class2">text.1</span>
-        <span>text.2</span>
-        <span class="class2">text.3</span>
-        <span>text.4</span>
-    </div>
-
-    <div class="class5">
-        <div class="class6">
-            --text.special-1.
-            <div class="class6">
-                ----text.special-2.(第3層依舊套用.class5 .class6)
+    <h1> (空格) 與 >(大於) </h1>
+    <div class="class1">
+        這是一個 div 元件
+        <div class="class2">1 這是一個內部 div 元件</div>
+        <div>
+            <div class="class2">2 這是一個內部 div 元件</div>
+        </div>
+        <div>
+            <div>
+                <div class="class2">3 這是一個內部 div 元件</div>
             </div>
         </div>
-        <div class="class6">
-            --text.special-3.
-        </div>
+        <div class="class2">4 這是一個內部 div 元件</div>
     </div>
+
+    <h1>+(加號) 與 ~(波浪線) </h1>
+    <div>
+        <div class="class-a">1 div</div>
+        <div class="class-b">2 div</div>
+        <div class="class-b">3 div</div>
+        <div class="class-b">4 div</div>
+        <div class="class-b">5 div</div>
+        <div class="class-b">6 div</div>
+    </div>
+
+    <h1>隨意練習</h1>
+    <!-- 依據隨意練習的設定, 寫成 html -->
+    <div class="class1">
+        <div class="class2">
+            <div class="class3">
+                <div class="class4"></div>
+                <div class="class5">Here! 4-1</div>
+                <div class="class5">Here! 2</div>
+                <div class="class4"></div>
+                <div class="class5">Here! 4-2</div>
+                <div class="class4"></div>
+                <div class="class5">Here! 4-3</div>
+                <div class="class4"></div>
+                <div class="class5">Here! 4-4</div>
+            </div>
+            <div>Here! 3</div>
+            <div>Here! 4</div>
+        </div>
+        <div class="class2"></div>
+        <div class="class2"></div>
+        <div class="class2"></div>
+    </div>
+
 </body>
 
 </html>
