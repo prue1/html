@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>背景預覽</title>
+</head>
+
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        min-height: 100vh;
+        margin: 0;
+    }
+
+    label {
+        display: inline-flex;
+        align-items: center;
+        justify-content: end;
+        width: 128px;
+        height: 32px;
+        background-color: #FCBA12;
+        vertical-align: bottom;
+    }
+
+    select {
+        width: 128px;
+        height: 32px;
+        background-color: transparent;
+    }
+</style>
+
+<script>
+    function change() {
+        document.querySelector('body').style.backgroundImage = `url('bg/${document.querySelector('#bg-sel').value}.png')`
+    }
+</script>
+
+<body>
+
+    <label for="bg-sel">選擇背景</label><select id="bg-sel" onchange="change()">
+        <option value="black-white-box-16">黑白格子(16px)</option>
+        <option value="black-white-box-32">黑白格子(32px)</option>
+    </select>
+    <p>換行會有一個空白</p>
+    <h3>label</h3>
+    <ul>
+        <li>display: inline-flex;</li>
+        <li>align-items: center;</li>
+        <li>height: 32px;</li>
+        <li>background-color: #FCBA12;</li>
+        <li>vertical-align: bottom;</li>
+    </ul>
+</body>
+<script>
+    change()
+</script>
+
+</html>
