@@ -37,7 +37,10 @@
 
 <script>
     function change() {
-        document.querySelector('body').style.backgroundImage = `url('bg/${document.querySelector('#bg-sel').value}.png')`
+        // 以下三種寫法都可以：
+        // document.querySelector('body').style.backgroundImage = `url('bg/${document.querySelector('#bg-sel').value}.png')`
+        // document.querySelector('body').style['background-image'] = `url('bg/${document.querySelector('#bg-sel').value}.png')`
+        document.querySelector('body').style['backgroundImage'] = `url('bg/${document.querySelector('#bg-sel').value}.png')`
     }
 </script>
 
@@ -46,8 +49,9 @@
     <label for="bg-sel">選擇背景</label><select id="bg-sel" onchange="change()">
         <option value="black-white-box-16">黑白格子(16px)</option>
         <option value="black-white-box-32">黑白格子(32px)</option>
+        <option value="black-white-box-64" selected>黑白格子(64px)</option>
     </select>
-    <p>換行會有一個空白</p>
+    <p>在原始碼中，label與select之間若換行的話，兩者間會多一個空白。</p>
     <h3>label</h3>
     <ul>
         <li>display: inline-flex;</li>
