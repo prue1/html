@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="store.png">
+    <link rel="stylesheet" type="text/css" href="store.css">
+    <title>store</title>
+</head>
+
+<script src="store.js"></script>
+
+<body onload="setup()">
+    <input type="hidden" id="player-id">
+    <div id="players">
+        <label for="sel-player">選擇冒險者</label>
+        <select id="sel-player" onchange="setPlayer(this.value)"></select>
+    </div>
+    <div id="locations">
+        <label for="sel-location">選擇商店</label>
+        <select id="sel-location" onchange="setupStoreItem(this.value)"></select>
+    </div>
+    <div id="scene">
+    </div>
+    <div id="inventory-menu"></div>
+</body>
+
+</html>
