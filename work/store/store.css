@@ -3,13 +3,92 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+#scene {
+    width: fit-content;
+}
+
+#store-scene {
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
 .noteworthy {
     color: red;
-    font-weight: bold;
     margin: 0 5px 0 5px;
 }
 
-.buy-menu {
+.store-top {
+    position: relative;
+    width: 300px;
+    height: 56px;
+    background-color: gold;
+    border-top: 3px solid darkcyan;
+    border-left: 3px solid darkcyan;
+    border-right: 3px solid darkcyan;
+}
+
+#store-name {
+    position: absolute;
+    top: 50%;
+    transform: translate(3px, -50%);
+    background-color: pink;
+    padding: 0 3px 0 3px;
+}
+
+#store-menu {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    background-color: violet;
+}
+
+#menu {
+    width: 100px;
+    height: 30px;
+    background-color: yellowgreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#sub-menu-effect {
+    width: 100px;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s linear;
+    position: relative;
+}
+
+#sub-menu {
+    width: 100px;
+    height: 90px;
+    background-color: plum;
+    position: absolute;
+    bottom: 0px;
+}
+
+.sub-menu-item {
+    width: 100px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(222, 177, 177);
+}
+
+.sub-menu-item:hover {
+    background-color: blue;
+    color: white;
+}
+
+#store-menu:hover #sub-menu-effect {
+    height: 90px;
+}
+
+.store-content {
     position: relative;
     width: 300px;
     height: 320px;
@@ -51,8 +130,6 @@
     display: flex;
     align-items: center;
     padding-left: 5px;
-    -webkit-user-select: none;
-    user-select: none;
     background-color: yellowgreen;
     flex-grow: 1;
 }
@@ -63,13 +140,11 @@
     display: flex;
     justify-content: right;
     align-items: center;
-    padding-right: 15px;
-    -webkit-user-select: none;
-    user-select: none;
+    padding-right: 7px;
     background-color: violet;
 }
 
-.item-buy-button {
+.item-button {
     width: 64px;
     height: 30px;
     margin: 0 7px 0 7px;
@@ -81,7 +156,7 @@
     padding-right: 3px;
 }
 
-#buy-panel {
+#cfm-panel {
     width: 240px;
     height: fit-content;
     position: absolute;
@@ -91,17 +166,16 @@
     display: none;
 }
 
-#buy-panel-1 {
+#cfm-panel-1 {
     display: flex;
     flex-direction: column;
     gap: 3px;
     background-color: orange;
     padding: 3px;
     border: 3px solid gold;
-    border-radius: 4px;
 }
 
-.buy-panel-button {
+.cfm-panel-button {
     margin: 0 7px 0 0;
 }
 

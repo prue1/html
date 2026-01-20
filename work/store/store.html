@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="store.png">
     <link rel="stylesheet" type="text/css" href="store.css">
-    <title>store</title>
+    <title>RPG 模擬器</title>
 </head>
 
+<script src="data.js"></script>
 <script src="store.js"></script>
 
 <body onload="setup()">
@@ -18,12 +19,11 @@
         <select id="sel-player" onchange="setPlayer(this.value)"></select>
     </div>
     <div id="locations">
-        <label for="sel-location">選擇商店</label>
-        <select id="sel-location" onchange="setupStoreItem(this.value)"></select>
+        <label for="sel-location">選擇地點</label>
+        <select id="sel-location" onchange="setupLocation()"></select>
     </div>
-    <div id="scene">
-    </div>
-    <div id="inventory-menu"></div>
+    <div id="scene"></div>
+    <div id="inventory-container"></div>
 </body>
 
 </html>

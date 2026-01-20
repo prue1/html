@@ -1,108 +1,106 @@
-const items = {
-    'i01': { category: 'item', name: '藥草', price: 3 },
-    'i02': { category: 'item', name: '金創藥', price: 5 },
-    'i03': { category: 'item', name: '小還丹', price: 10 },
-    'i04': { category: 'item', name: '大還丹', price: 15 },
-    'i05': { category: 'item', name: '解毒丹', price: 5 },
-    'i06': { category: 'item', name: '小復活丹', price: 10 },
-    'i07': { category: 'item', name: '大復活丹', price: 20 },
-    'i08': { category: 'item', name: '行氣散', price: 12 },
-    'i09': { category: 'item', name: '加速丹', price: 13 },
-    'i10': { category: 'item', name: '防禦丹', price: 17 },
-    'i11': { category: 'item', name: '辟邪丹', price: 20 },
-}
-
-const store = {
-    'store1': { name: '很有效藥店', storeItems: ['i01', 'i02', 'i03'] },
-    'store2': { name: '大補藥店', storeItems: ['i02', 'i03', 'i04', 'i05', 'i06'] },
-    'store3': { name: '萬全藥莊', storeItems: ['i01', 'i02', 'i03', 'i04', 'i05', 'i06', 'i07', 'i08', 'i09', 'i10', 'i11'] }
-}
-
-const player = {
-    'player1': { name: '海賊王', gold: 100, inv: {}, location: 'store1' },
-    'player2': { name: '飛天小女警', gold: 100, inv: {}, location: 'store1' },
-    'player3': { name: '海棉寶寶', gold: 100, inv: {}, location: 'store1' },
-    'player4': { name: '風之谷', gold: 100, inv: {}, location: 'store2' },
-    'player5': { name: '科學小飛俠', gold: 100, inv: {}, location: 'store2' },
-    'player6': { name: '秀逗魔導士', gold: 100, inv: {}, location: 'store3' }
-}
-
-const maxInventory = 32
-const maxPile = 99
-const currentPlayer = { player: 'player6' }
-
 function setup() {
-    setupPlayer()
-    setupStore()
+    initPlayer()
+    initLocation()
+    setPlayer(startPlayer.player)
 }
 
-function setScene() {
-    console.log('set scene.')
+function initPlayer() {
+    document.querySelector('#sel-player').innerHTML = ''
+    Object.entries(player).forEach(([playerId, data]) => {
+        const temp = `
+                <option value="${playerId}">${data.name}</option>`
+        document.querySelector('#sel-player').innerHTML += temp
+    });
+}
 
-    const temp = `
-        <div class="buy-menu">
+function initLocation() {
+    document.querySelector('#sel-location').innerHTML = ''
+    Object.entries(store).forEach(([itemId, data]) => {
+        const temp = `
+                <option value="${itemId}">${data.name}</option>`
+        document.querySelector('#sel-location').innerHTML += temp
+    });
+}
+
+function setPlayer(playerId) {
+    document.querySelector('#player-id').value = playerId
+    document.querySelector('#sel-player').value = playerId
+    document.querySelector('#sel-location').value = getPlayer(playerId).location
+    setupLocation()
+    updateInventory()
+}
+
+function setupLocation() {
+    getPlayer(getCurrentPlayerId()).location = document.querySelector('#sel-location').value
+    setStoreScene()
+    setStoreForVisit()
+}
+
+function setStoreScene() {
+    //console.log('set scene.')
+
+    const storeId = document.querySelector('#sel-location').value
+
+    document.querySelector('#scene').innerHTML = `
+        <div id="store-scene">
+            <div class="store-top">
+                <div id="store-name">${getStore(storeId).name}</div>
+            </div>
+            <div id="store-content-container">
+            </div>
+            <div id="store-menu">
+                <div id="menu">選單</div>
+                <div id="sub-menu-effect">
+                    <div id="sub-menu">
+                        <div class='sub-menu-item' onclick='setStoreForVisit()'>參觀</div>
+                        <div class='sub-menu-item' onclick='setStoreForBuy()'>採買</div>
+                        <div class='sub-menu-item' onclick='setStoreForSell()'>出售</div>
+                    </div>
+                </div>
+            </div>
+        </div>`
+}
+
+function setStoreForVisit() {
+    const player = getPlayer(getCurrentPlayerId())
+
+    document.querySelector('#store-content-container').innerHTML = `
+        <div class="store-content">
+            <span class="noteworthy">${player.name}</span>正在店裏參觀
+        </div>`
+}
+
+function setStoreForBuy() {
+
+    document.querySelector('#store-content-container').innerHTML = `
+        <div class="store-content">
             <div id="item-list"></div>
             <div class="mask"></div>
-            <div id="buy-panel">
-                <div id="buy-panel-1">
+            <div id="cfm-panel">
+                <div id="cfm-panel-1">
                     <input type="hidden" id="itemId-value">
-                    <div class="item-name-value">名稱：<span class="name-value noteworthy"></span></div>
-                    <div class="item-price-value">售價：<span class="price-value noteworthy"></span>元</div>
+                    <div class="cfm-item-name">名稱：<span class="name-value noteworthy"></span></div>
+                    <div class="cfm-item-price">售價：<span class="price-value noteworthy"></span>元</div>
                     <div>
                         <label for="amount">數量：</label><input type="text" class="noteworthy" id="amount" maxlength="2"
                             onclick="this.select()">
                     </div>
                     <div class="button-to-right">
-                        <button type="button" class="buy-panel-button" onclick="confirmBuy()">確定</button>
-                        <button type="button" class="buy-panel-button" onclick="cancelBuy()">取消</button>
+                        <button type="button" class="cfm-panel-button" onclick="cancelBuy()">取消</button>
+                        <button type="button" class="cfm-panel-button" onclick="confirmBuy()">確定</button>
                     </div>
                 </div>
             </div>
         </div>`
 
-    document.querySelector('#scene').innerHTML = temp
-}
-
-function setupPlayer() {
-    document.querySelector('#sel-player').innerHTML = ''
-    Object.entries(player).forEach(([key, value]) => {
-        const temp = `
-                <option value="${key}" ${key == currentPlayer.player ? 'selected' : ''}>${value.name}</option>`
-        document.querySelector('#sel-player').innerHTML += temp
-    });
-
-    setPlayer(document.querySelector('#sel-player').value)
-}
-
-function setPlayer(playerId) {
-    document.querySelector('#player-id').value = playerId
-    updateInventory()
-}
-
-function getPlayer() {
-    return player[document.querySelector('#player-id').value]
-}
-
-function setupStore() {
-    document.querySelector('#sel-location').innerHTML = ''
-    Object.entries(store).forEach(([key, value]) => {
-        const temp = `
-                <option value="${key}" ${getPlayer().location == key ? 'selected' : ''}>${value.name}</option>`
-        document.querySelector('#sel-location').innerHTML += temp
-    });
-
-    setupStoreItem(document.querySelector('#sel-location').value)
-}
-
-function setupStoreItem(storeId) {
-    setScene()
+    const storeId = document.querySelector('#sel-location').value
     document.querySelector('#item-list').innerHTML = ''
-    store[storeId].storeItems.forEach(itemId => {
+    getStore(storeId).storeItems.forEach(itemId => {
         const temp = `
                 <div class="item">
                     <div class="item-name">${getItem(itemId).name}</div>
-                    <div class="item-price">${getItem(itemId).price}</div>
-                    <div><button type="button" class="item-buy-button" onclick="buy('${itemId}')">購買</div>
+                    <div class="item-price">${getItem(itemId).price} 元</div>
+                    <div><button type="button" class="item-button" onclick="buy('${itemId}')">購買</div>
                 </div>`
         document.querySelector('#item-list').innerHTML += temp
     })
@@ -110,56 +108,171 @@ function setupStoreItem(storeId) {
 
 function buy(itemId) {
     const item = getItem(itemId)
-    document.querySelector('#buy-panel').style.display = 'block'
     document.querySelector('.mask').style.display = 'block'
-    document.querySelector('#buy-panel-1 #itemId-value').value = itemId
-    document.querySelector('#buy-panel-1 .name-value').innerHTML = item.name
-    document.querySelector('#buy-panel-1 .price-value').innerHTML = item.price
-    document.querySelector('#amount').value = 0
+    document.querySelector('#cfm-panel').style.display = 'block'
+    document.querySelector('#cfm-panel-1 #itemId-value').value = itemId
+    document.querySelector('#cfm-panel-1 .name-value').innerHTML = item.name
+    document.querySelector('#cfm-panel-1 .price-value').innerHTML = item.price
+    document.querySelector('#amount').value = 1
     document.querySelector('#amount').select()
     document.querySelector('#amount').focus()
-    console.log('buy:')
-    console.log(item)
-}
-
-function cancelBuy() {
-    document.querySelector('#buy-panel').style.display = 'none'
-    document.querySelector('.mask').style.display = 'none'
+    //console.log('buy:')
+    //console.log(item)
 }
 
 function confirmBuy() {
-    document.querySelector('#buy-panel').style.display = 'none'
+    document.querySelector('#cfm-panel').style.display = 'none'
     document.querySelector('.mask').style.display = 'none'
-    const itemId = document.querySelector('#buy-panel-1 #itemId-value').value
+    const itemId = document.querySelector('#cfm-panel-1 #itemId-value').value
+    const item = getItem(itemId)
+    const player = getPlayer(getCurrentPlayerId())
     const amount = parseInt(document.querySelector('#amount').value)
     if (amount > 0) {
-        const inv = getPlayer().inv
-        if (inv[itemId]) {
-            inv[itemId].amount += amount
+        const total = item.price * amount
+        if (player.gold < total) {
+            console.log('錢不夠')
         }
         else {
-            inv[itemId] = { 'amount': amount }
+            const inv = player.inv
+            if (inv[itemId]) {
+                if (amount > maxPile - inv[itemId].amount) {
+                    console.log('超過最大堆疊數量')
+                }
+                else {
+                    player.gold -= total
+                    inv[itemId].amount += amount
+                }
+            }
+            else {
+                player.gold -= total
+                inv[itemId] = { 'amount': amount }
+            }
         }
-        console.log('total:' + getItem(itemId).price * amount)
+        //console.log('total:' + getItem(itemId).price * amount)
+    }
+
+    console.log(getInventory('item'))
+    updateInventory()
+    //console.log(getPlayer(getCurrentPlayerId()).inv)
+}
+
+function cancelBuy() {
+    document.querySelector('#cfm-panel').style.display = 'none'
+    document.querySelector('.mask').style.display = 'none'
+}
+
+function setStoreForSell() {
+
+    document.querySelector('#store-content-container').innerHTML = `
+        <div class="store-content">
+            <div id="item-list"></div>
+            <div class="mask"></div>
+            <div id="cfm-panel">
+                <div id="cfm-panel-1">
+                    <input type="hidden" id="itemId-value">
+                    <div class="cfm-item-name">名稱：<span class="name-value noteworthy"></span></div>
+                    <div class="cfm-item-price">售價：<span class="price-value noteworthy"></span>元</div>
+                    <div>
+                        <label for="amount">數量：</label><input type="text" class="noteworthy" id="amount" maxlength="2"
+                            onclick="this.select()">
+                    </div>
+                    <div class="button-to-right">
+                        <button type="button" class="cfm-panel-button" onclick="cancelSell()">取消</button>
+                        <button type="button" class="cfm-panel-button" onclick="confirmSell()">確定</button>
+                    </div>
+                </div>
+            </div>
+        </div>`
+
+    const invItems = getInventory('item')
+    if (invItems.length > 0) {
+        document.querySelector('#item-list').innerHTML = ''
+        invItems.forEach(([itemId, value]) => {
+            const temp = `
+                <div class="item">
+                    <div class="item-name">${getItem(itemId).name}</div>
+                    <div class="item-price">${value.amount} 個</div>
+                    <div><button type="button" class="item-button" onclick="sell('${itemId}')">出售</div>
+                </div>`
+            document.querySelector('#item-list').innerHTML += temp
+        });
+    }
+    else {
+        document.querySelector('#store-content-container').innerHTML = `
+            <div class="store-content">
+                <span class="noteworthy">背包內空無一物</span>
+            </div>`
+    }
+}
+
+function sell(itemId) {
+    const item = getItem(itemId)
+    document.querySelector('.mask').style.display = 'block'
+    document.querySelector('#cfm-panel').style.display = 'block'
+    document.querySelector('#cfm-panel-1 #itemId-value').value = itemId
+    document.querySelector('#cfm-panel-1 .name-value').innerHTML = item.name
+    document.querySelector('#cfm-panel-1 .price-value').innerHTML = Math.floor(item.price * discount)
+    document.querySelector('#amount').value = getPlayer(getCurrentPlayerId()).inv[itemId].amount
+    document.querySelector('#amount').select()
+    document.querySelector('#amount').focus()
+    //console.log('sell:')
+    //console.log(item)
+}
+
+
+function confirmSell() {
+    document.querySelector('#cfm-panel').style.display = 'none'
+    document.querySelector('.mask').style.display = 'none'
+    const itemId = document.querySelector('#cfm-panel-1 #itemId-value').value
+    const item = getItem(itemId)
+    const player = getPlayer(getCurrentPlayerId())
+    const amount = parseInt(document.querySelector('#amount').value)
+    if (amount > 0) {
+        const inv = player.inv
+        if (inv[itemId]) {
+            if (inv[itemId].amount < amount) {
+                console.log(`沒那麼多東西能賣(${inv[itemId].amount})`)
+            }
+            else {
+                player.gold += amount * Math.floor(item.price * discount)
+                inv[itemId].amount -= amount
+                if (inv[itemId].amount <= 0) {
+                    delete inv[itemId]
+                }
+            }
+        }
+        else {
+            console.log(`不存在的東西`)
+        }
+        //console.log('total:' + getItem(itemId).price * amount)
     }
 
     updateInventory()
-    console.log(getPlayer().inv)
+    setStoreForSell()
+    //console.log(getPlayer(getCurrentPlayerId()).inv)
+}
+
+function cancelSell() {
+    document.querySelector('#cfm-panel').style.display = 'none'
+    document.querySelector('.mask').style.display = 'none'
 }
 
 function useItem(itemId) {
-    const inv = getPlayer().inv
+    const inv = getPlayer(getCurrentPlayerId()).inv
     inv[itemId].amount -= 1
-    if (inv[itemId].amount == 0) {
+    if (inv[itemId].amount <= 0) {
         delete inv[itemId]
     }
     updateInventory()
 }
 
 function updateInventory() {
-    document.querySelector('#inventory-menu').innerHTML = ''
-    const inv = getPlayer().inv
-    document.querySelector('#inventory-menu').innerHTML += `<div>背包空間:${Object.keys(inv).length}/${maxInventory}</div>`
+    const player = getPlayer(getCurrentPlayerId())
+    const inv = player.inv
+    document.querySelector('#inventory-container').innerHTML = `
+        <div>錢：${player.gold} 元</div>
+        <div>背包空間：${getCurrentInventorySize()}/${maxInventorySize}</div>`
+
     Object.entries(inv).forEach(([itemId, value]) => {
         let temp = ''
         if (getItem(itemId).category == 'item') {
@@ -167,10 +280,26 @@ function updateInventory() {
                 <div>${getItem(itemId).name}:${value.amount}<button type="button" onclick=useItem('${itemId}')>使用</button></div>`
         }
 
-        document.querySelector('#inventory-menu').innerHTML += temp
+        document.querySelector('#inventory-container').innerHTML += temp
     });
 }
 
-function getItem(itemId) {
-    return items[itemId]
+function getCurrentInventorySize() {
+    return Object.keys(getPlayer(getCurrentPlayerId()).inv).length
+}
+
+//  Object.keys(jsonObj) => [ [key, value], [key, value], [key, value], ...]
+function getInventory(category) {
+    const a = []
+    Object.entries(getPlayer(getCurrentPlayerId()).inv).forEach(([itemId, value]) => {
+        if (getItem(itemId).category == category) {
+            a[a.length] = [itemId, value]
+        }
+    });
+
+    return a
+}
+
+function getCurrentPlayerId() {
+    return document.querySelector('#player-id').value
 }
