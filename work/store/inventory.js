@@ -5,15 +5,15 @@ function updateInventory() {
         <div>錢：${player.gold} 元</div>
         <div>背包空間：${getCurrentInventorySize()}/${maxInventorySize}</div>`
 
-    Object.entries(inv).forEach(([itemId, value]) => {
+    inv.forEach((element) => {
         let temp = ''
-        if (getItem(itemId).category == 'item') {
+        if (getItem(element.itemId).category == 'item') {
             temp = `
-                <div>${getItem(itemId).name}:${value.amount}<button type="button" onclick=useItem('${itemId}')>使用</button></div>`
+                <div>${getItem(element.itemId).name}:${element.amount}<button type="button" onclick=useItem('${element.itemId}')>使用</button></div>`
         }
-        else if (getItem(itemId).category == 'armor') {
+        else if (getItem(element.itemId).category == 'armor') {
             temp = `
-                <div>${getItem(itemId).name}:${value.amount}<button type="button" onclick=equipItem('${itemId}')>裝備</button></div>`
+                <div>${getItem(element.itemId).name}:${element.amount}<button type="button" onclick=equipItem('${element.itemId}')>裝備</button></div>`
         }
 
         document.querySelector('#inventory-container').innerHTML += temp
@@ -25,13 +25,42 @@ function getCurrentInventorySize() {
 }
 
 //  Object.keys(jsonObj) => [ [key, value], [key, value], [key, value], ...]
-function getInventory(category) {
+function pickOneCategory(category) {
     const a = []
-    Object.entries(getPlayer(getCurrentPlayerId()).inv).forEach(([itemId, value]) => {
-        if (getItem(itemId).category == category) {
-            a[a.length] = [itemId, value]
+    console.log(getPlayer(getCurrentPlayerId()).inv)
+    getPlayer(getCurrentPlayerId()).inv.forEach((element) => {
+        if (getItem(element.itemId).category == category) {
+            a[a.length] = element
         }
-    });
+    })
 
     return a
+}
+
+function pick(index) {
+    return getPlayer().inv[index]
+}
+
+function pickByItemId(itemId) {
+    const inv = getPlayer(getCurrentPlayerId()).inv
+    for (let i = 0; i < inv.length; i++) {
+        if (inv[i].itemId == itemId) {
+            return inv[i]
+        }
+    }
+}
+
+function addInv(itemId, amount) {
+    const inv = getPlayer(getCurrentPlayerId()).inv
+    inv[inv.length] = { 'itemId': itemId, 'amount': amount }
+}
+
+function removeInv(itemId) {
+    const inv = getPlayer(getCurrentPlayerId()).inv
+    for (let i = 0; i < inv.length; i++) {
+        if (inv[i].itemId == itemId) {
+            inv.splice(i, 1)
+            break
+        }
+    }
 }

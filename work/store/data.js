@@ -21,22 +21,15 @@ const locations = {
 }
 
 /*
-inv = {
-    itemID : {amount:amount},
-    itemID : {amount:amount},
-}
-
-change to
-
-[{itemId:itemId, amount:amount}, {}, .....]
+inv = [{itemId:itemId, amount:amount}, {}, .....]
 */
 const player = {
-    'player1': { name: '海賊王', gold: 1000, inv: {}, location: 'store1' },
-    'player2': { name: '飛天小女警', gold: 1000, inv: {}, location: 'store1' },
-    'player3': { name: '海棉寶寶', gold: 1000, inv: {}, location: 'store2' },
-    'player4': { name: '風之谷', gold: 1000, inv: {}, location: 'store2' },
-    'player5': { name: '科學小飛俠', gold: 1000, inv: {}, location: 'store3' },
-    'player6': { name: '秀逗魔導士', gold: 1000, inv: {}, location: 'store3' }
+    'player1': { name: '海賊王', gold: 1000, inv: [], location: 'store1' },
+    'player2': { name: '飛天小女警', gold: 1000, inv: [], location: 'store1' },
+    'player3': { name: '海棉寶寶', gold: 1000, inv: [], location: 'store2' },
+    'player4': { name: '風之谷', gold: 1000, inv: [], location: 'store2' },
+    'player5': { name: '科學小飛俠', gold: 1000, inv: [], location: 'store3' },
+    'player6': { name: '秀逗魔導士', gold: 1000, inv: [], location: 'store3' }
 }
 
 const maxInventorySize = 32

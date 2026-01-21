@@ -96,24 +96,24 @@ function confirmBuyArmor() {
         }
         else {
             const inv = player.inv
-            if (inv[itemId]) {
-                if (amount > maxPile - inv[itemId].amount) {
+            const itemInInv = pickByItemId(itemId)
+            if (itemInInv) {
+                if (amount > maxPile - itemInInv.amount) {
                     console.log('超過最大堆疊數量')
                 }
                 else {
                     player.gold -= total
-                    inv[itemId].amount += amount
+                    itemInInv.amount += amount
                 }
             }
             else {
                 player.gold -= total
-                inv[itemId] = { 'amount': amount }
+                addInv(itemId, amount)
             }
         }
         //console.log('total:' + getItem(itemId).price * amount)
     }
 
-    console.log(getInventory('item'))
     updateInventory()
     //console.log(getPlayer(getCurrentPlayerId()).inv)
 }
@@ -146,15 +146,15 @@ function setArmorStoreForSell() {
             </div>
         </div>`
 
-    const invArmors = getInventory('armor')
+    const invArmors = pickOneCategory('armor')
     if (invArmors.length > 0) {
         document.querySelector('#item-list').innerHTML = ''
-        invArmors.forEach(([itemId, value]) => {
+        invArmors.forEach((invArmor) => {
             const temp = `
                 <div class="item">
-                    <div class="item-name">${getItem(itemId).name}</div>
-                    <div class="item-price">${value.amount} 個</div>
-                    <div><button type="button" class="item-button" onclick="sellArmor('${itemId}')">出售</div>
+                    <div class="item-name">${getItem(invArmor.itemId).name}</div>
+                    <div class="item-price">${invArmor.amount} 個</div>
+                    <div><button type="button" class="item-button" onclick="sellArmor('${invArmor.itemId}')">出售</div>
                 </div>`
             document.querySelector('#item-list').innerHTML += temp
         });
@@ -174,7 +174,7 @@ function sellArmor(itemId) {
     document.querySelector('#cfm-panel-1 #itemId-value').value = itemId
     document.querySelector('#cfm-panel-1 .name-value').innerHTML = item.name
     document.querySelector('#cfm-panel-1 .price-value').innerHTML = Math.floor(item.price * discount)
-    document.querySelector('#amount').value = getPlayer(getCurrentPlayerId()).inv[itemId].amount
+    document.querySelector('#amount').value = pickByItemId(itemId).amount
     document.querySelector('#amount').select()
     document.querySelector('#amount').focus()
     //console.log('sell:')
@@ -190,21 +190,21 @@ function confirmSellArmor() {
     const player = getPlayer(getCurrentPlayerId())
     const amount = parseInt(document.querySelector('#amount').value)
     if (amount > 0) {
-        const inv = player.inv
-        if (inv[itemId]) {
-            if (inv[itemId].amount < amount) {
-                console.log(`沒那麼多東西可賣(${inv[itemId].amount})`)
+        const invItem = pickByItemId(itemId)
+        if (invItem) {
+            if (invItem.amount < amount) {
+                console.log(`沒那麼多東西可賣(${invItem.amount})`)
             }
             else {
                 player.gold += amount * Math.floor(item.price * discount)
-                inv[itemId].amount -= amount
-                if (inv[itemId].amount <= 0) {
-                    delete inv[itemId]
+                invItem.amount -= amount
+                if (invItem.amount <= 0) {
+                    removeInv(itemId)
                 }
             }
         }
         else {
-            console.log(`物品不存在`)
+            console.log(`防具不存在`)
         }
         //console.log('total:' + getItem(itemId).price * amount)
     }

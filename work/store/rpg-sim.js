@@ -12,9 +12,10 @@ function getLocation(locationId) {
 
 function useItem(itemId) {
     const inv = getPlayer(getCurrentPlayerId()).inv
-    inv[itemId].amount -= 1
-    if (inv[itemId].amount <= 0) {
-        delete inv[itemId]
+    const itemInInv = pickByItemId(itemId)
+    itemInInv.amount -= 1
+    if (itemInInv.amount <= 0) {
+        removeInv(itemId)
     }
     updateInventory()
 }

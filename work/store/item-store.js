@@ -33,7 +33,6 @@ function setStoreForVisit() {
 }
 
 function setStoreForBuy() {
-
     document.querySelector('#store-content-container').innerHTML = `
         <div class="store-content">
             <div id="item-list"></div>
@@ -95,25 +94,24 @@ function confirmBuy() {
             console.log('錢不夠')
         }
         else {
-            const inv = player.inv
-            if (inv[itemId]) {
-                if (amount > maxPile - inv[itemId].amount) {
+            const itemInInv = pickByItemId(itemId)
+            if (itemInInv) {
+                if (amount > maxPile - itemInInv.amount) {
                     console.log('超過最大堆疊數量')
                 }
                 else {
                     player.gold -= total
-                    inv[itemId].amount += amount
+                    itemInInv.amount += amount
                 }
             }
             else {
                 player.gold -= total
-                inv[itemId] = { 'amount': amount }
+                addInv(itemId, amount)
             }
         }
         //console.log('total:' + getItem(itemId).price * amount)
     }
 
-    console.log(getInventory('item'))
     updateInventory()
     //console.log(getPlayer(getCurrentPlayerId()).inv)
 }
@@ -124,7 +122,6 @@ function cancelBuy() {
 }
 
 function setStoreForSell() {
-
     document.querySelector('#store-content-container').innerHTML = `
         <div class="store-content">
             <div id="item-list"></div>
@@ -146,15 +143,15 @@ function setStoreForSell() {
             </div>
         </div>`
 
-    const invItems = getInventory('item')
+    const invItems = pickOneCategory('item')
     if (invItems.length > 0) {
         document.querySelector('#item-list').innerHTML = ''
-        invItems.forEach(([itemId, value]) => {
+        invItems.forEach((invItem) => {
             const temp = `
                 <div class="item">
-                    <div class="item-name">${getItem(itemId).name}</div>
-                    <div class="item-price">${value.amount} 個</div>
-                    <div><button type="button" class="item-button" onclick="sell('${itemId}')">出售</div>
+                    <div class="item-name">${getItem(invItem.itemId).name}</div>
+                    <div class="item-price">${invItem.amount} 個</div>
+                    <div><button type="button" class="item-button" onclick="sell('${invItem.itemId}')">出售</div>
                 </div>`
             document.querySelector('#item-list').innerHTML += temp
         });
@@ -174,7 +171,7 @@ function sell(itemId) {
     document.querySelector('#cfm-panel-1 #itemId-value').value = itemId
     document.querySelector('#cfm-panel-1 .name-value').innerHTML = item.name
     document.querySelector('#cfm-panel-1 .price-value').innerHTML = Math.floor(item.price * discount)
-    document.querySelector('#amount').value = getPlayer(getCurrentPlayerId()).inv[itemId].amount
+    document.querySelector('#amount').value = pickByItemId(itemId).amount
     document.querySelector('#amount').select()
     document.querySelector('#amount').focus()
     //console.log('sell:')
@@ -190,21 +187,21 @@ function confirmSell() {
     const player = getPlayer(getCurrentPlayerId())
     const amount = parseInt(document.querySelector('#amount').value)
     if (amount > 0) {
-        const inv = player.inv
-        if (inv[itemId]) {
-            if (inv[itemId].amount < amount) {
-                console.log(`沒那麼多東西能賣(${inv[itemId].amount})`)
+        const invItem = pickByItemId(itemId)
+        if (invItem) {
+            if (invItem.amount < amount) {
+                console.log(`沒那麼多東西能賣(${invItem.amount})`)
             }
             else {
                 player.gold += amount * Math.floor(item.price * discount)
-                inv[itemId].amount -= amount
-                if (inv[itemId].amount <= 0) {
-                    delete inv[itemId]
+                invItem.amount -= amount
+                if (invItem.amount <= 0) {
+                    removeInv(itemId)
                 }
             }
         }
         else {
-            console.log(`不存在的東西`)
+            console.log(`物品不存在`)
         }
         //console.log('total:' + getItem(itemId).price * amount)
     }
