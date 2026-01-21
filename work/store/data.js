@@ -10,18 +10,26 @@ const items = {
     'i09': { category: 'item', name: '加速丹', price: 13 },
     'i10': { category: 'item', name: '防禦丹', price: 17 },
     'i11': { category: 'item', name: '辟邪丹', price: 20 },
+    'a01': { category: 'armor', name: '銅甲', price: 5 },
 }
 
-const store = {
-    'store1': { name: '很有效藥店', storeItems: ['i01', 'i02', 'i03'] },
-    'store2': { name: '大百貨藥行', storeItems: ['i02', 'i03', 'i04', 'i05', 'i06'] },
-    'store3': { name: '萬全藥莊', storeItems: ['i01', 'i02', 'i03', 'i04', 'i05', 'i06', 'i07', 'i08', 'i09', 'i10', 'i11'] }
+const locations = {
+    'store1': { category: 'item-store', name: '很有效藥店', storeItems: ['i01', 'i02', 'i03'] },
+    'store2': { category: 'item-store', name: '大百貨藥行', storeItems: ['i02', 'i03', 'i04', 'i05', 'i06'] },
+    'store3': { category: 'item-store', name: '萬全藥莊', storeItems: ['i01', 'i02', 'i03', 'i04', 'i05', 'i06', 'i07', 'i08', 'i09', 'i10', 'i11'] },
+    'armor1': { category: 'armor-store', name: '防具店', storeItems: ['a01'] }
 }
 
-// inv = {
-//   itemID : {amount:amount},
-//   itemID : {amount:amount},
-// }
+/*
+inv = {
+    itemID : {amount:amount},
+    itemID : {amount:amount},
+}
+
+change to
+
+[{itemId:itemId, amount:amount}, {}, .....]
+*/
 const player = {
     'player1': { name: '海賊王', gold: 1000, inv: {}, location: 'store1' },
     'player2': { name: '飛天小女警', gold: 1000, inv: {}, location: 'store1' },
@@ -35,15 +43,3 @@ const maxInventorySize = 32
 const maxPile = 99
 const discount = 0.75
 const startPlayer = { player: 'player6' }
-
-function getItem(itemId) {
-    return items[itemId]
-}
-
-function getPlayer(playerId) {
-    return player[playerId]
-}
-
-function getStore(storeId) {
-    return store[storeId]
-}
