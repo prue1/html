@@ -10,20 +10,6 @@ function getLocation(locationId) {
     return locations[locationId]
 }
 
-function useItem(itemId) {
-    const inv = getPlayer(getCurrentPlayerId()).inv
-    const itemInInv = pickByItemId(itemId)
-    itemInInv.amount -= 1
-    if (itemInInv.amount <= 0) {
-        removeInv(itemId)
-    }
-    updateInventory()
-}
-
-function equipItem(itemId) {
-    console.log('裝備' + itemId)
-}
-
 function setup() {
     initPlayer()
     initLocation()
@@ -68,6 +54,8 @@ function setupLocation() {
     else if (currentLocation.category == 'armor-store') {
         setArmorStoreScene()
         setArmorStoreForVisit()
+    }
+    else if (currentLocation.category == 'weapon-store') {
     }
 }
 

@@ -1,4 +1,4 @@
-function setStoreScene() {
+function setArmorStoreScene() {
     //console.log('set scene.')
 
     const locationId = document.querySelector('#sel-location').value
@@ -14,16 +14,16 @@ function setStoreScene() {
                 <div id="menu">選單</div>
                 <div id="sub-menu-effect">
                     <div id="sub-menu">
-                        <div class='sub-menu-item' onclick='setStoreForVisit()'>參觀</div>
-                        <div class='sub-menu-item' onclick='setStoreForBuy()'>採買</div>
-                        <div class='sub-menu-item' onclick='setStoreForSell()'>出售</div>
+                        <div class='sub-menu-item' onclick='setArmorStoreForVisit()'>參觀</div>
+                        <div class='sub-menu-item' onclick='setArmorStoreForBuy()'>購買</div>
+                        <div class='sub-menu-item' onclick='setArmorStoreForSell()'>出售</div>
                     </div>
                 </div>
             </div>
         </div>`
 }
 
-function setStoreForVisit() {
+function setArmorStoreForVisit() {
     const player = getPlayer(getCurrentPlayerId())
 
     document.querySelector('#store-content-container').innerHTML = `
@@ -32,7 +32,8 @@ function setStoreForVisit() {
         </div>`
 }
 
-function setStoreForBuy() {
+function setArmorStoreForBuy() {
+
     document.querySelector('#store-content-container').innerHTML = `
         <div class="store-content">
             <div id="item-list"></div>
@@ -47,8 +48,8 @@ function setStoreForBuy() {
                             onclick="this.select()">
                     </div>
                     <div class="button-to-right">
-                        <button type="button" class="cfm-panel-button" onclick="cancelBuy()">取消</button>
-                        <button type="button" class="cfm-panel-button" onclick="confirmBuy()">確定</button>
+                        <button type="button" class="cfm-panel-button" onclick="cancelBuyArmor()">取消</button>
+                        <button type="button" class="cfm-panel-button" onclick="confirmBuyArmor()">確定</button>
                     </div>
                 </div>
             </div>
@@ -61,13 +62,13 @@ function setStoreForBuy() {
                 <div class="item">
                     <div class="item-name">${getItem(itemId).name}</div>
                     <div class="item-price">${getItem(itemId).price} 元</div>
-                    <div><button type="button" class="item-button" onclick="buy('${itemId}')">購買</div>
+                    <div><button type="button" class="item-button" onclick="buyArmor('${itemId}')">購買</div>
                 </div>`
         document.querySelector('#item-list').innerHTML += temp
     })
 }
 
-function buy(itemId) {
+function buyArmor(itemId) {
     const item = getItem(itemId)
     document.querySelector('.mask').style.display = 'block'
     document.querySelector('#cfm-panel').style.display = 'block'
@@ -81,7 +82,7 @@ function buy(itemId) {
     //console.log(item)
 }
 
-function confirmBuy() {
+function confirmBuyArmor() {
     document.querySelector('#cfm-panel').style.display = 'none'
     document.querySelector('.mask').style.display = 'none'
     const itemId = document.querySelector('#cfm-panel-1 #itemId-value').value
@@ -94,6 +95,7 @@ function confirmBuy() {
             console.log('錢不夠')
         }
         else {
+            const inv = player.inv
             const itemInInv = pickByItemId(itemId)
             if (itemInInv) {
                 if (amount > maxPile - itemInInv.amount) {
@@ -116,19 +118,20 @@ function confirmBuy() {
     //console.log(getPlayer(getCurrentPlayerId()).inv)
 }
 
-function cancelBuy() {
+function cancelBuyArmor() {
     document.querySelector('#cfm-panel').style.display = 'none'
     document.querySelector('.mask').style.display = 'none'
 }
 
-function setStoreForSell() {
+function setArmorStoreForSell() {
+
     document.querySelector('#store-content-container').innerHTML = `
         <div class="store-content">
             <div id="item-list"></div>
             <div class="mask"></div>
             <div id="cfm-panel">
                 <div id="cfm-panel-1">
-                    <input type="hidden" id="itemId-value">
+                    <input type="hidden" id="inv-index">
                     <div class="cfm-item-name">名稱：<span class="name-value noteworthy"></span></div>
                     <div class="cfm-item-price">售價：<span class="price-value noteworthy"></span>元</div>
                     <div>
@@ -136,22 +139,22 @@ function setStoreForSell() {
                             onclick="this.select()">
                     </div>
                     <div class="button-to-right">
-                        <button type="button" class="cfm-panel-button" onclick="cancelSell()">取消</button>
-                        <button type="button" class="cfm-panel-button" onclick="confirmSell()">確定</button>
+                        <button type="button" class="cfm-panel-button" onclick="cancelSellArmor()">取消</button>
+                        <button type="button" class="cfm-panel-button" onclick="confirmSellArmor()">確定</button>
                     </div>
                 </div>
             </div>
         </div>`
 
-    const invItems = pickOneCategory('item')
-    if (invItems.length > 0) {
+    const invArmors = pickOneCategory('armor')
+    if (invArmors.length > 0) {
         document.querySelector('#item-list').innerHTML = ''
-        invItems.forEach((invItem) => {
+        invArmors.forEach((invArmor) => {
             const temp = `
                 <div class="item">
-                    <div class="item-name">${getItem(invItem.itemId).name}</div>
-                    <div class="item-price">${invItem.amount} 個</div>
-                    <div><button type="button" class="item-button" onclick="sell('${invItem.itemId}')">出售</div>
+                    <div class="item-name">${getItem(invArmor.item.itemId).name}</div>
+                    <div class="item-price">${invArmor.item.amount} 個</div>
+                    <div><button type="button" class="item-button" onclick="sellArmor('${invArmor.index}')">出售</div>
                 </div>`
             document.querySelector('#item-list').innerHTML += temp
         });
@@ -159,19 +162,20 @@ function setStoreForSell() {
     else {
         document.querySelector('#store-content-container').innerHTML = `
             <div class="store-content">
-                <span class="noteworthy">背包內沒有 物品 可賣</span>
+                <span class="noteworthy">背包內沒有 防具 可賣</span>
             </div>`
     }
 }
 
-function sell(itemId) {
-    const item = getItem(itemId)
+function sellArmor(index) {
+    const invItem = pick(index)
+    const item = getItem(invItem.itemId)
     document.querySelector('.mask').style.display = 'block'
     document.querySelector('#cfm-panel').style.display = 'block'
-    document.querySelector('#cfm-panel-1 #itemId-value').value = itemId
+    document.querySelector('#cfm-panel-1 #inv-index').value = index
     document.querySelector('#cfm-panel-1 .name-value').innerHTML = item.name
     document.querySelector('#cfm-panel-1 .price-value').innerHTML = Math.floor(item.price * discount)
-    document.querySelector('#amount').value = pickByItemId(itemId).amount
+    document.querySelector('#amount').value = invItem.amount
     document.querySelector('#amount').select()
     document.querySelector('#amount').focus()
     //console.log('sell:')
@@ -179,29 +183,30 @@ function sell(itemId) {
 }
 
 
-function confirmSell() {
+function confirmSellArmor() {
     document.querySelector('#cfm-panel').style.display = 'none'
     document.querySelector('.mask').style.display = 'none'
-    const itemId = document.querySelector('#cfm-panel-1 #itemId-value').value
-    const item = getItem(itemId)
+    const index = document.querySelector('#cfm-panel-1 #inv-index').value
     const player = getPlayer(getCurrentPlayerId())
+
     const amount = parseInt(document.querySelector('#amount').value)
     if (amount > 0) {
-        const invItem = pickByItemId(itemId)
+        const invItem = pick(index)
+        const item = getItem(invItem.itemId)
         if (invItem) {
             if (invItem.amount < amount) {
-                console.log(`沒那麼多東西能賣(${invItem.amount})`)
+                console.log(`沒那麼多東西可賣(${invItem.amount})`)
             }
             else {
                 player.gold += amount * Math.floor(item.price * discount)
                 invItem.amount -= amount
                 if (invItem.amount <= 0) {
-                    removeInv(itemId)
+                    removeInv(index)
                 }
             }
         }
         else {
-            console.log(`物品不存在`)
+            console.log(`防具不存在`)
         }
         //console.log('total:' + getItem(itemId).price * amount)
     }
@@ -211,7 +216,7 @@ function confirmSell() {
     //console.log(getPlayer(getCurrentPlayerId()).inv)
 }
 
-function cancelSell() {
+function cancelSellArmor() {
     document.querySelector('#cfm-panel').style.display = 'none'
     document.querySelector('.mask').style.display = 'none'
 }

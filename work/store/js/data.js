@@ -11,13 +11,19 @@ const items = {
     'i10': { category: 'item', name: '防禦丹', price: 17 },
     'i11': { category: 'item', name: '辟邪丹', price: 20 },
     'a01': { category: 'armor', name: '銅甲', price: 5 },
+    'a02': { category: 'armor', name: '鐵甲', price: 10 },
+    'a03': { category: 'armor', name: '鎖子甲', price: 20 },
+    'w01': { category: 'weapon', name: '銅劍', price: 10 },
+    'w02': { category: 'weapon', name: '鐵劍', price: 20 },
+    'w03': { category: 'weapon', name: '長棍', price: 10 },
 }
 
 const locations = {
     'store1': { category: 'item-store', name: '很有效藥店', storeItems: ['i01', 'i02', 'i03'] },
     'store2': { category: 'item-store', name: '大百貨藥行', storeItems: ['i02', 'i03', 'i04', 'i05', 'i06'] },
     'store3': { category: 'item-store', name: '萬全藥莊', storeItems: ['i01', 'i02', 'i03', 'i04', 'i05', 'i06', 'i07', 'i08', 'i09', 'i10', 'i11'] },
-    'armor1': { category: 'armor-store', name: '防具店', storeItems: ['a01'] }
+    'armor1': { category: 'armor-store', name: '防具店', storeItems: ['a01', 'a03'] },
+    'weapon1': { category: 'weapon-store', name: '武器店', storeItems: ['w01', 'w02', 'w03'] }
 }
 
 /*
