@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>template</title>
+</head>
+
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .rel {
+        position: relative;
+    }
+
+    .box {
+        width: 150px;
+        height: 275px;
+        background-color: skyblue;
+        overflow: auto;
+    }
+
+    .mask {
+        width: 150px;
+        height: 275px;
+        background-color: orange;
+        opacity: 0.5;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+</style>
+
+<body>
+    <div class="rel">
+        <div class="box">
+            <div>123</div>
+            <div>123</div>
+            <div>123</div>
+            <div>123</div>
+            <div>123</div>
+            <div>123</div>
+            <div>123</div>
+            <div>123</div>
+            <div>123</div>
+            <div>123</div>
+            <div>123</div>
+            <div>123</div>
+            <div>123</div>
+            <div>123</div>
+            <div>123</div>
+            <div>123</div>
+            <div>123</div>
+            <div>123</div>
+            <div>123</div>
+            <div>1234567890abcdefgh</div>
+        </div>
+        <div class="mask"></div>
+    </div>
+    <p>測試結果:scrollbar會出現在範圍內。</p>
+</body>
+
+</html>

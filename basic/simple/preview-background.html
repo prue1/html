@@ -32,6 +32,7 @@
         width: 128px;
         height: 32px;
         background-color: transparent;
+        /* appearance: unset; */
     }
 </style>
 
@@ -46,7 +47,7 @@
 
 <body>
 
-    <label for="bg-sel">選擇背景</label><select id="bg-sel" onchange="change()">
+    <label for="bg-sel">選擇背景</label><select id="bg-sel" size="1" onchange="change()">
         <option value="black-white-box-16">黑白格子(16px)</option>
         <option value="black-white-box-32">黑白格子(32px)</option>
         <option value="black-white-box-64" selected>黑白格子(64px)</option>
