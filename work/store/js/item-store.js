@@ -45,7 +45,9 @@ function setStoreForBuy() {
                     <div>
                         <label for="amount">數量：</label><input type="text" class="noteworthy" id="amount" maxlength="2"
                             onclick="this.select()">
+                        <button type="button" onclick="setMaxAmount()">最大量</button>
                     </div>
+                    <div class="v-separator"></div>
                     <div class="button-to-right">
                         <button type="button" class="cfm-panel-button" onclick="cancelBuy()">取消</button>
                         <button type="button" class="cfm-panel-button" onclick="confirmBuy()">確定</button>
@@ -157,6 +159,7 @@ function setStoreForSell() {
                         <label for="amount">數量：</label><input type="text" class="noteworthy" id="amount" maxlength="2"
                             onclick="this.select()">
                     </div>
+                    <div class="v-separator"></div>
                     <div class="button-to-right">
                         <button type="button" class="cfm-panel-button" onclick="cancelSell()">取消</button>
                         <button type="button" class="cfm-panel-button" onclick="confirmSell()">確定</button>
@@ -238,4 +241,8 @@ function confirmSell() {
 function cancelSell() {
     document.querySelector('#cfm-panel').style.display = 'none'
     document.querySelector('.mask').style.display = 'none'
+}
+
+function setMaxAmount() {
+    document.querySelector('#amount').value = maxPile
 }

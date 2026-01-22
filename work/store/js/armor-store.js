@@ -45,6 +45,7 @@ function setArmorStoreForBuy() {
                     <div class="cfm-item-name">名稱：<span class="name-value noteworthy"></span></div>
                     <div class="cfm-item-price">售價：<span class="price-value noteworthy"></span>元</div>
                     <div class="cfm-item-price">數量：<span class="price-value noteworthy">1</span>件</div>
+                    <div class="v-separator"></div>
                     <div class="button-to-right">
                         <button type="button" class="cfm-panel-button" onclick="cancelBuyArmor()">取消</button>
                         <button type="button" class="cfm-panel-button" onclick="confirmBuyArmor()">確定</button>
@@ -126,6 +127,7 @@ function setArmorStoreForSell() {
                     <div class="cfm-item-name">名稱：<span class="name-value noteworthy"></span></div>
                     <div class="cfm-item-price">售價：<span class="price-value noteworthy"></span>元</div>
                     <div class="cfm-item-price">數量：<span class="price-value noteworthy">1</span>件</div>
+                    <div class="v-separator"></div>
                     <div class="button-to-right">
                         <button type="button" class="cfm-panel-button" onclick="cancelSellArmor()">取消</button>
                         <button type="button" class="cfm-panel-button" onclick="confirmSellArmor()">確定</button>

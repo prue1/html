@@ -3,6 +3,10 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.v-separator {
+    height: 10px;
+}
+
 #scene {
     width: fit-content;
 }
@@ -25,9 +29,6 @@
     width: 300px;
     height: 56px;
     background-color: gold;
-    border-top: 3px solid darkcyan;
-    border-left: 3px solid darkcyan;
-    border-right: 3px solid darkcyan;
 }
 
 #store-name {
@@ -48,7 +49,8 @@
 #menu {
     width: 100px;
     height: 30px;
-    background-color: yellowgreen;
+    color: #347B98;
+    background-color: #D4EDF7;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -84,6 +86,11 @@
     color: white;
 }
 
+#store-menu:hover #menu {
+    background-color: #347B98;
+    color: white;
+}
+
 #store-menu:hover #sub-menu-effect {
     height: 90px;
 }
@@ -94,7 +101,6 @@
     height: 320px;
     background-color: #F7F4D4;
     padding: 5px;
-    border: 3px solid darkcyan;
 }
 
 .mask {
