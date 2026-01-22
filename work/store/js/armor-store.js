@@ -41,12 +41,10 @@ function setArmorStoreForBuy() {
             <div id="cfm-panel">
                 <div id="cfm-panel-1">
                     <input type="hidden" id="itemId-value">
+                    <input type="hidden" id="amount">
                     <div class="cfm-item-name">名稱：<span class="name-value noteworthy"></span></div>
                     <div class="cfm-item-price">售價：<span class="price-value noteworthy"></span>元</div>
-                    <div>
-                        <label for="amount">數量：</label><input type="text" class="noteworthy" id="amount" maxlength="2"
-                            onclick="this.select()">
-                    </div>
+                    <div class="cfm-item-price">數量：<span class="price-value noteworthy">1</span>件</div>
                     <div class="button-to-right">
                         <button type="button" class="cfm-panel-button" onclick="cancelBuyArmor()">取消</button>
                         <button type="button" class="cfm-panel-button" onclick="confirmBuyArmor()">確定</button>
@@ -95,20 +93,12 @@ function confirmBuyArmor() {
             console.log('錢不夠')
         }
         else {
-            const inv = player.inv
-            const itemInInv = pickByItemId(itemId)
-            if (itemInInv) {
-                if (amount > maxPile - itemInInv.amount) {
-                    console.log('超過最大堆疊數量')
-                }
-                else {
-                    player.gold -= total
-                    itemInInv.amount += amount
-                }
-            }
-            else {
+            if (getCurrentInventorySize() < maxInventorySize) {
                 player.gold -= total
                 addInv(itemId, amount)
+            }
+            else {
+                console.log('背包空間不足。')
             }
         }
         //console.log('total:' + getItem(itemId).price * amount)
@@ -132,12 +122,10 @@ function setArmorStoreForSell() {
             <div id="cfm-panel">
                 <div id="cfm-panel-1">
                     <input type="hidden" id="inv-index">
+                    <input type="hidden" id="amount">
                     <div class="cfm-item-name">名稱：<span class="name-value noteworthy"></span></div>
                     <div class="cfm-item-price">售價：<span class="price-value noteworthy"></span>元</div>
-                    <div>
-                        <label for="amount">數量：</label><input type="text" class="noteworthy" id="amount" maxlength="2"
-                            onclick="this.select()">
-                    </div>
+                    <div class="cfm-item-price">數量：<span class="price-value noteworthy">1</span>件</div>
                     <div class="button-to-right">
                         <button type="button" class="cfm-panel-button" onclick="cancelSellArmor()">取消</button>
                         <button type="button" class="cfm-panel-button" onclick="confirmSellArmor()">確定</button>
@@ -153,7 +141,7 @@ function setArmorStoreForSell() {
             const temp = `
                 <div class="item">
                     <div class="item-name">${getItem(invArmor.item.itemId).name}</div>
-                    <div class="item-price">${invArmor.item.amount} 個</div>
+                    <div class="item-price">${invArmor.item.amount} 件</div>
                     <div><button type="button" class="item-button" onclick="sellArmor('${invArmor.index}')">出售</div>
                 </div>`
             document.querySelector('#item-list').innerHTML += temp
@@ -212,7 +200,7 @@ function confirmSellArmor() {
     }
 
     updateInventory()
-    setStoreForSell()
+    setArmorStoreForSell()
     //console.log(getPlayer(getCurrentPlayerId()).inv)
 }
 

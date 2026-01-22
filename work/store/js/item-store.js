@@ -87,31 +87,48 @@ function confirmBuy() {
     const itemId = document.querySelector('#cfm-panel-1 #itemId-value').value
     const item = getItem(itemId)
     const player = getPlayer(getCurrentPlayerId())
-    const amount = parseInt(document.querySelector('#amount').value)
+    let amount = parseInt(document.querySelector('#amount').value)
     if (amount > 0) {
         const total = item.price * amount
         if (player.gold < total) {
             console.log('錢不夠')
         }
         else {
-            // 概念：尋找背包中已存在的該物品 invItem
-            const invItem = pickByItemId(itemId)
-            if (invItem) {
-                // 若該物品已存在，則進行堆疊
-                if (amount > maxPile - invItem.amount) {
-                    // 若堆疊後超過最大堆疊量(maxPile)，則取消(不動作)。
-                    console.log('超過最大堆疊數量')
+            // 概念：尋找背包中已存在的該物品 invItems
+            // 一邊暂存背包中的物品數量，一邊補滿背包中的堆疊
+            const invItems = pickByItemId(itemId)
+            const tempAmount = []
+            invItems.forEach((invItem, index) => {
+                tempAmount[index] = invItem.amount
+                // 是否滿一個堆疊
+                if (invItem.amount < maxPile) {
+                    // 還差多少滿一個堆疊
+                    const diff = maxPile - invItem.amount
+                    if (diff < amount) {
+                        invItem.amount = maxPile
+                        amount -= diff
+                    }
+                    else {
+                        invItem.amount += amount
+                        amount = 0
+                    }
+                }
+            })
+
+            // 若有剩餘數量
+            if (amount > 0) {
+                // 若背包尚有多餘空間，則建立新的堆疊，並扣掉購買金額
+                if (getCurrentInventorySize() < maxInventorySize) {
+                    addInv(itemId, amount)
+                    player.gold -= total
                 }
                 else {
-                    // 否則，加入該堆疊，並扣掉金錢。
-                    player.gold -= total
-                    invItem.amount += amount
+                    // 若背包空間不夠，則 rollback -> 將暫存(tempAmount)的 amount 寫回原來的背包堆疊
+                    invItems.forEach((invItem, index) => {
+                        invItem.amount = tempAmount[index]
+                    })
+                    console.log('背包空間不足。')
                 }
-            }
-            else {
-                // 若背包中不存在該物品，則加入該物品，並扣掉錢。
-                player.gold -= total
-                addInv(itemId, amount)
             }
         }
         //console.log('total:' + getItem(itemId).price * amount)

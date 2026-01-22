@@ -9,11 +9,11 @@ function updateInventory() {
         let temp = ''
         if (getItem(invItem.itemId).category == 'item') {
             temp = `
-                <div>${getItem(invItem.itemId).name}:${invItem.amount}<button type="button" onclick=useItem('${index}')>使用</button></div>`
+                <div>${getItem(invItem.itemId).name}：${invItem.amount}<button type="button" onclick=useItem('${index}')>使用</button></div>`
         }
         else if (getItem(invItem.itemId).category == 'armor') {
             temp = `
-                <div>${getItem(invItem.itemId).name}:${invItem.amount}<button type="button" onclick=equipItem('${index}')>裝備</button></div>`
+                <div>${getItem(invItem.itemId).name}：${invItem.amount}<button type="button" onclick=equipItem('${index}')>裝備</button></div>`
         }
 
         document.querySelector('#inventory-container').innerHTML += temp
@@ -35,7 +35,7 @@ function equipItem(itemId) {
 }
 
 function getCurrentInventorySize() {
-    return Object.keys(getPlayer(getCurrentPlayerId()).inv).length
+    return getPlayer(getCurrentPlayerId()).inv.length
 }
 
 //  Object.keys(jsonObj) => [ [key, value], [key, value], [key, value], ...]
@@ -56,12 +56,15 @@ function pick(index) {
 }
 
 function pickByItemId(itemId) {
+    const a = []
     const inv = getPlayer(getCurrentPlayerId()).inv
     for (let i = 0; i < inv.length; i++) {
         if (inv[i].itemId == itemId) {
-            return inv[i]
+            a[a.length] = inv[i]
         }
     }
+
+    return a
 }
 
 function addInv(itemId, amount) {

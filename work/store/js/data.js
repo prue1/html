@@ -23,6 +23,7 @@ const locations = {
     'store2': { category: 'item-store', name: '大百貨藥行', storeItems: ['i02', 'i03', 'i04', 'i05', 'i06'] },
     'store3': { category: 'item-store', name: '萬全藥莊', storeItems: ['i01', 'i02', 'i03', 'i04', 'i05', 'i06', 'i07', 'i08', 'i09', 'i10', 'i11'] },
     'armor1': { category: 'armor-store', name: '防具店', storeItems: ['a01', 'a03'] },
+    'armor2': { category: 'armor-store', name: '防具二號店', storeItems: ['a01', 'a02', 'a03'] },
     'weapon1': { category: 'weapon-store', name: '武器店', storeItems: ['w01', 'w02', 'w03'] }
 }
 
@@ -38,7 +39,7 @@ const player = {
     'player6': { name: '秀逗魔導士', gold: 1000, inv: [], location: 'store3' }
 }
 
-const maxInventorySize = 32
+const maxInventorySize = 8
 const maxPile = 99
 const discount = 0.75
 const startPlayer = { player: 'player6' }
