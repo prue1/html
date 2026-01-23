@@ -10,6 +10,7 @@ const items = {
     'i09': { category: 'item', name: '加速丹', price: 13 },
     'i10': { category: 'item', name: '防禦丹', price: 17 },
     'i11': { category: 'item', name: '辟邪丹', price: 20 },
+    'i12': { category: 'item', name: '天香斷續膏', price: 90 },
     'a01': { category: 'armor', name: '銅甲', price: 5 },
     'a02': { category: 'armor', name: '鐵甲', price: 10 },
     'a03': { category: 'armor', name: '鎖子甲', price: 20 },
@@ -19,7 +20,7 @@ const items = {
 }
 
 const locations = {
-    'store1': { category: 'item-store', name: '很有效藥店', storeItems: ['i01', 'i02', 'i03'] },
+    'store1': { category: 'item-store', name: '很有效藥店', storeItems: ['i01', 'i02', 'i03', 'i12'] },
     'store2': { category: 'item-store', name: '大百貨藥行', storeItems: ['i02', 'i03', 'i04', 'i05', 'i06'] },
     'store3': { category: 'item-store', name: '萬全藥莊', storeItems: ['i01', 'i02', 'i03', 'i04', 'i05', 'i06', 'i07', 'i08', 'i09', 'i10', 'i11'] },
     'armor1': { category: 'armor-store', name: '防具店', storeItems: ['a01', 'a03'] },

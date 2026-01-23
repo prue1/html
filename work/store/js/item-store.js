@@ -244,5 +244,14 @@ function cancelSell() {
 }
 
 function setMaxAmount() {
-    document.querySelector('#amount').value = maxPile
+    const player = getPlayer(getCurrentPlayerId())
+    const itemId = document.querySelector('#cfm-panel-1 #itemId-value').value
+    const item = getItem(itemId)
+    const maxBuy = Math.floor(player.gold / item.price)
+    if (maxBuy < maxPile) {
+        document.querySelector('#amount').value = maxBuy
+    }
+    else {
+        document.querySelector('#amount').value = maxPile
+    }
 }

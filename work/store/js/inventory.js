@@ -3,20 +3,29 @@ function updateInventory() {
     const inv = player.inv
     document.querySelector('#inventory-container').innerHTML = `
         <div>錢：${player.gold} 元</div>
-        <div>背包空間：${getCurrentInventorySize()}/${maxInventorySize}</div>`
+        <div>背包空間：${getCurrentInventorySize()}/${maxInventorySize}</div>
+        <div id="item-container"></div>`
 
     inv.forEach((invItem, index) => {
         let temp = ''
         if (getItem(invItem.itemId).category == 'item') {
             temp = `
-                <div>${getItem(invItem.itemId).name}：${invItem.amount}<button type="button" onclick=useItem('${index}')>使用</button></div>`
+                <div class="inv-item">
+                    <div class="inv-item-name inv-item-bacground">${getItem(invItem.itemId).name}</div>
+                    <div class="inv-item-amount">${invItem.amount}</div>
+                    <div class="inv-item-button"><button type="button" onclick=useItem('${index}')>使用</button></div>
+                </div>`
         }
         else if (getItem(invItem.itemId).category == 'armor') {
             temp = `
-                <div>${getItem(invItem.itemId).name}：${invItem.amount}<button type="button" onclick=equipItem('${index}')>裝備</button></div>`
+                <div class="inv-item">
+                    <div class="inv-item-name inv-armor-bacground">${getItem(invItem.itemId).name}</div>
+                    <div class="inv-item-amount">${invItem.amount}</div>
+                    <div class="inv-item-button"><button type="button" onclick=equipItem('${index}')>裝備</button></div>
+                </div>`
         }
 
-        document.querySelector('#inventory-container').innerHTML += temp
+        document.querySelector('#item-container').innerHTML += temp
     });
 }
 
@@ -38,7 +47,7 @@ function getCurrentInventorySize() {
     return getPlayer(getCurrentPlayerId()).inv.length
 }
 
-//  Object.keys(jsonObj) => [ [key, value], [key, value], [key, value], ...]
+//  [ 'index': invIndex, 'item': invItem]
 function pickOneCategory(category) {
     const a = []
     const inv = getPlayer(getCurrentPlayerId()).inv
