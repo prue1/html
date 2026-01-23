@@ -10,7 +10,7 @@ const items = {
     'i09': { category: 'item', name: '加速丹', price: 13 },
     'i10': { category: 'item', name: '防禦丹', price: 17 },
     'i11': { category: 'item', name: '辟邪丹', price: 20 },
-    'i12': { category: 'item', name: '天香斷續膏', price: 90 },
+    'i12': { category: 'item', name: '天香斷續膏', price: 9 },
     'a01': { category: 'armor', name: '銅甲', price: 5 },
     'a02': { category: 'armor', name: '鐵甲', price: 10 },
     'a03': { category: 'armor', name: '鎖子甲', price: 20 },

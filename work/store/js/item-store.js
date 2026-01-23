@@ -44,7 +44,7 @@ function setStoreForBuy() {
                     <div class="cfm-item-price">售價：<span class="price-value noteworthy"></span>元</div>
                     <div>
                         <label for="amount">數量：</label><input type="text" class="noteworthy" id="amount" maxlength="2"
-                            onclick="this.select()">
+                            onclick="this.select()" onkeyup="doEnterBuy(event)">
                         <button type="button" onclick="setMaxAmount()">最大量</button>
                     </div>
                     <div class="v-separator"></div>
@@ -157,7 +157,7 @@ function setStoreForSell() {
                     <div class="cfm-item-price">售價：<span class="price-value noteworthy"></span>元</div>
                     <div>
                         <label for="amount">數量：</label><input type="text" class="noteworthy" id="amount" maxlength="2"
-                            onclick="this.select()">
+                            onclick="this.select()" onkeyup="doEnterSell(event)">
                     </div>
                     <div class="v-separator"></div>
                     <div class="button-to-right">
@@ -253,5 +253,17 @@ function setMaxAmount() {
     }
     else {
         document.querySelector('#amount').value = maxPile
+    }
+}
+
+function doEnterBuy(event) {
+    if (event.key == 'Enter') {
+        confirmBuy()
+    }
+}
+
+function doEnterSell(event) {
+    if (event.key == 'Enter') {
+        confirmSell()
     }
 }

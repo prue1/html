@@ -10,39 +10,41 @@
     width: fit-content;
     height: fit-content;
     display: flex;
+    align-items: center;
+    position: relative;
 }
 
 .inv-item-name {
-    width: 96px;
-    height: 30px;
+    width: 112px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: left;
     padding-left: 5px;
 }
 
-.inv-item-amount {
-    width: 36px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    padding-right: 5px;
-    background-color: rgb(103, 158, 241);
-}
-
 .inv-item-button {
     width: 48px;
-    height: 30px;
+    height: 32px;
     display: flex;
-    align-items: end;
-    justify-content: start;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.inv-item-button button {
+    font-size: 7px;
+}
+
+.inv-empty {
+    width: 160px;
+    height: 32px;
+    background-color: #c7c4be52;
 }
 
 .inv-item-bacground {
-    background-color: rgb(187, 239, 67);
+    background-color: #F7D4DC;
 }
 
 .inv-armor-bacground {
-    background-color: rgb(237, 169, 33);
+    background-color: #F7E9D4;
 }

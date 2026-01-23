@@ -3,30 +3,75 @@ function updateInventory() {
     const inv = player.inv
     document.querySelector('#inventory-container').innerHTML = `
         <div>錢：${player.gold} 元</div>
-        <div>背包空間：${getCurrentInventorySize()}/${maxInventorySize}</div>
+        <div>背包空間(最大：${maxInventorySize})：</div>
+        <div>已使用：${getCurrentInventorySize()}，剩餘：${maxInventorySize - getCurrentInventorySize()}</div>
         <div id="item-container"></div>`
 
     inv.forEach((invItem, index) => {
         let temp = ''
         if (getItem(invItem.itemId).category == 'item') {
             temp = `
-                <div class="inv-item">
-                    <div class="inv-item-name inv-item-bacground">${getItem(invItem.itemId).name}</div>
-                    <div class="inv-item-amount">${invItem.amount}</div>
-                    <div class="inv-item-button"><button type="button" onclick=useItem('${index}')>使用</button></div>
+                <div class="inv-item inv-item-bacground"
+                        draggable="true"
+                        ondragstart="dragstartHandler(event, ${index})"
+                        ondragover="dragoverHandler(event)"
+                        ondrop="dropHandler(event, ${index})">
+                    <div class="inv-item-name">
+                        <span>${getItem(invItem.itemId).name}</span>
+                        <span class="noteworthy">${invItem.amount}</span>
+                    </div>
+                    <div class="inv-item-button">
+                        <button type="button" onclick=useItem('${index}')>使用</button>
+                    </div>
                 </div>`
         }
         else if (getItem(invItem.itemId).category == 'armor') {
             temp = `
-                <div class="inv-item">
-                    <div class="inv-item-name inv-armor-bacground">${getItem(invItem.itemId).name}</div>
-                    <div class="inv-item-amount">${invItem.amount}</div>
-                    <div class="inv-item-button"><button type="button" onclick=equipItem('${index}')>裝備</button></div>
+                <div class="inv-item inv-armor-bacground"
+                        draggable="true"
+                        ondragstart="dragstartHandler(event, ${index})"
+                        ondragover="dragoverHandler(event)"
+                        ondrop="dropHandler(event, ${index})" >
+                    <div class="inv-item-name">
+                        <span>${getItem(invItem.itemId).name}</span>
+                        <span class="noteworthy">${invItem.amount}</span>
+                    </div>
+                    <div class="inv-item-button">
+                        <button type="button" onclick=equipItem('${index}')>裝備</button>
+                    </div>
                 </div>`
         }
 
         document.querySelector('#item-container').innerHTML += temp
     });
+
+    const empty = maxInventorySize - inv.length
+    for (let i = 0; i < empty; i++) {
+        temp = `
+                <div class="inv-empty"></div>`
+
+        document.querySelector('#item-container').innerHTML += temp
+    }
+}
+
+function dragstartHandler(ev, fromIndex) {
+    ev.dataTransfer.setData("fromIndex", fromIndex);
+}
+
+function dragoverHandler(ev) {
+    ev.preventDefault();
+}
+
+function dropHandler(ev, toIndex) {
+    ev.preventDefault();
+    const fromIndex = ev.dataTransfer.getData("fromIndex");
+    if (fromIndex != toIndex) {
+        const inv = getPlayer(getCurrentPlayerId()).inv
+        const temp = inv[toIndex]
+        inv[toIndex] = inv[fromIndex]
+        inv[fromIndex] = temp
+        updateInventory()
+    }
 }
 
 function useItem(index) {
