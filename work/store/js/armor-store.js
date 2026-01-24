@@ -75,8 +75,7 @@ function buyArmor(itemId) {
     document.querySelector('#cfm-panel-1 .name-value').innerHTML = item.name
     document.querySelector('#cfm-panel-1 .price-value').innerHTML = item.price
     document.querySelector('#amount').value = 1
-    document.querySelector('#amount').select()
-    document.querySelector('#amount').focus()
+    document.querySelector('.cfm-panel-button:nth-child(2)').focus()
     //console.log('buy:')
     //console.log(item)
 }
@@ -165,9 +164,8 @@ function sellArmor(index) {
     document.querySelector('#cfm-panel-1 #inv-index').value = index
     document.querySelector('#cfm-panel-1 .name-value').innerHTML = item.name
     document.querySelector('#cfm-panel-1 .price-value').innerHTML = Math.floor(item.price * discount)
-    document.querySelector('#amount').value = invItem.amount
-    document.querySelector('#amount').select()
-    document.querySelector('#amount').focus()
+    document.querySelector('#amount').value = 1
+    document.querySelector('.cfm-panel-button:nth-child(2)').focus()
     //console.log('sell:')
     //console.log(item)
 }

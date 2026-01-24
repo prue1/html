@@ -11,28 +11,36 @@ function updateInventory() {
         let temp = ''
         if (getItem(invItem.itemId).category == 'item') {
             temp = `
-                <div class="inv-item inv-item-bacground"
+                <div class="inv-item inv-item-bacground">
+                    <div class="inv-insert-box"
+                        ondragover="dragoverHandler(event)"
+                        ondrop="dropInsertHandler(event, ${index})">
+                    </div>
+                    <div class="inv-item-name inv-item-name-${index}"
                         draggable="true"
                         ondragstart="dragstartHandler(event, ${index})"
                         ondragover="dragoverHandler(event)"
-                        ondrop="dropHandler(event, ${index})">
-                    <div class="inv-item-name">
+                        ondrop="dropHandler(event, ${index})"
+                        ondragend="dragEndHandler(event)">
                         <span>${getItem(invItem.itemId).name}</span>
                         <span class="noteworthy">${invItem.amount}</span>
                     </div>
-                    <div class="inv-item-button">
-                        <button type="button" onclick=useItem('${index}')>使用</button>
-                    </div>
+                    <button type="button" class="inv-item-button" onclick=useItem('${index}')>使用</button>
                 </div>`
         }
         else if (getItem(invItem.itemId).category == 'armor') {
             temp = `
-                <div class="inv-item inv-armor-bacground"
+                <div class="inv-item inv-armor-bacground">
+                    <div class="inv-insert-box"
+                        ondragover="dragoverHandler(event)"
+                        ondrop="dropInsertHandler(event, ${index})">
+                    </div>
+                    <div class="inv-item-name inv-item-name-${index}"
                         draggable="true"
                         ondragstart="dragstartHandler(event, ${index})"
                         ondragover="dragoverHandler(event)"
-                        ondrop="dropHandler(event, ${index})" >
-                    <div class="inv-item-name">
+                        ondrop="dropHandler(event, ${index})"
+                        ondragend="dragEndHandler(event)">
                         <span>${getItem(invItem.itemId).name}</span>
                         <span class="noteworthy">${invItem.amount}</span>
                     </div>
@@ -45,10 +53,18 @@ function updateInventory() {
         document.querySelector('#item-container').innerHTML += temp
     });
 
-    const empty = maxInventorySize - inv.length
-    for (let i = 0; i < empty; i++) {
+    for (let index = inv.length; index < maxInventorySize; index++) {
         temp = `
-                <div class="inv-empty"></div>`
+            <div class="inv-item inv-empty-bacground">
+                <div class="inv-insert-box"
+                    ondragover="dragoverHandler(event)"
+                    ondrop="dropEmptyHandler(event)">
+                </div>
+                <div class="inv-empty"
+                    ondragover="dragoverHandler(event)"
+                    ondrop="dropEmptyHandler(event)">
+                </div>
+            </div>`
 
         document.querySelector('#item-container').innerHTML += temp
     }
@@ -56,6 +72,20 @@ function updateInventory() {
 
 function dragstartHandler(ev, fromIndex) {
     ev.dataTransfer.setData("fromIndex", fromIndex);
+    const customDragImage = document.querySelector(`.inv-item-name-${fromIndex}`)
+    // 取得計算後的元件設定
+    //The getComputedStyle() method gets the computed CSS properties and values of an HTML element.
+    //The getComputedStyle() method returns a CSSStyleDeclaration object.
+    const computedStyle = window.getComputedStyle(customDragImage)
+    ev.dataTransfer.setDragImage(
+        customDragImage,
+        parseInt(computedStyle.width),
+        parseInt(computedStyle.height)
+    );
+
+    document.querySelectorAll('.inv-insert-box').forEach((element) => {
+        element.style['width'] = '20px'
+    })
 }
 
 function dragoverHandler(ev) {
@@ -64,6 +94,7 @@ function dragoverHandler(ev) {
 
 function dropHandler(ev, toIndex) {
     ev.preventDefault();
+    // 不斷修改、重試、修改、重試....一段時間後，發生無法取得 fromIndex 的問題，重開 Edge 後解決。
     const fromIndex = ev.dataTransfer.getData("fromIndex");
     if (fromIndex != toIndex) {
         const inv = getPlayer(getCurrentPlayerId()).inv
@@ -72,6 +103,39 @@ function dropHandler(ev, toIndex) {
         inv[fromIndex] = temp
         updateInventory()
     }
+}
+
+function dropEmptyHandler(ev) {
+    ev.preventDefault();
+    const fromIndex = ev.dataTransfer.getData("fromIndex");
+    const inv = getPlayer(getCurrentPlayerId()).inv
+    inv[inv.length] = inv[fromIndex]
+    removeInv(fromIndex)
+    updateInventory()
+}
+
+function dropInsertHandler(ev, toIndex) {
+    ev.preventDefault();
+    const fromIndex = ev.dataTransfer.getData("fromIndex");
+    if (fromIndex != toIndex && fromIndex + 1 != toIndex) {
+        const inv = getPlayer(getCurrentPlayerId()).inv
+        const item = inv[fromIndex]
+        if (fromIndex < toIndex) {
+            inv.splice(toIndex, 0, item)
+            removeInv(fromIndex)
+        }
+        else {
+            removeInv(fromIndex)
+            inv.splice(toIndex, 0, item)
+        }
+        updateInventory()
+    }
+}
+
+function dragEndHandler(ev) {
+    document.querySelectorAll('.inv-insert-box').forEach((element) => {
+        element.style['width'] = ''
+    })
 }
 
 function useItem(index) {

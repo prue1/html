@@ -7,11 +7,18 @@
 }
 
 .inv-item {
-    width: fit-content;
-    height: fit-content;
+    width: 160px;
+    height: 32px;
     display: flex;
     align-items: center;
     position: relative;
+}
+
+.inv-insert-box {
+    width: 0px;
+    height: 32px;
+    background-color: #347B98;
+    transition: width 0.3s linear;
 }
 
 .inv-item-name {
@@ -21,14 +28,14 @@
     align-items: center;
     justify-content: left;
     padding-left: 5px;
+    /* 若加上這行，在截取 dnd 圖形的時候會包含按鈕，故註解掉 */
+    /* flex-grow: 1; */
 }
 
 .inv-item-button {
-    width: 48px;
-    height: 32px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 .inv-item-button button {
@@ -36,8 +43,12 @@
 }
 
 .inv-empty {
-    width: 160px;
+    width: 112px;
     height: 32px;
+    flex-grow: 1;
+}
+
+.inv-empty-bacground {
     background-color: #c7c4be52;
 }
 
