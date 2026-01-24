@@ -7,8 +7,8 @@
     height: 10px;
 }
 
-#scene {
-    width: fit-content;
+#main {
+    display: flex;
 }
 
 #store-scene {
@@ -22,13 +22,6 @@
 .noteworthy {
     color: red;
     margin: 0 5px 0 5px;
-}
-
-.store-top {
-    position: relative;
-    width: 300px;
-    height: 56px;
-    background-color: gold;
 }
 
 #store-name {
@@ -93,14 +86,6 @@
 
 #store-menu:hover #sub-menu-effect {
     height: 90px;
-}
-
-.store-content {
-    position: relative;
-    width: 300px;
-    height: 320px;
-    background-color: #F7F4D4;
-    padding: 5px;
 }
 
 .mask {

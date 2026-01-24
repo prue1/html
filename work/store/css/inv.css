@@ -1,9 +1,13 @@
 #item-container {
-    width: fit-content;
+    width: 100%;
     height: fit-content;
     display: grid;
     grid-template-columns: auto auto auto auto;
-    gap: 3px;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: skyblue;
+    row-gap: 3px;
+    padding: 3px;
 }
 
 .inv-item {
@@ -12,13 +16,13 @@
     display: flex;
     align-items: center;
     position: relative;
+    background-color: aqua;
 }
 
 .inv-insert-box {
     width: 0px;
     height: 32px;
     background-color: #347B98;
-    transition: width 0.3s linear;
 }
 
 .inv-item-name {
@@ -28,8 +32,7 @@
     align-items: center;
     justify-content: left;
     padding-left: 5px;
-    /* 若加上這行，在截取 dnd 圖形的時候會包含按鈕，故註解掉 */
-    /* flex-grow: 1; */
+    flex-grow: 1;
 }
 
 .inv-item-button {
@@ -49,7 +52,7 @@
 }
 
 .inv-empty-bacground {
-    background-color: #c7c4be52;
+    background-color: #d1e0e0;
 }
 
 .inv-item-bacground {

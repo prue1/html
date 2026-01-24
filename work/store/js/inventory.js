@@ -76,12 +76,14 @@ function dragstartHandler(ev, fromIndex) {
     // 取得計算後的元件設定
     //The getComputedStyle() method gets the computed CSS properties and values of an HTML element.
     //The getComputedStyle() method returns a CSSStyleDeclaration object.
+    /*
     const computedStyle = window.getComputedStyle(customDragImage)
     ev.dataTransfer.setDragImage(
         customDragImage,
         parseInt(computedStyle.width),
         parseInt(computedStyle.height)
     );
+    */
 
     document.querySelectorAll('.inv-insert-box').forEach((element) => {
         element.style['width'] = '20px'
@@ -94,7 +96,7 @@ function dragoverHandler(ev) {
 
 function dropHandler(ev, toIndex) {
     ev.preventDefault();
-    // 不斷修改、重試、修改、重試....一段時間後，發生無法取得 fromIndex 的問題，重開 Edge 後解決。
+    // 不斷修改、重試、修改、重試....執行一段時間後，發生無法取得 fromIndex 的問題，重開 Edge 後解決。
     const fromIndex = ev.dataTransfer.getData("fromIndex");
     if (fromIndex != toIndex) {
         const inv = getPlayer(getCurrentPlayerId()).inv
