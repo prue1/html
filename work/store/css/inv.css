@@ -1,13 +1,16 @@
+.inv-title {
+    height: 24px;
+    background-color: bisque;
+}
+
 #item-container {
-    width: 100%;
+    width: fit-content;
     height: fit-content;
     display: grid;
     grid-template-columns: auto auto auto auto;
-    justify-content: space-evenly;
-    align-items: center;
     background-color: skyblue;
-    row-gap: 3px;
-    padding: 3px;
+    gap: 5px;
+    padding: 5px;
 }
 
 .inv-item {

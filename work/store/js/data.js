@@ -40,7 +40,7 @@ const player = {
     'player6': { name: '秀逗魔導士', gold: 1000, inv: [], location: 'store3' }
 }
 
-const maxInventorySize = 8
+const maxInventorySize = 16
 const maxPile = 99
 const discount = 0.75
 const startPlayer = { player: 'player6' }

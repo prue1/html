@@ -1,5 +1,5 @@
 #status {
-    width: 380px;
+    width: 365px;
     height: 380px;
     background-color: plum;
 }
@@ -25,8 +25,7 @@
 }
 
 #inventory-container {
-    width: 680px;
-    height: fit-content;
+    width: 665px;
+    height: 225px;
     background-color: lightseagreen;
-    padding: 3px;
 }

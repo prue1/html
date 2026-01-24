@@ -2,9 +2,9 @@ function updateInventory() {
     const player = getPlayer(getCurrentPlayerId())
     const inv = player.inv
     document.querySelector('#inventory-container').innerHTML = `
-        <div>錢：${player.gold} 元</div>
-        <div>背包空間(最大：${maxInventorySize})：</div>
-        <div>已使用：${getCurrentInventorySize()}，剩餘：${maxInventorySize - getCurrentInventorySize()}</div>
+        <div class="inv-title">錢：${player.gold} 元</div>
+        <div class="inv-title">背包空間(最大：${maxInventorySize})：</div>
+        <div class="inv-title">已使用：${getCurrentInventorySize()}，剩餘：${maxInventorySize - getCurrentInventorySize()}</div>
         <div id="item-container"></div>`
 
     inv.forEach((invItem, index) => {
