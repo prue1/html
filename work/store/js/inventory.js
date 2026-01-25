@@ -13,40 +13,49 @@ function updateInventory() {
             temp = `
                 <div class="inv-item inv-item-bacground">
                     <div class="inv-insert-box"
+                        ondragenter="dragEnter(event, this)"
+                        ondragleave="dragLeave(event, this)"
                         ondragover="dragoverHandler(event)"
-                        ondrop="dropInsertHandler(event, ${index})">
+                        ondrop="dropInsertHandler(event, ${index}, this)">
+                        <img width="20" height="32" class="disable-event-when-dragging" src="image/down-arrow.gif">
                     </div>
                     <div class="inv-item-name inv-item-name-${index}"
                         draggable="true"
                         ondragstart="dragstartHandler(event, ${index})"
+                        ondragenter="dragEnter(event, this)"
+                        ondragleave="dragLeave(event, this)"
                         ondragover="dragoverHandler(event)"
                         ondrop="dropHandler(event, ${index})"
                         ondragend="dragEndHandler(event)">
-                        <span>${getItem(invItem.itemId).name}</span>
-                        <span class="noteworthy">${invItem.amount}</span>
+                        <img width="16" height="16" src="image/${getItem(invItem.itemId).image}">
+                        <span class="disable-event-when-dragging">${getItem(invItem.itemId).name}</span>
+                        <span class="noteworthy disable-event-when-dragging">${invItem.amount}</span>
                     </div>
-                    <button type="button" class="inv-item-button" onclick=useItem('${index}')>使用</button>
+                    <button type="button" class="inv-item-button disable-event-when-dragging" onclick=useItem('${index}')>使用</button>
                 </div>`
         }
         else if (getItem(invItem.itemId).category == 'armor') {
             temp = `
                 <div class="inv-item inv-armor-bacground">
                     <div class="inv-insert-box"
+                        ondragenter="dragEnter(event, this)"
+                        ondragleave="dragLeave(event, this)"
                         ondragover="dragoverHandler(event)"
-                        ondrop="dropInsertHandler(event, ${index})">
+                        ondrop="dropInsertHandler(event, ${index}, this)">
+                        <img width="20" height="32" class="disable-event-when-dragging" src="image/down-arrow.gif">
                     </div>
                     <div class="inv-item-name inv-item-name-${index}"
                         draggable="true"
                         ondragstart="dragstartHandler(event, ${index})"
+                        ondragenter="dragEnter(event, this)"
+                        ondragleave="dragLeave(event, this)"
                         ondragover="dragoverHandler(event)"
                         ondrop="dropHandler(event, ${index})"
                         ondragend="dragEndHandler(event)">
-                        <span>${getItem(invItem.itemId).name}</span>
-                        <span class="noteworthy">${invItem.amount}</span>
+                        <span class="disable-event-when-dragging">${getItem(invItem.itemId).name}</span>
+                        <span class="noteworthy disable-event-when-dragging">${invItem.amount}</span>
                     </div>
-                    <div class="inv-item-button">
-                        <button type="button" onclick=equipItem('${index}')>裝備</button>
-                    </div>
+                    <button type="button" class="inv-item-button disable-event-when-dragging" onclick=equipItem('${index}')>裝備</button>
                 </div>`
         }
 
@@ -56,11 +65,9 @@ function updateInventory() {
     for (let index = inv.length; index < maxInventorySize; index++) {
         temp = `
             <div class="inv-item inv-empty-bacground">
-                <div class="inv-insert-box"
-                    ondragover="dragoverHandler(event)"
-                    ondrop="dropEmptyHandler(event)">
-                </div>
                 <div class="inv-empty"
+                    ondragenter="dragEnter(event, this)"
+                    ondragleave="dragLeave(event, this)"
                     ondragover="dragoverHandler(event)"
                     ondrop="dropEmptyHandler(event)">
                 </div>
@@ -76,18 +83,32 @@ function dragstartHandler(ev, fromIndex) {
     // 取得計算後的元件設定
     //The getComputedStyle() method gets the computed CSS properties and values of an HTML element.
     //The getComputedStyle() method returns a CSSStyleDeclaration object.
-    /*
-    const computedStyle = window.getComputedStyle(customDragImage)
+
     ev.dataTransfer.setDragImage(
         customDragImage,
-        parseInt(computedStyle.width),
-        parseInt(computedStyle.height)
+        0,
+        0
     );
-    */
 
     document.querySelectorAll('.inv-insert-box').forEach((element) => {
         element.style['width'] = '20px'
     })
+
+    // 當鼠標移到 <span> 時，會觸發 mouseleave event，導致邊框效果消失，故在drag期間先 disable 掉。
+    //pointer-events: 'none';
+    document.querySelectorAll('.disable-event-when-dragging').forEach((element) => {
+        element.style['pointer-events'] = 'none'
+    })
+}
+
+function dragEnter(ev, el) {
+    //console.log('enter')
+    el.style['backgroundColor'] = 'orange'
+}
+
+function dragLeave(ev, el) {
+    //console.log('leave')
+    el.style['backgroundColor'] = ''
 }
 
 function dragoverHandler(ev) {
@@ -116,7 +137,8 @@ function dropEmptyHandler(ev) {
     updateInventory()
 }
 
-function dropInsertHandler(ev, toIndex) {
+function dropInsertHandler(ev, toIndex, element) {
+    element.style['backgroundColor'] = ''
     ev.preventDefault();
     const fromIndex = ev.dataTransfer.getData("fromIndex");
     if (fromIndex != toIndex && fromIndex + 1 != toIndex) {
@@ -138,6 +160,15 @@ function dragEndHandler(ev) {
     document.querySelectorAll('.inv-insert-box').forEach((element) => {
         element.style['width'] = ''
     })
+
+    //pointer-events: 'none';
+    document.querySelectorAll('.disable-event-when-dragging').forEach((element) => {
+        element.style['pointer-events'] = 'all'
+    })
+
+    // 如果 drop 在原處，則邊框會保留(無 leave event，也不會刷新背包)
+    // 故另外處理
+    ev.target.style['backgroundColor'] = ''
 }
 
 function useItem(index) {

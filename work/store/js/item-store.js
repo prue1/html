@@ -11,16 +11,36 @@ function setStoreScene() {
             <div id="store-content-container">
             </div>
             <div id="store-menu">
-                <div id="menu">選單</div>
+                <div id="menu" onclick="switchMenu()">選單</div>
                 <div id="sub-menu-effect">
                     <div id="sub-menu">
-                        <div class='sub-menu-item' onclick='setStoreForVisit()'>參觀</div>
+                        <div class='sub-menu-item' onclick='setStoreForVisit();'>參觀</div>
                         <div class='sub-menu-item' onclick='setStoreForBuy()'>購買</div>
                         <div class='sub-menu-item' onclick='setStoreForSell()'>出售</div>
                     </div>
                 </div>
             </div>
         </div>`
+}
+
+let menuDisplayed = false;
+function switchMenu() {
+    if (menuDisplayed) {
+        closeMenu()
+    }
+    else {
+        document.querySelector('#sub-menu-effect').style.height = '90px'
+        document.querySelector('#menu').style.backgroundColor = '#347B98'
+        document.querySelector('#menu').style.color = 'white'
+        menuDisplayed = true
+    }
+}
+
+function closeMenu() {
+    document.querySelector('#sub-menu-effect').style.height = ''
+    document.querySelector('#menu').style.backgroundColor = ''
+    document.querySelector('#menu').style.color = ''
+    menuDisplayed = false
 }
 
 function setStoreForVisit() {
@@ -30,6 +50,7 @@ function setStoreForVisit() {
         <div class="store-content">
             <span class="noteworthy">${player.name}</span>正在店裏參觀
         </div>`
+    closeMenu()
 }
 
 function setStoreForBuy() {
@@ -43,8 +64,8 @@ function setStoreForBuy() {
                     <div class="cfm-item-name">名稱：<span class="name-value noteworthy"></span></div>
                     <div class="cfm-item-price">售價：<span class="price-value noteworthy"></span>元</div>
                     <div>
-                        <label for="amount">數量：</label><input type="text" class="noteworthy" id="amount" maxlength="2"
-                            onclick="this.select()" onkeyup="doEnterBuy(event)">
+                        <label for="amount">數量：</label><input type="number" class="noteworthy" id="amount" min="0" max="99"
+                        onclick="this.select()" onkeyup="doEnterBuy(event)">
                         <button type="button" onclick="setMaxAmount()">最大量</button>
                     </div>
                     <div class="v-separator"></div>
@@ -61,12 +82,14 @@ function setStoreForBuy() {
     getLocation(locationId).storeItems.forEach(itemId => {
         const temp = `
                 <div class="item">
+                    <div class="item-image"><img width="16" height="16" src="image/${getItem(itemId).image}"></div>
                     <div class="item-name">${getItem(itemId).name}</div>
                     <div class="item-price">${getItem(itemId).price} 元</div>
                     <div><button type="button" class="item-button" onclick="buy('${itemId}')">購買</div>
                 </div>`
         document.querySelector('#item-list').innerHTML += temp
     })
+    closeMenu()
 }
 
 function buy(itemId) {
@@ -132,6 +155,9 @@ function confirmBuy() {
                     console.log('背包空間不足。')
                 }
             }
+            else {
+                player.gold -= total
+            }
         }
         //console.log('total:' + getItem(itemId).price * amount)
     }
@@ -187,6 +213,7 @@ function setStoreForSell() {
                 <span class="noteworthy">背包內沒有 物品 可賣</span>
             </div>`
     }
+    closeMenu()
 }
 
 function sell(index) {

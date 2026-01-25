@@ -57,7 +57,7 @@
     width: 100px;
     height: 0;
     overflow: hidden;
-    transition: height 0.3s linear;
+    transition: height 0.1s linear;
     position: relative;
 }
 
@@ -81,15 +81,6 @@
 .sub-menu-item:hover {
     background-color: blue;
     color: white;
-}
-
-#store-menu:hover #menu {
-    background-color: #347B98;
-    color: white;
-}
-
-#store-menu:hover #sub-menu-effect {
-    height: 90px;
 }
 
 .mask {
@@ -119,6 +110,15 @@
     align-items: end;
 }
 
+.item-image {
+    width: fit-content;
+    height: 30px;
+    background-color: yellowgreen;
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+}
+
 .item-name {
     width: 120px;
     height: 30px;
@@ -127,6 +127,7 @@
     padding-left: 5px;
     background-color: yellowgreen;
     flex-grow: 1;
+    font-size: 14px;
 }
 
 .item-price {

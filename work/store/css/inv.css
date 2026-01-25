@@ -25,7 +25,8 @@
 .inv-insert-box {
     width: 0px;
     height: 32px;
-    background-color: #347B98;
+    overflow: hidden;
+    background-color: lightseagreen;
 }
 
 .inv-item-name {
@@ -35,6 +36,7 @@
     align-items: center;
     justify-content: left;
     padding-left: 5px;
+    font-size: 14px;
     flex-grow: 1;
 }
 

@@ -11,7 +11,7 @@ function setArmorStoreScene() {
             <div id="store-content-container">
             </div>
             <div id="store-menu">
-                <div id="menu">選單</div>
+                <div id="menu" onclick="switchArmorMenu()">選單</div>
                 <div id="sub-menu-effect">
                     <div id="sub-menu">
                         <div class='sub-menu-item' onclick='setArmorStoreForVisit()'>參觀</div>
@@ -23,6 +23,26 @@ function setArmorStoreScene() {
         </div>`
 }
 
+let armorMenuDisplayed = false;
+function switchArmorMenu() {
+    if (armorMenuDisplayed) {
+        closeMenu()
+    }
+    else {
+        document.querySelector('#sub-menu-effect').style.height = '90px'
+        document.querySelector('#menu').style.backgroundColor = '#347B98'
+        document.querySelector('#menu').style.color = 'white'
+        armorMenuDisplayed = true
+    }
+}
+
+function closeArmorMenu() {
+    document.querySelector('#sub-menu-effect').style.height = ''
+    document.querySelector('#menu').style.backgroundColor = ''
+    document.querySelector('#menu').style.color = ''
+    armorMenuDisplayed = false
+}
+
 function setArmorStoreForVisit() {
     const player = getPlayer(getCurrentPlayerId())
 
@@ -30,6 +50,7 @@ function setArmorStoreForVisit() {
         <div class="store-content">
             <span class="noteworthy">${player.name}</span>正在店裏參觀
         </div>`
+    closeArmorMenu()
 }
 
 function setArmorStoreForBuy() {
@@ -65,6 +86,7 @@ function setArmorStoreForBuy() {
                 </div>`
         document.querySelector('#item-list').innerHTML += temp
     })
+    closeArmorMenu()
 }
 
 function buyArmor(itemId) {
@@ -154,6 +176,7 @@ function setArmorStoreForSell() {
                 <span class="noteworthy">背包內沒有 防具 可賣</span>
             </div>`
     }
+    closeArmorMenu()
 }
 
 function sellArmor(index) {
