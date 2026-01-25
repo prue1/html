@@ -182,8 +182,8 @@ function setStoreForSell() {
                     <div class="cfm-item-name">名稱：<span class="name-value noteworthy"></span></div>
                     <div class="cfm-item-price">售價：<span class="price-value noteworthy"></span>元</div>
                     <div>
-                        <label for="amount">數量：</label><input type="text" class="noteworthy" id="amount" maxlength="2"
-                            onclick="this.select()" onkeyup="doEnterSell(event)">
+                        <label for="amount">數量：</label><input type="number" class="noteworthy" id="amount" min="0" max="99"
+                        onclick="this.select()" onkeyup="doEnterSell(event)">
                     </div>
                     <div class="v-separator"></div>
                     <div class="button-to-right">
@@ -200,6 +200,7 @@ function setStoreForSell() {
         invItems.forEach((invItem) => {
             const temp = `
                 <div class="item">
+                    <div class="item-image"><img width="16" height="16" src="image/${getItem(invItem.item.itemId).image}"></div>
                     <div class="item-name">${getItem(invItem.item.itemId).name}</div>
                     <div class="item-price">${invItem.item.amount} 個</div>
                     <div><button type="button" class="item-button" onclick="sell('${invItem.index}')">出售</div>

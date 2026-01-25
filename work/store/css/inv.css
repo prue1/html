@@ -29,6 +29,14 @@
     background-color: lightseagreen;
 }
 
+.inv-item-image {
+    width: fit-content;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    padding: 0 3px 0 3px;
+}
+
 .inv-item-name {
     width: 112px;
     height: 32px;
@@ -38,16 +46,6 @@
     padding-left: 5px;
     font-size: 14px;
     flex-grow: 1;
-}
-
-.inv-item-button {
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
-.inv-item-button button {
-    font-size: 7px;
 }
 
 .inv-empty {

@@ -26,12 +26,12 @@ function updateInventory() {
                         ondragleave="dragLeave(event, this)"
                         ondragover="dragoverHandler(event)"
                         ondrop="dropHandler(event, ${index})"
-                        ondragend="dragEndHandler(event)">
-                        <img width="16" height="16" src="image/${getItem(invItem.itemId).image}">
+                        ondragend="dragEndHandler(event)"
+                        onclick=useItem('${index}')>
+                        <div class="inv-item-image"><img width="16" height="16" src="image/${getItem(invItem.itemId).image}"></div>
                         <span class="disable-event-when-dragging">${getItem(invItem.itemId).name}</span>
                         <span class="noteworthy disable-event-when-dragging">${invItem.amount}</span>
                     </div>
-                    <button type="button" class="inv-item-button disable-event-when-dragging" onclick=useItem('${index}')>使用</button>
                 </div>`
         }
         else if (getItem(invItem.itemId).category == 'armor') {
@@ -51,11 +51,11 @@ function updateInventory() {
                         ondragleave="dragLeave(event, this)"
                         ondragover="dragoverHandler(event)"
                         ondrop="dropHandler(event, ${index})"
-                        ondragend="dragEndHandler(event)">
+                        ondragend="dragEndHandler(event)"
+                        onclick=equipItem('${index}')>
                         <span class="disable-event-when-dragging">${getItem(invItem.itemId).name}</span>
                         <span class="noteworthy disable-event-when-dragging">${invItem.amount}</span>
                     </div>
-                    <button type="button" class="inv-item-button disable-event-when-dragging" onclick=equipItem('${index}')>裝備</button>
                 </div>`
         }
 
