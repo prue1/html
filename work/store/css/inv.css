@@ -66,23 +66,60 @@
     background-color: #F7E9D4;
 }
 
-#inv-action-panel {
+/* 控制 inv action panel 的 display 與否 */
+#inv-action-panel-display {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: aqua;
-    border: 3px solid rgb(0, 178, 178);
     display: none;
-    font-size: small;
-    padding: 5px;
 }
 
-#breakdownAmamount {
+/* 買中 inv action panel 的內容 */
+#inv-action-panel {
+    position: relative;
+    width: 240px;
+    height: 120px;
+    background-color: #ffe6ff;
+    border: 3px solid #990099;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* inv action panel 的內容 */
+.inv-action-panel-content {
+    font-size: small;
+}
+
+.action-small-button {
+    font-size: small;
+    background-color: #ffe6ff;
+    color: #990099;
+    border-color: #990099;
+}
+
+.action-small-button:hover {
+    font-size: small;
+    background-color: #990099;
+    color: white;
+}
+
+#break-down-amount {
     width: 48px;
     text-align: right;
     padding-right: 3px;
     font-family: Tahoma;
+    border: 1px solid #990099;
+    outline-color: #990099;
+}
+
+#choose-player {
+    font-size: small;
+    border: 1px solid #990099;
+    color: #990099;
+    outline-color: #990099;
 }
 
 .small-button {
@@ -96,4 +133,10 @@
     font-size: small;
     background-color: #B08A03;
     color: white;
+}
+
+.bottom-right-button {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
 }

@@ -160,6 +160,8 @@
     text-align: right;
     padding-right: 3px;
     font-family: Tahoma;
+    border: 1px solid #B08A03;
+    outline-color: #B08A03;
 }
 
 #cfm-panel {

@@ -11,7 +11,9 @@ function updateInventory() {
         <div class="inv-title">背包空間(最大：${maxInventorySize})：</div>
         <div class="inv-title">已使用：${getCurrentInventorySize()}，剩餘：${maxInventorySize - getCurrentInventorySize()}</div>
         <div id="item-container"></div>
-        <div id="inv-action-panel"></div>`
+        <div id="inv-action-panel-display">
+            <div id="inv-action-panel"></div>
+        </div>`
 
     inv.forEach((invItem, index) => {
         let temp = ''
@@ -163,30 +165,28 @@ function dropEmptyHandler(ev) {
 }
 
 function showBreakDownPanel(index) {
+    document.querySelector('#inv-action-panel-display').style.display = 'block'
     const inv = getPlayer(getCurrentPlayerId()).inv
     const invItem = inv[index]
     const invActionPanel = document.querySelector('#inv-action-panel')
-    invActionPanel.style.display = 'block'
     invActionPanel.innerHTML = ''
     invActionPanel.innerHTML += `
-        <div>
+        <div class="inv-action-panel-content">
             【<img width="16" height="16" src="image/${getItemInfo(invItem.itemId).image}">
             ${getItemInfo(invItem.itemId).name}<span class="noteworthy">${invItem.amount}</span>】
-            <label for="breakdownAmamount">拆分數量</label><input type="number" class="noteworthy" id="breakdownAmamount" min="0" max="${invItem.amount}">
-            <button type="button" class="small-button" onclick="breakDown(${index})">拆分</button>
-            <button type="button" class="small-button" onclick="hideBreakDownPanel()">取消</button>
+            <label for="break-down-amount">拆分數量</label><input type="number" class="noteworthy" id="break-down-amount" min="0" max="${invItem.amount}">
         </div>
-        <div>第二行<button type="button" class="small-button">按鈕</button></div>
-        <div>第三行<button type="button" class="small-button">按鈕</button></div>
-        <div>第四行<button type="button" class="small-button">按鈕</button></div>
-        <div>第五行<button type="button" class="small-button">按鈕</button></div>`
+        <div class="bottom-right-button">
+            <button type="button" class="action-small-button" onclick="hideBreakDownPanel()">取消</button>
+            <button type="button" class="action-small-button" onclick="breakDown(${index})">拆分</button>
+        </div>`
 
-    document.querySelector('#breakdownAmamount').value = 1
-    document.querySelector('#breakdownAmamount').select()
+    document.querySelector('#break-down-amount').value = 1
+    document.querySelector('#break-down-amount').select()
 }
 
 function breakDown(index) {
-    const breakdownAmount = document.querySelector('#breakdownAmamount').value
+    const breakdownAmount = document.querySelector('#break-down-amount').value
     const inv = getPlayer(getCurrentPlayerId()).inv
     const invItem = inv[index]
     if (breakdownAmount > 0) {
@@ -201,6 +201,11 @@ function breakDown(index) {
             console.log(`拆分數量(${breakdownAmount})大於原數量(${invItem.amount})`)
         }
     }
+    else if (breakdownAmount == 0) {
+        // 全部移動
+        addInv(invItem.itemId, invItem.amount)
+        removeInv(index)
+    }
     else {
         console.log(`拆分數量<1:${breakdownAmount}`)
     }
@@ -208,7 +213,7 @@ function breakDown(index) {
 }
 
 function hideBreakDownPanel() {
-    document.querySelector('#inv-action-panel').style.display = 'none'
+    document.querySelector('#inv-action-panel-display').style.display = 'none'
     updateInventory()
 }
 
@@ -247,21 +252,21 @@ function dragEndHandler(ev) {
 }
 
 function panelForItem(index) {
+    document.querySelector('#inv-action-panel-display').style.display = 'block'
     const invActionPanel = document.querySelector('#inv-action-panel')
-    invActionPanel.style.display = 'block'
     invActionPanel.innerHTML = ''
     invActionPanel.innerHTML += `
         <div>
-            <button type="button" class="small-button" onclick="consumeItem(${index})">使用</button>
+            <button type="button" class="action-small-button" onclick="consumeItem(${index})">使用</button>
         </div>
         <div>
-            <button type="button" class="small-button" onclick="shiftItem(${index})">轉移</button>
+            <button type="button" class="action-small-button" onclick="shiftItem(${index})">轉移</button>
         </div>
         <div>
-            <button type="button" class="small-button" onclick="throwAwayItem(${index})">丟棄</button>
+            <button type="button" class="action-small-button" onclick="throwAwayItem(${index})">丟棄</button>
         </div>
         <div>
-            <button type="button" class="small-button" onclick="closeActionPanel()">取消</button>
+            <button type="button" class="action-small-button bottom-right-button" onclick="closeActionPanel()">取消</button>
         </div>`
 }
 
@@ -276,21 +281,39 @@ function consumeItem(index) {
 }
 
 function throwAwayItem(index) {
+    document.querySelector('#inv-action-panel-display').style.display = 'block'
+    const inv = getPlayer(getCurrentPlayerId()).inv
+    const invItem = inv[index]
+    const invActionPanel = document.querySelector('#inv-action-panel')
+    invActionPanel.innerHTML = ''
+    invActionPanel.innerHTML += `
+        <div class="inv-action-panel-content">
+            丟棄：【<img width="16" height="16" src="image/${getItemInfo(invItem.itemId).image}">
+            ${getItemInfo(invItem.itemId).name}<span class="noteworthy">${invItem.amount}</span>】
+        </div>
+        <div class="bottom-right-button">
+            <button type="button" class="action-small-button" onclick="closeActionPanel()">取消</button>
+            <button type="button" class="action-small-button" onclick="doThrowAwayItem(${index})">確定</button>
+        </div>`
+}
+
+function doThrowAwayItem(index) {
     removeInv(index)
     updateInventory()
 }
 
 function shiftItem(index) {
+    document.querySelector('#inv-action-panel-display').style.display = 'block'
     const invActionPanel = document.querySelector('#inv-action-panel')
-    invActionPanel.style.display = 'block'
     invActionPanel.innerHTML = ''
     invActionPanel.innerHTML += `
-        <div>
-            <label for="choose-player">
-                <select id="choose-player"></select>
-                <button type="button" class="small-button" onclick="confirmShift(${index} ,'${getCurrentPlayerId()}')">確定</button>
-                <button type="button" class="small-button" onclick="cancelShift()">取消</button>
-            </label>
+        <div class="inv-action-panel-content">
+            <label for="choose-player">選擇轉移對象</label>
+            <select id="choose-player"></select>
+        </div>
+        <div class="bottom-right-button">
+            <button type="button" class="action-small-button" onclick="cancelShift()">取消</button>
+            <button type="button" class="action-small-button" onclick="confirmShift(${index} ,'${getCurrentPlayerId()}')">確定</button>
         </div>`
 
     document.querySelector('#choose-player').innerHTML = ''
@@ -323,7 +346,7 @@ function cancelShift() {
 }
 
 function closeActionPanel() {
-    document.querySelector('#inv-action-panel').style.display = 'none'
+    document.querySelector('#inv-action-panel-display').style.display = 'none'
 }
 
 function equipItem(itemId) {

@@ -38,10 +38,24 @@ function initLocation() {
 
 function setPlayer(playerId) {
     setCurrentPlayerId(playerId)
+    const player = getPlayer(playerId)
     // 設定 player location
-    document.querySelector('#sel-location').value = getPlayer(playerId).location
+    document.querySelector('#sel-location').value = player.location
+    setPlayerStatus()
     setupLocation()
     updateInventory()
+}
+
+function setPlayerStatus() {
+    const player = getPlayer(getCurrentPlayerId())
+    const status = document.querySelector('#player-status')
+    status.innerHTML = ''
+    status.innerHTML += `
+        <div>${player.name}</div>
+        <div id="player-image-case"><img src="image/${player.picture.file}"></div>
+    `
+    const playerImageImg = document.querySelector('#player-image-case>img')
+    playerImageImg.style.transform = `translate(-${player.picture.tx}px, -${player.picture.ty}px)`
 }
 
 function setupLocation() {
