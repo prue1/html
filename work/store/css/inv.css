@@ -65,3 +65,35 @@
 .inv-armor-bacground {
     background-color: #F7E9D4;
 }
+
+#inv-action-panel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: aqua;
+    border: 3px solid rgb(0, 178, 178);
+    display: none;
+    font-size: small;
+    padding: 5px;
+}
+
+#breakdownAmamount {
+    width: 48px;
+    text-align: right;
+    padding-right: 3px;
+    font-family: Tahoma;
+}
+
+.small-button {
+    font-size: small;
+    background-color: #FDE281;
+    color: #B08A03;
+    border-color: #B08A03;
+}
+
+.small-button:hover {
+    font-size: small;
+    background-color: #B08A03;
+    color: white;
+}

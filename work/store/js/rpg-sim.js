@@ -1,4 +1,4 @@
-function getItem(itemId) {
+function getItemInfo(itemId) {
     return items[itemId]
 }
 
@@ -23,6 +23,8 @@ function initPlayer() {
                 <option value="${playerId}">${data.name}</option>`
         document.querySelector('#sel-player').innerHTML += temp
     });
+    // 設定初始值
+    document.querySelector('#sel-player').value = startPlayer.player
 }
 
 function initLocation() {
@@ -35,8 +37,8 @@ function initLocation() {
 }
 
 function setPlayer(playerId) {
-    document.querySelector('#player-id').value = playerId
-    document.querySelector('#sel-player').value = playerId
+    setCurrentPlayerId(playerId)
+    // 設定 player location
     document.querySelector('#sel-location').value = getPlayer(playerId).location
     setupLocation()
     updateInventory()
@@ -61,4 +63,8 @@ function setupLocation() {
 
 function getCurrentPlayerId() {
     return document.querySelector('#player-id').value
+}
+
+function setCurrentPlayerId(playerId) {
+    document.querySelector('#player-id').value = playerId
 }

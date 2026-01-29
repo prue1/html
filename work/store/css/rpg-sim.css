@@ -21,11 +21,11 @@
     width: 300px;
     height: 320px;
     background-color: #F7F4D4;
-    padding-right: 5px;
 }
 
 #inventory-container {
     width: 665px;
     height: 225px;
     background-color: lightseagreen;
+    position: relative;
 }

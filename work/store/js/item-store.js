@@ -66,12 +66,12 @@ function setStoreForBuy() {
                     <div>
                         <label for="amount">數量：</label><input type="number" class="noteworthy" id="amount" min="0" max="99"
                         onclick="this.select()" onkeyup="doEnterBuy(event)">
-                        <button type="button" onclick="setMaxAmount()">最大量</button>
+                        <button type="button" class="normal-button" onclick="setMaxAmount()">最大量</button>
                     </div>
                     <div class="v-separator"></div>
                     <div class="button-to-right">
-                        <button type="button" class="cfm-panel-button" onclick="cancelBuy()">取消</button>
-                        <button type="button" class="cfm-panel-button" onclick="confirmBuy()">確定</button>
+                        <button type="button" class="cfm-panel-button normal-button" onclick="cancelBuy()">取消</button>
+                        <button type="button" class="cfm-panel-button normal-button" onclick="confirmBuy()">確定</button>
                     </div>
                 </div>
             </div>
@@ -82,9 +82,9 @@ function setStoreForBuy() {
     getLocation(locationId).storeItems.forEach(itemId => {
         const temp = `
                 <div class="item">
-                    <div class="item-image"><img width="16" height="16" src="image/${getItem(itemId).image}"></div>
-                    <div class="item-name">${getItem(itemId).name}</div>
-                    <div class="item-price">${getItem(itemId).price} 元</div>
+                    <div class="item-image"><img width="16" height="16" src="image/${getItemInfo(itemId).image}"></div>
+                    <div class="item-name">${getItemInfo(itemId).name}</div>
+                    <div class="item-price">${getItemInfo(itemId).price} 元</div>
                     <div><button type="button" class="item-button" onclick="buy('${itemId}')">購買</div>
                 </div>`
         document.querySelector('#item-list').innerHTML += temp
@@ -93,7 +93,7 @@ function setStoreForBuy() {
 }
 
 function buy(itemId) {
-    const item = getItem(itemId)
+    const item = getItemInfo(itemId)
     document.querySelector('.mask').style.display = 'block'
     document.querySelector('#cfm-panel').style.display = 'block'
     document.querySelector('#cfm-panel-1 #itemId-value').value = itemId
@@ -110,7 +110,7 @@ function confirmBuy() {
     document.querySelector('#cfm-panel').style.display = 'none'
     document.querySelector('.mask').style.display = 'none'
     const itemId = document.querySelector('#cfm-panel-1 #itemId-value').value
-    const item = getItem(itemId)
+    const item = getItemInfo(itemId)
     const player = getPlayer(getCurrentPlayerId())
     let amount = parseInt(document.querySelector('#amount').value)
     if (amount > 0) {
@@ -140,6 +140,7 @@ function confirmBuy() {
                 }
             })
 
+            // 前提：購買量不會超過一個堆疊。所以，剩餘數量最多也不會超過一個堆疊
             // 若有剩餘數量
             if (amount > 0) {
                 // 若背包尚有多餘空間，則建立新的堆疊，並扣掉購買金額
@@ -159,7 +160,7 @@ function confirmBuy() {
                 player.gold -= total
             }
         }
-        //console.log('total:' + getItem(itemId).price * amount)
+        //console.log('total:' + getItemInfo(itemId).price * amount)
     }
 
     updateInventory()
@@ -187,8 +188,8 @@ function setStoreForSell() {
                     </div>
                     <div class="v-separator"></div>
                     <div class="button-to-right">
-                        <button type="button" class="cfm-panel-button" onclick="cancelSell()">取消</button>
-                        <button type="button" class="cfm-panel-button" onclick="confirmSell()">確定</button>
+                        <button type="button" class="cfm-panel-button normal-button" onclick="cancelSell()">取消</button>
+                        <button type="button" class="cfm-panel-button normal-button" onclick="confirmSell()">確定</button>
                     </div>
                 </div>
             </div>
@@ -200,8 +201,8 @@ function setStoreForSell() {
         invItems.forEach((invItem) => {
             const temp = `
                 <div class="item">
-                    <div class="item-image"><img width="16" height="16" src="image/${getItem(invItem.item.itemId).image}"></div>
-                    <div class="item-name">${getItem(invItem.item.itemId).name}</div>
+                    <div class="item-image"><img width="16" height="16" src="image/${getItemInfo(invItem.item.itemId).image}"></div>
+                    <div class="item-name">${getItemInfo(invItem.item.itemId).name}</div>
                     <div class="item-price">${invItem.item.amount} 個</div>
                     <div><button type="button" class="item-button" onclick="sell('${invItem.index}')">出售</div>
                 </div>`
@@ -219,7 +220,7 @@ function setStoreForSell() {
 
 function sell(index) {
     const invItem = pick(index)
-    const item = getItem(invItem.itemId)
+    const item = getItemInfo(invItem.itemId)
     document.querySelector('.mask').style.display = 'block'
     document.querySelector('#cfm-panel').style.display = 'block'
     document.querySelector('#cfm-panel-1 #inv-index').value = index
@@ -242,7 +243,7 @@ function confirmSell() {
     const amount = parseInt(document.querySelector('#amount').value)
     if (amount > 0) {
         const invItem = pick(index)
-        const item = getItem(invItem.itemId)
+        const item = getItemInfo(invItem.itemId)
         if (invItem) {
             if (invItem.amount < amount) {
                 console.log(`沒那麼多東西能賣(${invItem.amount})`)
@@ -258,7 +259,7 @@ function confirmSell() {
         else {
             console.log(`物品不存在`)
         }
-        //console.log('total:' + getItem(itemId).price * amount)
+        //console.log('total:' + getItemInfo(itemId).price * amount)
     }
 
     updateInventory()
@@ -274,7 +275,7 @@ function cancelSell() {
 function setMaxAmount() {
     const player = getPlayer(getCurrentPlayerId())
     const itemId = document.querySelector('#cfm-panel-1 #itemId-value').value
-    const item = getItem(itemId)
+    const item = getItemInfo(itemId)
     const maxBuy = Math.floor(player.gold / item.price)
     if (maxBuy < maxPile) {
         document.querySelector('#amount').value = maxBuy

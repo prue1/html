@@ -26,7 +26,7 @@ const locations = {
     'store3': { category: 'item-store', name: '萬全藥莊', storeItems: ['i01', 'i02', 'i03', 'i04', 'i05', 'i06', 'i07', 'i08', 'i09', 'i10', 'i11', 'i12', 'i13'] },
     'armor1': { category: 'armor-store', name: '防具店', storeItems: ['a01', 'a03'] },
     'armor2': { category: 'armor-store', name: '防具二號店', storeItems: ['a01', 'a02', 'a03'] },
-    'weapon1': { category: 'weapon-store', name: '武器店', storeItems: ['w01', 'w02', 'w03'] }
+    'weapon1': { category: 'weapon-store', name: '武器店', storeItems: ['w01', 'w02', 'w03'] },
 }
 
 /*
@@ -38,7 +38,7 @@ const player = {
     'player3': { name: '海棉寶寶', gold: 1000, inv: [], location: 'store2' },
     'player4': { name: '風之谷', gold: 1000, inv: [], location: 'store2' },
     'player5': { name: '科學小飛俠', gold: 1000, inv: [], location: 'store3' },
-    'player6': { name: '秀逗魔導士', gold: 1000, inv: [], location: 'store3' }
+    'player6': { name: '秀逗魔導士', gold: 1000, inv: [], location: 'store3' },
 }
 
 const maxInventorySize = 16
